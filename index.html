@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MVP LifeLine AI App – All Zones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MVP LifeLine AI App</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* quick optional styling; move to style.css later */
-    details {border:1px solid #ddd;border-radius:6px;margin:1rem 0;padding:1rem;}
-    summary {font-weight:600;font-size:1.1rem;cursor:pointer;}
-    summary::marker{content:"▶ ";} details[open] summary::marker{content:"▼ ";}
-  </style>
 </head>
 <body>
-  <!-- ===== HEADER ===== -->
   <header class="header">
-    <h1>MVP LifeLine AI App</h1>
-    <p class="tagline">Earn. Heal. Grow.</p>
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="MVP LifeLine AI Logo" class="logo-img" />
+      <h1>MVP LifeLine AI App</h1>
+    </div>
+    <p class="tagline">
+      <strong>Built for Africa’s bold dreamers.</strong><br />
+      This isn’t just an app — it’s your digital lifeline.<br />
+      <span class="tag-punch">Earn smarter. Heal deeper. Grow faster.</span>
+    </p>
+
     <select id="language" aria-label="Select Language">
       <option value="en">English</option>
       <option value="ha">Hausa</option>
@@ -31,7 +32,6 @@
     <button id="dark-toggle" aria-label="Toggle Dark Mode">🌙</button>
   </header>
 
-  <!-- ===== MAIN ===== -->
   <main class="container">
     <section class="greeting" aria-label="App Greeting">
       <h2>Welcome, Hope,<br><span>Let’s grow today.</span></h2>
@@ -41,96 +41,26 @@
       <p><strong>Voice Input:</strong> <span id="speech-text">[Waiting for input...]</span></p>
     </div>
 
-    <!-- ONE-PAGE 17 ZONES -->
-    <section aria-label="All Zones">
-      <!-- 1 -->
-      <details>
-        <summary>📁 Career Zone</summary>
-        <p>Jobs board, CV builder, interview prep, and career resources.</p>
-      </details>
-      <!-- 2 -->
-      <details>
-        <summary>💔 Emotional Zone</summary>
-        <p>Journaling, mood tracking, and guided emotional-wellness exercises.</p>
-      </details>
-      <!-- 3 -->
-      <details>
-        <summary>🤖 SmartQ Access</summary>
-        <p>Ask anything to your AI guide and receive instant answers.</p>
-      </details>
-      <!-- 4 -->
-      <details>
-        <summary>🧠 Dual Mode AI</summary>
-        <p>Toggle between career-focused and emotional-support AI modes.</p>
-      </details>
-      <!-- 5 -->
-      <details>
-        <summary>💼 Digital Hustle Hub</summary>
-        <p>Freelance gigs, side-hustle ideas, and digital-income tools.</p>
-      </details>
-      <!-- 6 -->
-      <details>
-        <summary>🤝 Partner Zone</summary>
-        <p>Opportunities from NGOs, mentors, and impact partners.</p>
-      </details>
-      <!-- 7 -->
-      <details>
-        <summary>✅ Productivity Zone</summary>
-        <p>AI-powered Kanban board and planner to organize your tasks.</p>
-      </details>
-      <!-- 8 -->
-      <details>
-        <summary>🌍 Language Zone</summary>
-        <p>Learn new languages fast with personalized AI tutoring.</p>
-      </details>
-      <!-- 9 -->
-      <details>
-        <summary>🧘 Wellness Zone</summary>
-        <p>Mental-health tips, calming audio, and guided meditation.</p>
-      </details>
-      <!--10 -->
-      <details>
-        <summary>💰 Finance Zone</summary>
-        <p>Budgeting help, savings advice, and starter investment guides.</p>
-      </details>
-      <!--11 -->
-      <details>
-        <summary>🎓 Onboarding Zone</summary>
-        <p>Interactive walkthrough of all app features and how to use them.</p>
-      </details>
-      <!--12 -->
-      <details>
-        <summary>🆘 Help Zone</summary>
-        <p>FAQs, contact support, and troubleshooting tips.</p>
-      </details>
-      <!--13 -->
-      <details>
-        <summary>🔒 Privacy Zone</summary>
-        <p>Data-control settings and transparency on information usage.</p>
-      </details>
-      <!--14 -->
-      <details>
-        <summary>🛡️ Security Zone</summary>
-        <p>Guides and tools to keep your data and account secure.</p>
-      </details>
-      <!--15 -->
-      <details>
-        <summary>📊 Insight Zone</summary>
-        <p>Usage analytics, progress tracking, and personalized insights.</p>
-      </details>
-      <!--16 -->
-      <details>
-        <summary>🔄 Sync Zone</summary>
-        <p>Manage offline/online data sync and backup preferences.</p>
-      </details>
-      <!--17 -->
-      <details>
-        <summary>💼 Monetization Zone</summary>
-        <p>Explore premium features and ways to earn within the app.</p>
-      </details>
-    </section>
+    <div class="modules-grid" aria-label="Modules Section">
+      <a href="career-zone.html" class="card"><h3>📁 Career Zone</h3><p>Jobs, CVs, and Interview Prep.</p></a>
+      <a href="emotional-zone.html" class="card"><h3>💔 Emotional Zone</h3><p>Track feelings and journaling.</p></a>
+      <a href="smartq-access.html" class="card"><h3>🤖 SmartQ Access</h3><p>Ask anything to your AI guide.</p></a>
+      <a href="dual-mode-ai.html" class="card"><h3>🧠 Dual Mode AI</h3><p>Switch between career/emotional help.</p></a>
+      <a href="digital-hustle-hub.html" class="card"><h3>💼 Digital Hustle Hub</h3><p>Freelance and gig economy tools.</p></a>
+      <a href="partner-zone.html" class="card"><h3>🤝 Partner Zone</h3><p>NGO, mentors and impact partners.</p></a>
+      <a href="productivity-zone.html" class="card"><h3>✅ Productivity Zone</h3><p>AI-powered Kanban and planner.</p></a>
+      <a href="language-zone.html" class="card"><h3>🌍 Language Zone</h3><p>Learn new languages fast with AI.</p></a>
+      <a href="wellness-zone.html" class="card"><h3>🧘 Wellness Zone</h3><p>Mental health & calming audio.</p></a>
+      <a href="finance-zone.html" class="card"><h3>💰 Finance Zone</h3><p>Budgeting and savings advice.</p></a>
+      <a href="onboarding-zone.html" class="card"><h3>🎓 Onboarding Zone</h3><p>Learn how the app works.</p></a>
+      <a href="help-zone.html" class="card"><h3>🆘 Help Zone</h3><p>FAQs and user support.</p></a>
+      <a href="privacy-zone.html" class="card"><h3>🔒 Privacy Zone</h3><p>Your data. Your control.</p></a>
+      <a href="security-zone.html" class="card"><h3>🛡️ Security Zone</h3><p>Keep your info protected.</p></a>
+      <a href="insight-zone.html" class="card"><h3>📊 Insight Zone</h3><p>Track usage & analytics insights.</p></a>
+      <a href="sync-zone.html" class="card"><h3>🔄 Sync Zone</h3><p>Manage your offline & online data.</p></a>
+      <a href="monetization-zone.html" class="card"><h3>💼 Monetization Zone</h3><p>Premium features & earning tools.</p></a>
+    </div>
 
-    <!-- GPT Reply placeholder (if you need it) -->
     <section id="gpt-reply-box" class="card" style="display:none; margin-top:2rem;">
       <h3>🤖 SmartQ says:</h3>
       <p id="gpt-reply-text">...</p>
@@ -139,10 +69,9 @@
 
   <button id="mic-btn" aria-label="Microphone Button">🎤</button>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <p>&copy; 2025 MVP LifeLine AI App. Built by John Umoh.</p>
-    <a href="#privacy-zone">Privacy</a> | <a href="#help-zone">Help</a>
+    <a href="privacy-zone.html">Privacy</a> | <a href="onboarding-zone.html">Help</a>
   </footer>
 
   <script src="app.js"></script>
