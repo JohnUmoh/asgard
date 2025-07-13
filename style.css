@@ -1,241 +1,166 @@
-/* ===============  GLOBAL RESET  =============== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ─── Typography ───────────────────── */
+body, p, h1, h2, h3, h4, h5, h6, span {
+  font-weight: bold;
 }
 
-:root {
-  --brand-red: #e60000;
-  --brand-black: #000;
-  --brand-white: #fff;
-  --text-light: #eee;
-  --card-shadow: rgba(0, 0, 0, 0.08);
-}
-
-/* ===============  BODY & THEMES  =============== */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--brand-white);
-  color: var(--brand-black);
-  line-height: 1.6;
-  padding: 20px;
-  transition: background 0.3s ease, color 0.3s ease;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fff;
+  color: #111;
 }
 
-body.dark {
-  background: #111;
-  color: var(--text-light);
-}
-
-/* ===============  HEADER  =============== */
+/* ─── Header & Logo ───────────────── */
 .header {
-  background: var(--brand-black);
-  color: var(--brand-white);
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem;
   text-align: center;
-  padding: 20px 10px;
-  border-bottom: 5px solid var(--brand-red);
+  animation: slideDown 0.8s ease-out forwards;
 }
 
-.header h1 {
-  font-size: 2.2rem;
-  margin-bottom: 5px;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.logo-img {
+  width: 60px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .tagline {
-  font-style: italic;
-  color: var(--brand-red);
-  font-size: 1.15rem;
-}
-
-#language,
-#dark-toggle {
-  margin-top: 12px;
-  padding: 8px 12px;
   font-size: 1rem;
-  border: 2px solid var(--brand-red);
-  border-radius: 8px;
-  margin-left: 12px;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  margin-top: 0.5rem;
+  color: #fff;
 }
 
-#language:hover,
-#dark-toggle:hover {
-  background: var(--brand-red);
-  color: var(--brand-white);
-}
-
-body.dark #language,
-body.dark #dark-toggle {
-  background: #222;
-  color: var(--text-light);
-}
-
-/* ===============  CONTAINER / GREETING  =============== */
-.container {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 0 15px;
-}
-
-.greeting h2 {
-  text-align: center;
-  font-size: 1.9rem;
-  color: var(--brand-red);
-  margin-bottom: 40px;
-}
-
-.greeting h2 span {
+.tag-punch {
+  color: #c8102e;
+  font-size: 1.2rem;
+  font-weight: bold;
   display: block;
-  font-weight: 400;
-  font-size: 1.1rem;
-  margin-top: 6px;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* ===============  SPEECH BOX  =============== */
-.speech-box {
-  margin: 0 auto 40px;
-  padding: 15px 20px;
-  border: 2px dashed var(--brand-red);
-  background: #fff0f0;
-  color: var(--brand-black);
-  border-radius: 8px;
-  max-width: 750px;
-  text-align: center;
-  transition: background 0.3s, color 0.3s;
+/* ─── Layout ─────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
-body.dark .speech-box {
-  background: #2a1a1a;
-  color: var(--text-light);
-}
-
-/* ===============  MODULE GRID & CARDS  =============== */
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
+/* ─── Cards ──────────────────────── */
 .card {
-  background: var(--brand-white);
-  border-left: 6px solid var(--brand-red);
+  background-color: #fff;
+  border: 2px solid #c8102e;
   border-radius: 12px;
-  padding: 20px 18px;
-  box-shadow: 0 4px 8px var(--card-shadow);
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  text-decoration: none;
-  color: inherit;
-  user-select: none;
-  display: flex;
-  flex-direction: column;
-  min-height: 160px;
-  cursor: pointer;
+  padding: 1rem;
+  text-align: center;
+  color: #111;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeRise 0.6s ease-out forwards;
 }
 
-.card:hover,
-.card:focus {
-  transform: translateY(-6px) scale(1.03);
-  background: #fffafa;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
-  outline: none;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
-  font-size: 1.3rem;
-  color: var(--brand-red);
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
+  color: #c8102e;
 }
 
 .card p {
-  font-size: 1rem;
-  line-height: 1.4;
-  flex-grow: 1;
-  color: #333;
+  font-size: 0.95rem;
+  color: #111;
+  font-weight: bold;
 }
 
-body.dark .card {
-  background: #222;
-  color: var(--text-light);
-}
-
-body.dark .card p {
-  color: #ccc;
-}
-
-/* ===============  GPT REPLY BOX  =============== */
-#gpt-reply-box {
-  max-width: 750px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff0f0;
-  border-left: 6px solid var(--brand-red);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px var(--card-shadow);
-  font-style: italic;
-  color: #444;
-  display: none;
-  transition: background 0.3s, color 0.3s;
-}
-
-body.dark #gpt-reply-box {
-  background: #2a1a1a;
-  color: var(--text-light);
-}
-
-/* ===============  MICROPHONE BUTTON  =============== */
+/* ─── Mic Button ─────────────────── */
 #mic-btn {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--brand-red);
-  color: var(--brand-white);
+  bottom: 20px;
+  right: 20px;
+  background-color: #c8102e;
+  color: #fff;
   border: none;
-  padding: 18px 22px;
   border-radius: 50%;
-  font-size: 1.8rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+  width: 70px;
+  height: 70px;
+  font-size: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
-  z-index: 1000;
+  z-index: 999;
+  animation: pulseGlow 2.5s infinite;
 }
 
-#mic-btn:hover,
-#mic-btn:focus {
-  background: #cc0000;
-  transform: scale(1.1);
-  outline: none;
+#mic-btn:hover {
+  background-color: #a20d23;
 }
 
-/* ===============  FOOTER  =============== */
+/* ─── Footer ─────────────────────── */
 .footer {
-  background: var(--brand-black);
-  color: var(--brand-white);
+  background-color: #111;
+  color: #fff;
+  padding: 1rem;
   text-align: center;
-  padding: 15px 10px;
-  font-size: 0.9rem;
-  border-top: 5px solid var(--brand-red);
-  margin-top: 60px;
+  margin-top: 4rem;
 }
 
 .footer a {
-  color: var(--brand-red);
+  color: #c8102e;
   text-decoration: none;
-  margin: 0 5px;
+  margin: 0 8px;
 }
 
-.footer a:hover,
-.footer a:focus {
-  text-decoration: underline;
+/* ─── Animations ─────────────────── */
+@keyframes slideDown {
+  0%   { transform: translateY(-60px); opacity: 0; }
+  100% { transform: translateY(0);     opacity: 1; }
 }
 
-/* ===============  MEDIA QUERIES  =============== */
-@media (max-width: 600px) {
-  .header h1 { font-size: 1.7rem; }
-  .tagline   { font-size: 1rem; }
-  .card h3   { font-size: 1.15rem; }
-  .card p    { font-size: 0.9rem; }
+@keyframes fadeRise {
+  0%   { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0);    opacity: 1; }
 }
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.6); }
+  70%      { box-shadow: 0 0 0 20px rgba(200, 16, 46, 0); }
+}
+
+/* ─── Card Staggering ────────────── */
+.card:nth-child(1)  { animation-delay: .2s; }
+.card:nth-child(2)  { animation-delay: .3s; }
+.card:nth-child(3)  { animation-delay: .4s; }
+.card:nth-child(4)  { animation-delay: .5s; }
+.card:nth-child(5)  { animation-delay: .6s; }
+.card:nth-child(6)  { animation-delay: .7s; }
+.card:nth-child(7)  { animation-delay: .8s; }
+.card:nth-child(8)  { animation-delay: .9s; }
+.card:nth-child(9)  { animation-delay: 1.0s; }
+.card:nth-child(10) { animation-delay: 1.1s; }
+.card:nth-child(11) { animation-delay: 1.2s; }
+.card:nth-child(12) { animation-delay: 1.3s; }
+.card:nth-child(13) { animation-delay: 1.4s; }
+.card:nth-child(14) { animation-delay: 1.5s; }
+.card:nth-child(15) { animation-delay: 1.6s; }
+.card:nth-child(16) { animation-delay: 1.7s; }
+.card:nth-child(17) { animation-delay: 1.8s; }
