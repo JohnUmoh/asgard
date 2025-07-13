@@ -1,0 +1,48 @@
+#############################################
+#  Netlify configuration for LifeLineAI     #
+#############################################
+
+[build]
+  # Root directory to publish (the same folder that contains index.html)
+  publish = "."
+  # Functions folder (serverless functions live here)
+  functions = "netlify/functions"
+
+#############################################
+#  Redirects                                #
+#############################################
+
+# -- GPT proxy ---------------------------------
+[[redirects]]
+  from   = "/api/gpt"
+  to     = "/.netlify/functions/gpt-handler"
+  status = 200
+  # Keep query strings (e.g. ?prompt=Hello)
+  force  = true
+
+# -- Optional: SPA fallback if a zone link is wrong
+#    If you delete any zone file later and still link to it,
+#    this sends users to your custom 404 page.
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404
+
+#############################################
+#  Headers (security & caching)             #
+#############################################
+
+# Caching for static assets (icons, images, CSS, JS)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, immutable"
+
+# Basic security headers on all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options       = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy       = "strict-origin-when-cross-origin"
+    X-XSS-Protection      = "1; mode=block"

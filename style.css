@@ -1,0 +1,241 @@
+/* ===============  GLOBAL RESET  =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-red: #e60000;
+  --brand-black: #000;
+  --brand-white: #fff;
+  --text-light: #eee;
+  --card-shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ===============  BODY & THEMES  =============== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--brand-white);
+  color: var(--brand-black);
+  line-height: 1.6;
+  padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  background: #111;
+  color: var(--text-light);
+}
+
+/* ===============  HEADER  =============== */
+.header {
+  background: var(--brand-black);
+  color: var(--brand-white);
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 5px solid var(--brand-red);
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+
+.tagline {
+  font-style: italic;
+  color: var(--brand-red);
+  font-size: 1.15rem;
+}
+
+#language,
+#dark-toggle {
+  margin-top: 12px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid var(--brand-red);
+  border-radius: 8px;
+  margin-left: 12px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+#language:hover,
+#dark-toggle:hover {
+  background: var(--brand-red);
+  color: var(--brand-white);
+}
+
+body.dark #language,
+body.dark #dark-toggle {
+  background: #222;
+  color: var(--text-light);
+}
+
+/* ===============  CONTAINER / GREETING  =============== */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.greeting h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  color: var(--brand-red);
+  margin-bottom: 40px;
+}
+
+.greeting h2 span {
+  display: block;
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-top: 6px;
+}
+
+/* ===============  SPEECH BOX  =============== */
+.speech-box {
+  margin: 0 auto 40px;
+  padding: 15px 20px;
+  border: 2px dashed var(--brand-red);
+  background: #fff0f0;
+  color: var(--brand-black);
+  border-radius: 8px;
+  max-width: 750px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark .speech-box {
+  background: #2a1a1a;
+  color: var(--text-light);
+}
+
+/* ===============  MODULE GRID & CARDS  =============== */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--brand-white);
+  border-left: 6px solid var(--brand-red);
+  border-radius: 12px;
+  padding: 20px 18px;
+  box-shadow: 0 4px 8px var(--card-shadow);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  text-decoration: none;
+  color: inherit;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus {
+  transform: translateY(-6px) scale(1.03);
+  background: #fffafa;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  color: var(--brand-red);
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.4;
+  flex-grow: 1;
+  color: #333;
+}
+
+body.dark .card {
+  background: #222;
+  color: var(--text-light);
+}
+
+body.dark .card p {
+  color: #ccc;
+}
+
+/* ===============  GPT REPLY BOX  =============== */
+#gpt-reply-box {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff0f0;
+  border-left: 6px solid var(--brand-red);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--card-shadow);
+  font-style: italic;
+  color: #444;
+  display: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark #gpt-reply-box {
+  background: #2a1a1a;
+  color: var(--text-light);
+}
+
+/* ===============  MICROPHONE BUTTON  =============== */
+#mic-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--brand-red);
+  color: var(--brand-white);
+  border: none;
+  padding: 18px 22px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  z-index: 1000;
+}
+
+#mic-btn:hover,
+#mic-btn:focus {
+  background: #cc0000;
+  transform: scale(1.1);
+  outline: none;
+}
+
+/* ===============  FOOTER  =============== */
+.footer {
+  background: var(--brand-black);
+  color: var(--brand-white);
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.9rem;
+  border-top: 5px solid var(--brand-red);
+  margin-top: 60px;
+}
+
+.footer a {
+  color: var(--brand-red);
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.footer a:hover,
+.footer a:focus {
+  text-decoration: underline;
+}
+
+/* ===============  MEDIA QUERIES  =============== */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.7rem; }
+  .tagline   { font-size: 1rem; }
+  .card h3   { font-size: 1.15rem; }
+  .card p    { font-size: 0.9rem; }
+}
