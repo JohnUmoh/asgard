@@ -1,11 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const languageSelect = document.getElementById('language');
-  const greeting = document.querySelector('.greeting h2');
-  const micBtn = document.getElementById('mic-btn');
-  const speechText = document.getElementById('speech-text');
-  const darkToggle = document.getElementById('dark-toggle');
-  const moduleCards = document.querySelectorAll('.card');
+// MVP LifeLine AI – all-zones frontend helper
+document.addEventListener("DOMContentLoaded", () => {
+  /* ---------- DOM refs ---------- */
+  const languageSelect = document.getElementById("language");
+  const greeting       = document.querySelector(".greeting h2");
+  const micBtn         = document.getElementById("mic-btn");
+  const speechText     = document.getElementById("speech-text");
+  const darkToggle     = document.getElementById("dark-toggle");
+  const moduleCards    = document.querySelectorAll(".card");
 
+  /* ---------- Translations ---------- */
   const translations = {
     en: "Welcome, Hope,<br><span>Let’s grow today.</span>",
     ha: "Barka da zuwa, Hope,<br><span>Mu ci gaba yau.</span>",
@@ -18,93 +21,63 @@ document.addEventListener('DOMContentLoaded', () => {
     pg: "You don show, Hope,<br><span>Make we move today.</span>"
   };
 
-  if (languageSelect && greeting) {
-    languageSelect.addEventListener('change', () => {
-      const selected = languageSelect.value;
-      if (translations[selected]) {
-        greeting.innerHTML = translations[selected];
-      }
-    });
-  }
-
-  // 🔄 Dark Mode Toggle
-  if (darkToggle) {
-    darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-    });
-  }
-
-  // 🎤 Voice Input
-  if (micBtn) {
-    micBtn.addEventListener('click', () => {
-      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-      recognition.lang = 'en-US';
-      recognition.interimResults = false;
-
-      recognition.onstart = () => {
-        if (speechText) speechText.innerText = "[Listening...]";
-      };
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        if (speechText) speechText.innerText = transcript;
-
-        // If input field exists, insert text, otherwise send to GPT
-        const inputField = document.querySelector('input[type="text"]');
-        if (inputField) {
-          inputField.value = transcript;
-        } else {
-          getGPTResponse(transcript);
-        }
-      };
-
-      recognition.onerror = (event) => {
-        if (speechText) speechText.innerText = "[Error]: " + event.error;
-      };
-
-      recognition.start();
-    });
-  }
-
-  // 📡 Online/Offline status indicator
-  window.addEventListener('online', () => {
-    console.log("✅ You are online");
+  /* ---------- Language switch ---------- */
+  languageSelect?.addEventListener("change", () => {
+    const sel = languageSelect.value;
+    if (translations[sel]) greeting.innerHTML = translations[sel];
   });
 
-  window.addEventListener('offline', () => {
-    console.log("⚠️ You are offline");
+  /* ---------- Dark-mode toggle ---------- */
+  darkToggle?.addEventListener("click", () =>
+    document.body.classList.toggle("dark")
+  );
+
+  /* ---------- Voice-input (Web Speech) ---------- */
+  micBtn?.addEventListener("click", () => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return alert("SpeechRecognition not supported on this browser.");
+    const recog = new SR();
+    recog.lang = "en-US";
+    recog.onstart  = () => (speechText.innerText = "[Listening…]");
+    recog.onerror  = e  => (speechText.innerText = "[Error] " + e.error);
+    recog.onresult = e  => {
+      const transcript = e.results[0][0].transcript;
+      speechText.innerText = transcript;
+      getGPTResponse({ zone: "smartq-access", prompt: transcript });
+    };
+    recog.start();
   });
 
-  // ✅ Click on any module = GPT guidance
+  /* ---------- Card-click → ask GPT ---------- */
   moduleCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.querySelector('h3')?.innerText || "Module";
-      const prompt = `I clicked on "${title}". Please help me get started with this section.`;
-      getGPTResponse(prompt);
+    card.addEventListener("click", e => {
+      e.preventDefault();                                     // stay on page
+      const zone   = card.dataset.zone || "smartq-access";    // fallback
+      const title  = card.querySelector("h3")?.innerText || zone;
+      const prompt = `I clicked "${title}". Guide me on getting started.`;
+      getGPTResponse({ zone, prompt });
     });
   });
 });
 
-// 🤖 GPT handler
-async function getGPTResponse(prompt) {
-  const replyBox = document.getElementById("gpt-reply-box");
+/* ---------- GPT call helper ---------- */
+async function getGPTResponse({ zone, prompt }) {
+  const replyBox  = document.getElementById("gpt-reply-box");
   const replyText = document.getElementById("gpt-reply-text");
-
-  if (replyText) replyText.innerText = "Thinking...";
-  if (replyBox) replyBox.style.display = "block";
+  replyBox.style.display = "block";
+  replyText.innerText = "Thinking…";
 
   try {
-    const res = await fetch("/.netlify/functions/gpt-handler", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
+    const res  = await fetch("/.netlify/functions/gpt-handler", {
+      method : "POST",
+      headers: { "Content-Type": "application/json" },
+      body   : JSON.stringify({ zone, prompt })
     });
-
-    const data = await res.json();
-    const reply = data.choices?.[0]?.message?.content || "No response from GPT.";
-    if (replyText) replyText.innerText = "🤖 " + reply;
-    if (replyBox) replyBox.scrollIntoView({ behavior: "smooth" });
+    const data   = await res.json();
+    const answer = data.answer || "No response from GPT.";
+    replyText.innerText = "🤖 " + answer;
+    replyBox.scrollIntoView({ behavior: "smooth" });
   } catch (err) {
-    if (replyText) replyText.innerText = "⚠️ GPT error: " + err.message;
+    replyText.innerText = "⚠️ GPT error: " + err.message;
   }
-}
+  }
