@@ -4,10 +4,94 @@
   <meta charset="UTF-8">
   <title>Emotional Zone – MVP LifeLine AI App</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fef6f9;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      color: #d62828;
+    }
+    textarea, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .section {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .entry {
+      background: #f1f1f1;
+      padding: 10px;
+      margin-top: 5px;
+      border-left: 5px solid #d62828;
+    }
+  </style>
 </head>
 <body>
   <h1>💔 Emotional Zone</h1>
   <p>Track emotions and journal your healing journey.</p>
+
+  <div class="section">
+    <h2>📝 Daily Journal</h2>
+    <textarea id="journalEntry" placeholder="Write your thoughts..."></textarea>
+    <button onclick="saveJournal()">Save Entry</button>
+    <div id="journalList"></div>
+  </div>
+
+  <div class="section">
+    <h2>😊 Mood Tracker</h2>
+    <select id="moodSelect">
+      <option value="">-- Select Your Mood --</option>
+      <option value="😊 Happy">😊 Happy</option>
+      <option value="😢 Sad">😢 Sad</option>
+      <option value="😠 Angry">😠 Angry</option>
+      <option value="😟 Anxious">😟 Anxious</option>
+      <option value="😌 Calm">😌 Calm</option>
+    </select>
+    <button onclick="saveMood()">Log Mood</button>
+    <div id="moodList"></div>
+  </div>
+
   <a href="index.html">⬅ Back to Home</a>
+
+  <script>
+    // Save Journal
+    function saveJournal() {
+      const entry = document.getElementById('journalEntry').value;
+      if (entry.trim() !== "") {
+        const time = new Date().toLocaleString();
+        const saved = `<div class="entry"><strong>${time}</strong><br>${entry}</div>`;
+        document.getElementById('journalList').innerHTML += saved;
+        localStorage.setItem("journals", document.getElementById('journalList').innerHTML);
+        document.getElementById('journalEntry').value = "";
+      }
+    }
+
+    // Save Mood
+    function saveMood() {
+      const mood = document.getElementById('moodSelect').value;
+      if (mood) {
+        const time = new Date().toLocaleTimeString();
+        const savedMood = `<div class="entry"><strong>${time}</strong> – ${mood}</div>`;
+        document.getElementById('moodList').innerHTML += savedMood;
+        localStorage.setItem("moods", document.getElementById('moodList').innerHTML);
+        document.getElementById('moodSelect').value = "";
+      }
+    }
+
+    // Load saved entries
+    window.onload = () => {
+      document.getElementById('journalList').innerHTML = localStorage.getItem("journals") || "";
+      document.getElementById('moodList').innerHTML = localStorage.getItem("moods") || "";
+    };
+  </script>
 </body>
 </html>
