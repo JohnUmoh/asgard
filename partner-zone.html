@@ -4,10 +4,84 @@
   <meta charset="UTF-8">
   <title>Partner Zone – MVP LifeLine AI App</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    h1 {
+      color: #b30000;
+    }
+    .section {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .btn {
+      background-color: #b30000;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .logo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .logo-grid img {
+      height: 50px;
+    }
+  </style>
 </head>
 <body>
+
   <h1>🤝 Partner Zone</h1>
-  <p>Connect with mentors, NGOs, and strategic partners.</p>
-  <a href="index.html">⬅ Back to Home</a>
+  <p>Connect with mentors, NGOs, and strategic collaborators committed to empowering African youth.</p>
+
+  <!-- Mentorship Section -->
+  <div class="section">
+    <h2>🌟 Become a Mentor</h2>
+    <p>Are you passionate about guiding young Africans? Join our mentorship network.</p>
+    <a class="btn" href="#">Sign Up as a Mentor</a>
+  </div>
+
+  <!-- NGO & Strategic Partners Directory -->
+  <div class="section">
+    <h2>🌍 Featured Partners</h2>
+    <div class="logo-grid">
+      <img src="partner1.png" alt="Partner 1">
+      <img src="partner2.png" alt="Partner 2">
+      <img src="partner3.png" alt="Partner 3">
+      <!-- Add more logos as needed -->
+    </div>
+    <p>Want your organization listed? <a href="#">Apply as a Partner</a></p>
+  </div>
+
+  <!-- Contact Proposal -->
+  <div class="section">
+    <h2>📬 Partnership Proposal</h2>
+    <p>Have a proposal or idea? Reach out directly.</p>
+    <form>
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Your Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="message">Proposal Summary:</label><br>
+      <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+      <button type="submit" class="btn">Submit Proposal</button>
+    </form>
+  </div>
+
+  <!-- Back Navigation -->
+  <p><a href="index.html" class="btn">⬅ Back to Home</a></p>
+
 </body>
 </html>
