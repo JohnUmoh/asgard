@@ -14,11 +14,13 @@
     h1 {
       color: #d62828;
     }
-    textarea, select, button {
+    textarea, select, button, input {
       width: 100%;
       margin: 10px 0;
       padding: 10px;
       font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
     .section {
       background: #fff;
@@ -32,12 +34,31 @@
       padding: 10px;
       margin-top: 5px;
       border-left: 5px solid #d62828;
+      border-radius: 5px;
+    }
+    .quote-box {
+      font-style: italic;
+      background: #fff3f3;
+      border-left: 5px solid #d62828;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .ai-chat {
+      background: #e6f0ff;
+      border-left: 5px solid #007bff;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <h1>💔 Emotional Zone</h1>
-  <p>Track emotions and journal your healing journey.</p>
+  <p>Track emotions, journal your healing, and chat with AI support.</p>
+
+  <div class="section quote-box" id="quoteBox">
+    💡 <strong>Daily Quote:</strong> <span id="dailyQuote">Loading...</span>
+  </div>
 
   <div class="section">
     <h2>📝 Daily Journal</h2>
@@ -60,10 +81,34 @@
     <div id="moodList"></div>
   </div>
 
+  <div class="section">
+    <h2>🤖 Chat with Emotional Support AI</h2>
+    <input type="text" id="userMessage" placeholder="Type how you're feeling...">
+    <button onclick="talkToAI()">Send</button>
+    <div id="aiChatArea"></div>
+  </div>
+
   <a href="index.html">⬅ Back to Home</a>
 
   <script>
-    // Save Journal
+    // Daily Quotes
+    const quotes = [
+      "Your story is not over yet. 🌱",
+      "Healing takes time — and that's okay.",
+      "You are allowed to feel. You are allowed to rest.",
+      "Even your smallest steps are progress. 👣",
+      "You are more than your bad days.",
+      "Breathe. You’ve made it this far — keep going.",
+      "Your emotions are valid. Let them speak, not control."
+    ];
+
+    function loadDailyQuote() {
+      const today = new Date().getDate();
+      const quote = quotes[today % quotes.length];
+      document.getElementById('dailyQuote').textContent = quote;
+    }
+
+    // Journal Logic
     function saveJournal() {
       const entry = document.getElementById('journalEntry').value;
       if (entry.trim() !== "") {
@@ -75,7 +120,7 @@
       }
     }
 
-    // Save Mood
+    // Mood Logic
     function saveMood() {
       const mood = document.getElementById('moodSelect').value;
       if (mood) {
@@ -87,8 +132,38 @@
       }
     }
 
+    // Simulated AI Chat
+    function talkToAI() {
+      const input = document.getElementById('userMessage').value.trim();
+      if (!input) return;
+      const response = generateAIResponse(input);
+      const time = new Date().toLocaleTimeString();
+      const chat = `
+        <div class="ai-chat"><strong>You:</strong> ${input}</div>
+        <div class="ai-chat"><strong>AI:</strong> ${response}</div>
+      `;
+      document.getElementById('aiChatArea').innerHTML += chat;
+      document.getElementById('userMessage').value = "";
+    }
+
+    function generateAIResponse(message) {
+      const lower = message.toLowerCase();
+      if (lower.includes("sad") || lower.includes("down")) {
+        return "I'm here for you. It’s okay to feel sad sometimes. You’re not alone. 💙";
+      } else if (lower.includes("angry")) {
+        return "Anger can be a valid signal. Take a deep breath — you're allowed to feel it.";
+      } else if (lower.includes("anxious") || lower.includes("nervous")) {
+        return "Anxiety can be heavy. Try grounding yourself by naming 5 things you see.";
+      } else if (lower.includes("happy")) {
+        return "That’s amazing to hear! Celebrate those good feelings. 😊";
+      } else {
+        return "Thank you for sharing. Remember: every emotion matters. Would you like to journal it?";
+      }
+    }
+
     // Load saved entries
     window.onload = () => {
+      loadDailyQuote();
       document.getElementById('journalList').innerHTML = localStorage.getItem("journals") || "";
       document.getElementById('moodList').innerHTML = localStorage.getItem("moods") || "";
     };
