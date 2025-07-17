@@ -1,13 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Career Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #d40000;
+    }
+    .section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #d40000;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #b30000;
+    }
+    .resources a {
+      display: block;
+      margin: 5px 0;
+      color: #007bff;
+      text-decoration: none;
+    }
+    .resources a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
   <h1>📁 Career Zone</h1>
-  <p>Explore jobs, CV tips, and interview prep.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <!-- 1. Ask AI Assistant -->
+  <div class="section">
+    <h2>🎯 Ask AI Career Assistant</h2>
+    <textarea id="careerQuestion" placeholder="Ask a career question..."></textarea>
+    <button onclick="askCareerAI()">Ask</button>
+    <p id="aiResponse"></p>
+  </div>
+
+  <!-- 2. CV Builder -->
+  <div class="section">
+    <h2>📄 CV Builder</h2>
+    <input type="text" id="cvName" placeholder="Full Name" />
+    <input type="text" id="cvSkills" placeholder="Skills (comma-separated)" />
+    <input type="text" id="cvExperience" placeholder="Work Experience" />
+    <input type="text" id="cvEducation" placeholder="Education" />
+    <textarea id="cvAchievements" placeholder="Achievements..."></textarea>
+    <button onclick="generateCV()">Generate CV (PDF)</button>
+    <pre id="cvOutput"></pre>
+  </div>
+
+  <!-- 3. Interview Prep -->
+  <div class="section">
+    <h2>🎤 Interview Practice</h2>
+    <select id="roleSelect">
+      <option value="frontend">Frontend Developer</option>
+      <option value="data">Data Analyst</option>
+      <option value="pm">Product Manager</option>
+    </select>
+    <button onclick="startInterview()">Start Practice</button>
+    <p id="interviewOutput"></p>
+  </div>
+
+  <!-- 4. Quick Job Resources -->
+  <div class="section resources">
+    <h2>🔗 Job Resources</h2>
+    <a href="https://www.linkedin.com/jobs/" target="_blank">LinkedIn Jobs</a>
+    <a href="https://jobberman.com" target="_blank">Jobberman</a>
+    <a href="https://remoteok.com" target="_blank">RemoteOK</a>
+    <a href="https://jobs.google.com" target="_blank">Google Careers</a>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function askCareerAI() {
+      const question = document.getElementById("careerQuestion").value;
+      const response = `🤖 AI: Based on your question – "${question}", here’s a smart step: Stay curious, improve your skills, and always build a portfolio. (More advanced AI responses will come later with OpenAI API integration.)`;
+      document.getElementById("aiResponse").innerText = response;
+    }
+
+    function generateCV() {
+      const name = document.getElementById("cvName").value;
+      const skills = document.getElementById("cvSkills").value;
+      const exp = document.getElementById("cvExperience").value;
+      const edu = document.getElementById("cvEducation").value;
+      const achieve = document.getElementById("cvAchievements").value;
+
+      const output = `
+        Name: ${name}\n
+        Skills: ${skills}\n
+        Experience: ${exp}\n
+        Education: ${edu}\n
+        Achievements: ${achieve}\n
+      `;
+
+      document.getElementById("cvOutput").innerText = output;
+      // Optionally: integrate jsPDF here for download
+    }
+
+    function startInterview() {
+      const role = document.getElementById("roleSelect").value;
+      let prompt = '';
+      if(role === 'frontend') {
+        prompt = "What are the key differences between Flexbox and Grid in CSS?";
+      } else if(role === 'data') {
+        prompt = "Explain the difference between supervised and unsupervised learning.";
+      } else {
+        prompt = "How do you prioritize features in a product roadmap?";
+      }
+      document.getElementById("interviewOutput").innerText = `🤖 Mock Question: ${prompt}`;
+    }
+  </script>
+
 </body>
-</html>
+  </html>
