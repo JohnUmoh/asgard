@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const micBtn         = document.getElementById("mic-btn");
   const speechText     = document.getElementById("speech-text");
   const darkToggle     = document.getElementById("dark-toggle");
+  const themeToggle    = document.getElementById("theme-toggle");
   const moduleCards    = document.querySelectorAll(".card");
 
   /* ---------- Translations ---------- */
@@ -31,6 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
   darkToggle?.addEventListener("click", () =>
     document.body.classList.toggle("dark")
   );
+
+  /* ---------- Theme color toggle ---------- */
+  const themeColors = ["red", "black", "white", "yellow", "blue"];
+  let currentColorIndex = 0;
+
+  themeToggle?.addEventListener("click", () => {
+    // Remove all existing color classes
+    themeColors.forEach(c => document.body.classList.remove("theme-" + c));
+    // Add next color
+    const nextColor = themeColors[currentColorIndex];
+    document.body.classList.add("theme-" + nextColor);
+    currentColorIndex = (currentColorIndex + 1) % themeColors.length;
+  });
 
   /* ---------- Voice-input (Web Speech) ---------- */
   micBtn?.addEventListener("click", () => {
@@ -80,4 +94,4 @@ async function getGPTResponse({ zone, prompt }) {
   } catch (err) {
     replyText.innerText = "⚠️ GPT error: " + err.message;
   }
-  }
+}
