@@ -69,6 +69,31 @@ document.addEventListener("DOMContentLoaded", () => {
       // else: let it naturally go to href
     });
   });
+
+  // Add click handlers for Career tools cards
+  document.querySelectorAll(".card.tool").forEach((tool) => {
+    tool.addEventListener("click", () => {
+      const toolName = tool.dataset.tool;
+      // Map toolName to URLs:
+      const urlMap = {
+        cv: "cv-builder.html",
+        cover: "cover-letter.html",
+        interview: "interview-coach.html",
+        linkedin: "linkedin-optimizer.html",
+        referral: "job-referral.html",
+        freelance: "freelance-profile.html",
+        portfolio: "portfolio-builder.html",
+        careerplan: "career-planner.html",
+        aiagent: "ai-career-agent.html"
+      };
+      const targetUrl = urlMap[toolName];
+      if (targetUrl) {
+        window.location.href = targetUrl;
+      } else {
+        alert("Page not found!");
+      }
+    });
+  });
 });
 
 /* ---------- GPT call helper ---------- */
@@ -91,4 +116,4 @@ async function getGPTResponse({ zone, prompt }) {
   } catch (err) {
     replyText.innerText = "⚠️ GPT error: " + err.message;
   }
-                           }
+    }
