@@ -1,13 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Monetization Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monetization Zone – MVP LifeLine AI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #111;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #c00;
+    }
+    .tool {
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      overflow: hidden;
+    }
+    .tool h2 {
+      margin: 0;
+      padding: 15px;
+      background-color: #eee;
+      cursor: pointer;
+      color: #000;
+    }
+    .tool h2:hover {
+      background-color: #ddd;
+      color: #c00;
+    }
+    .tool-content {
+      display: none;
+      padding: 0 15px 15px 15px;
+    }
+    .tool-content p {
+      margin: 8px 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>💼 Monetization Zone</h1>
-  <p>Unlock premium features and start earning.</p>
-  <a href="index.html">⬅ Back to Home</a>
+  <h1>💼 Monetization Zone –  Global Earning Tools</h1>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">1. Freelance Gig Marketplaces</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://www.upwork.com" target="_blank">Upwork</a>, Fiverr, Toptal</p>
+      <p>Why: Lets users earn from remote skills (design, writing, coding, etc.)</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">2. Affiliate Marketing Networks</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://affiliate-program.amazon.com/" target="_blank">Amazon Associates</a>, ShareASale, PartnerStack</p>
+      <p>Why: Earn passive income by promoting products & earning commission</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">3. Digital Product Sales</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://gumroad.com/" target="_blank">Gumroad</a>, Sellfy, Payhip</p>
+      <p>Why: Sell eBooks, templates, courses, and other digital goods directly</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">4. Online Course Creation</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://teachable.com/" target="_blank">Teachable</a>, Thinkific, Udemy</p>
+      <p>Why: Turn knowledge into income by selling courses globally</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">5. Creator Monetization Tools</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://www.youtube.com/creators/monetize/" target="_blank">YouTube Partner Program</a>, TikTok Creator Fund, Instagram Subscriptions</p>
+      <p>Why: Monetize content through ads, fan support, or premium content</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">6. Print-on-Demand & Dropshipping</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://www.printful.com/" target="_blank">Printful</a>, Redbubble, Shopify (with Oberlo alternatives)</p>
+      <p>Why: Start an eCommerce store with zero inventory</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">7. Remote Job Boards & Microtasking</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://www.remotive.io/" target="_blank">Remotive</a>, Clickworker, Appen</p>
+      <p>Why: Earn from microtasks, surveys, transcription, remote roles</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">8. Crypto & NFT Platforms</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://opensea.io/" target="_blank">OpenSea</a>, Rarible, Binance NFT, Coinbase Earn</p>
+      <p>Why: Leverage digital assets and earn via trading or art/token sales</p>
+    </div>
+  </div>
+
+  <div class="tool">
+    <h2 onclick="toggleTool(this)">9. Passive Income & Royalty Platforms</h2>
+    <div class="tool-content">
+      <p>Platforms: <a href="https://medium.com/creators" target="_blank">Medium Partner Program</a>, Substack, Anchor.fm (podcast monetization)</p>
+      <p>Why: Earn royalties or recurring revenue from writing, podcasts, newsletters</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleTool(header) {
+      const content = header.nextElementSibling;
+      const allContents = document.querySelectorAll('.tool-content');
+      allContents.forEach(el => {
+        if (el !== content) el.style.display = 'none';
+      });
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
-</html>
+  </html>
