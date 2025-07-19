@@ -3,57 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Career Zone</title>
+  <title>Career Zone – MVP LifeLine AI</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: red;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #f2f2f2;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-left: 5px solid red;
+      border-radius: 5px;
+    }
+    li a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: 1px solid #ccc;
+      margin-top: 1rem;
+      display: none;
+    }
+    .language-select, .ai-form, .ai-result {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    select, input, textarea, button {
+      padding: 0.7rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <h2 class="zone-title">Career Zone Tools</h2>
-    <select id="language">
-      <option value="en">🇬🇧 English</option>
-      <option value="ha">🇳🇬 Hausa</option>
-      <option value="ig">🇳🇬 Igbo</option>
-      <option value="yo">🇳🇬 Yoruba</option>
-      <option value="sw">🇰🇪 Swahili</option>
-      <option value="fr">🇫🇷 French</option>
-      <option value="ar">🇸🇦 Arabic</option>
-      <option value="zu">🇿🇦 Zulu</option>
-      <option value="pg">🇳🇬 Pidgin</option>
-    </select>
+  <header>
+    <h1>🎯 Career Zone – MVP LifeLine AI</h1>
+    <p>Earn. Heal. Grow.</p>
   </header>
 
-  <main class="cards-container">
-    <div class="card tool" data-tool="cv">CV Builder</div>
-    <div class="card tool" data-tool="cover">Cover Letter Writer</div>
-    <div class="card tool" data-tool="interview">Interview Coach</div>
-    <div class="card tool" data-tool="linkedin">LinkedIn Optimizer</div>
-    <div class="card tool" data-tool="referral">Job Referral Script</div>
-    <div class="card tool" data-tool="freelance">Freelance Profile Setup</div>
-    <div class="card tool" data-tool="portfolio">Portfolio Builder</div>
-    <div class="card tool" data-tool="careerplan">Career Planner</div>
-    <div class="card tool" data-tool="aiagent">AI Career Agent</div>
-  </main>
+  <div class="container">
+    <h2>🌍 Top 10 Career Tools</h2>
+    <ul id="tool-list">
+      <li><a href="#" data-url="https://www.canva.com/resumes/">1. MVP Career Integrator</a></li>
+      <li><a href="#" data-url="https://zety.com/resume-builder">2. CV Builder</a></li>
+      <li><a href="#" data-url="https://zety.com/cover-letter-builder">3. Cover Letter Writer</a></li>
+      <li><a href="#" data-url="https://resumeworded.com/linkedin-review">4. LinkedIn Optimizer</a></li>
+      <li><a href="#" data-url="https://www.upwork.com/nx/signup/">5. Freelance Profile Setup</a></li>
+      <li><a href="#" data-url="https://www.tealhq.com/tools/ai-career-path">6. AI Career Agent</a></li>
+      <li><a href="#" data-url="https://remoteok.com/">7. Remote Job Finder</a></li>
+      <li><a href="#" data-url="https://coursera.org/">8. Skill Gap Analyzer</a></li>
+      <li><a href="#" data-url="https://biginterview.com/">9. Interview Coach</a></li>
+      <li><a href="#" data-url="https://levels.fyi/">10. Salary Benchmark Tool</a></li>
+    </ul>
+
+    <iframe id="tool-frame"></iframe>
+
+    <div class="language-select">
+      <label for="language">🌐 Select Language:</label>
+      <select id="language">
+        <option value="en">English</option>
+        <option value="ha">Hausa</option>
+        <option value="ig">Igbo</option>
+        <option value="yo">Yoruba</option>
+        <option value="sw">Swahili</option>
+        <option value="fr">French</option>
+        <option value="ar">Arabic</option>
+        <option value="zu">Zulu</option>
+        <option value="ng">Pidgin</option>
+      </select>
+    </div>
+
+    <div class="ai-form">
+      <h2>🧠 Smart Career Guide (AI)</h2>
+      <input type="text" id="name" placeholder="Your Name" />
+      <input type="text" id="goal" placeholder="Career Goal (e.g. Product Manager)" />
+      <select id="level">
+        <option value="">Skill Level</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select><br>
+      <button onclick="generateAIAdvice()">🚀 Get AI Suggestions</button>
+    </div>
+
+    <div class="ai-result" id="ai-result"></div>
+  </div>
 
   <script>
-    const languageMap = {
-      en: ["CV Builder", "Cover Letter Writer", "Interview Coach", "LinkedIn Optimizer", "Job Referral Script", "Freelance Profile Setup", "Portfolio Builder", "Career Planner", "AI Career Agent"],
-      ha: ["Mai Ginin CV", "Mai Rubuta Takardar Neman Aiki", "Kocin Ganawa", "Mai Gyaran LinkedIn", "Rubutun Shawarar Aiki", "Fara Freelancing", "Mai Ginin Fayil", "Shirin Hanyar Sana'a", "AI Wakilin Sana'a"],
-      ig: ["Onye N’eme CV", "Onye N’ede Akwụkwọ Akwụkwọ Ọrụ", "Onye Nkuzi Ajụjụ Ọrụ", "Nkwado LinkedIn", "Akwụkwọ Ntinye Ọrụ", "Ihe Freelancing", "Ngwaọrụ Portfoliyo", "Nhazi Ọrụ", "AI Onye Nkuzi Ọrụ"],
-      yo: ["Oníṣèdá CV", "Onkọwé Iwé Ìbéèrè Iṣẹ", "Olùkọ́ Ajẹsára", "Atunṣe LinkedIn", "Ìwé ìtumọ̀ Fún Ìbáṣepọ̀", "Ẹ̀rọ Freelance", "Olùkọ́ Portfolio", "Alámàlà Ọ̀nà Ọ̀nà Iṣẹ́", "AI Asesewa Ọ̀nà Iṣẹ́"],
-      sw: ["Mtayarishaji wa CV", "Mwandishi wa Barua ya Maombi", "Kocha wa Mahojiano", "Msanifu wa LinkedIn", "Andiko la Marejeleo", "Profaili ya Freelance", "Mtayarishaji wa Portfolio", "Mpangaji wa Kazi", "Wakala wa AI"],
-      fr: ["Créateur de CV", "Rédacteur de Lettre de Motivation", "Coach d'Entretien", "Optimiseur LinkedIn", "Script de Référence", "Configuration Freelance", "Créateur de Portfolio", "Planificateur de Carrière", "Agent IA"],
-      ar: ["منشئ السيرة الذاتية", "كاتب خطاب التقديم", "مدرب مقابلة", "محسن LinkedIn", "نص التوصية", "إعداد حساب فريلانس", "منشئ الملف المهني", "مخطط المهنة", "وكيل AI المهني"],
-      zu: ["Umakhi we-CV", "Umbhali Wezincwadi Zesicelo", "Umqeqeshi Wezinkulumo Zomsebenzi", "Umenzi we-LinkedIn", "Iskripthi Sokudluliselwa Komsebenzi", "Ukusethwa Kwephrofayili Yama-Freelancer", "Umakhi Wephothifoliyo", "Uhleli Wezindlela Zomsebenzi", "I-AI Ummeleli Wezindlela Zomsebenzi"],
-      pg: ["CV Builder", "Na person we fit write Cover Letter", "Interview Helper", "Fix your LinkedIn", "Make Dem Refer You", "Setup Your Freelance", "Build Your Portfolio", "Plan Your Career", "AI Wey Go Guide You"]
-    };
+    // Language selector (mock)
+    document.getElementById('language').addEventListener('change', function () {
+      alert('Language set to: ' + this.value.toUpperCase() + ' – full translation in v2');
+    });
 
-    document.getElementById("language").addEventListener("change", (e) => {
-      const lang = e.target.value;
-      const tools = document.querySelectorAll(".card.tool");
-      tools.forEach((tool, idx) => {
-        tool.innerText = languageMap[lang][idx] || languageMap["en"][idx];
+    // Tool iframe viewer
+    document.querySelectorAll('#tool-list a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const url = e.target.getAttribute('data-url');
+        const frame = document.getElementById('tool-frame');
+        frame.style.display = 'block';
+        frame.src = url;
       });
     });
+
+    // AI Mock Logic
+    function generateAIAdvice() {
+      const name = document.getElementById('name').value;
+      const goal = document.getElementById('goal').value;
+      const level = document.getElementById('level').value;
+
+      if (!name || !goal || !level) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const result = `
+        <h3>🎓 Hello ${name}!</h3>
+        <p>Based on your goal to become a <strong>${goal}</strong> and your current level (<em>${level}</em>), here’s what we suggest:</p>
+        <ul>
+          <li>📘 Take 1 course on <a href="https://coursera.org" target="_blank">Coursera</a> related to ${goal}</li>
+          <li>📝 Build a CV using <a href="https://zety.com/resume-builder" target="_blank">Zety</a></li>
+          <li>🤝 Optimize LinkedIn via <a href="https://resumeworded.com/linkedin-review" target="_blank">ResumeWorded</a></li>
+          <li>💼 Apply for roles on <a href="https://remoteok.com" target="_blank">RemoteOK</a></li>
+        </ul>
+        <p>🔥 Stay consistent and check back for updates in your language!</p>
+      `;
+      document.getElementById('ai-result').innerHTML = result;
+    }
   </script>
 </body>
 </html>
