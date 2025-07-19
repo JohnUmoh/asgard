@@ -8,6 +8,7 @@ body {
   font-family: "Segoe UI", sans-serif;
   background-color: #fff;
   color: #111;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 /* ─── Header & Logo ───────────────── */
@@ -75,6 +76,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeRise 0.6s ease-out forwards;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 .card:hover {
@@ -109,6 +111,7 @@ body {
   cursor: pointer;
   z-index: 999;
   animation: pulseGlow 2.5s infinite;
+  transition: background-color 0.3s;
 }
 
 #mic-btn:hover {
@@ -164,3 +167,86 @@ body {
 .card:nth-child(15) { animation-delay: 1.6s; }
 .card:nth-child(16) { animation-delay: 1.7s; }
 .card:nth-child(17) { animation-delay: 1.8s; }
+
+/* ─── Dark Mode ──────────────────── */
+body.dark {
+  background-color: #111;
+  color: #eee;
+}
+
+body.dark .card {
+  background-color: #222;
+  border-color: #555;
+  color: #eee;
+}
+
+body.dark .card h3 {
+  color: #ff4c4c;
+}
+
+body.dark .footer,
+body.dark .header {
+  background-color: #000;
+}
+
+/* ─── Theme Colors ───────────────── */
+body.theme-red {
+  background-color: #ffe5e5;
+  color: #600000;
+}
+body.theme-red .card {
+  background-color: #fff0f0;
+  border-color: #c8102e;
+}
+body.theme-red .card h3 {
+  color: #c8102e;
+}
+
+body.theme-black {
+  background-color: #111;
+  color: #eee;
+}
+body.theme-black .card {
+  background-color: #222;
+  border-color: #444;
+  color: #eee;
+}
+body.theme-black .card h3 {
+  color: #fff;
+}
+
+body.theme-white {
+  background-color: #fff;
+  color: #111;
+}
+body.theme-white .card {
+  background-color: #fff;
+  border-color: #ccc;
+}
+body.theme-white .card h3 {
+  color: #222;
+}
+
+body.theme-yellow {
+  background-color: #fffdd0;
+  color: #332800;
+}
+body.theme-yellow .card {
+  background-color: #ffffe0;
+  border-color: #c9a602;
+}
+body.theme-yellow .card h3 {
+  color: #c9a602;
+}
+
+body.theme-blue {
+  background-color: #e7f0fd;
+  color: #003366;
+}
+body.theme-blue .card {
+  background-color: #f0f8ff;
+  border-color: #1e90ff;
+}
+body.theme-blue .card h3 {
+  color: #1e90ff;
+}
