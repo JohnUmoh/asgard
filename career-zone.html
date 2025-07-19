@@ -2,86 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Career Zone – MVP LifeLine AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Career Zone</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="header">
-    <div class="logo-container">
-      <img src="assets/logo.png" alt="MVP LifeLine Logo" class="logo" />
-      <h1 class="title" id="zone-title">Career Zone</h1>
-    </div>
-    <select id="language" class="language-select">
-      <option value="en">English</option>
-      <option value="ha">Hausa</option>
-      <option value="yo">Yoruba</option>
-      <option value="ig">Igbo</option>
-      <option value="pg">Pidgin English</option>
-      <option value="sw">Swahili</option>
-      <option value="fr">French</option>
-      <option value="ar">Arabic</option>
-      <option value="zu">Zulu</option>
+    <h2 class="zone-title">Career Zone Tools</h2>
+    <select id="language">
+      <option value="en">🇬🇧 English</option>
+      <option value="ha">🇳🇬 Hausa</option>
+      <option value="ig">🇳🇬 Igbo</option>
+      <option value="yo">🇳🇬 Yoruba</option>
+      <option value="sw">🇰🇪 Swahili</option>
+      <option value="fr">🇫🇷 French</option>
+      <option value="ar">🇸🇦 Arabic</option>
+      <option value="zu">🇿🇦 Zulu</option>
+      <option value="pg">🇳🇬 Pidgin</option>
     </select>
   </header>
 
-  <main class="main-content">
-
-    <!-- Tool Card: CV Builder -->
-    <section class="tool-card" id="tool-cv">
-      <h2 class="tool-title">CV & Résumé Builder</h2>
-      <p class="tool-desc">Create, edit, and download professional CVs.</p>
-      <button class="tool-btn">Launch</button>
-    </section>
-
-    <!-- Tool Card: Cover Letter Generator -->
-    <section class="tool-card" id="tool-cover">
-      <h2 class="tool-title">Cover Letter Generator</h2>
-      <p class="tool-desc">Write compelling cover letters for any job.</p>
-      <button class="tool-btn">Generate</button>
-    </section>
-
-    <!-- Tool Card: Job Tracker -->
-    <section class="tool-card" id="tool-tracker">
-      <h2 class="tool-title">Job Tracker</h2>
-      <p class="tool-desc">Track all your job applications and progress.</p>
-      <button class="tool-btn">Track Now</button>
-    </section>
-
-    <!-- Tool Card: Freelance Gig Toolkit -->
-    <section class="tool-card" id="tool-gig">
-      <h2 class="tool-title">Freelance Gig Toolkit</h2>
-      <p class="tool-desc">Learn how to earn online using your skills.</p>
-      <button class="tool-btn">Explore</button>
-    </section>
-
-    <!-- Tool Card: Opportunity Board -->
-    <section class="tool-card" id="tool-opportunity">
-      <h2 class="tool-title">Opportunity Board</h2>
-      <p class="tool-desc">Find scholarships, internships, and remote jobs.</p>
-      <button class="tool-btn">Browse</button>
-    </section>
-
-    <!-- Tool Card: Soft Skills Coach -->
-    <section class="tool-card" id="tool-softskills">
-      <h2 class="tool-title">Soft Skills Coach</h2>
-      <p class="tool-desc">Build confidence, communication, and time skills.</p>
-      <button class="tool-btn">Start</button>
-    </section>
-
-    <!-- Tool Card: Role Model Radar -->
-    <section class="tool-card" id="tool-rolemodel">
-      <h2 class="tool-title">Role Model Radar</h2>
-      <p class="tool-desc">Discover inspiring African success stories.</p>
-      <button class="tool-btn">Inspire Me</button>
-    </section>
-
+  <main class="cards-container">
+    <div class="card tool" data-tool="cv">CV Builder</div>
+    <div class="card tool" data-tool="cover">Cover Letter Writer</div>
+    <div class="card tool" data-tool="interview">Interview Coach</div>
+    <div class="card tool" data-tool="linkedin">LinkedIn Optimizer</div>
+    <div class="card tool" data-tool="referral">Job Referral Script</div>
+    <div class="card tool" data-tool="freelance">Freelance Profile Setup</div>
+    <div class="card tool" data-tool="portfolio">Portfolio Builder</div>
+    <div class="card tool" data-tool="careerplan">Career Planner</div>
+    <div class="card tool" data-tool="aiagent">AI Career Agent</div>
   </main>
 
-  <footer class="footer">
-    <p>© 2025 MVP LifeLine AI App | Red, Black & White Edition</p>
-  </footer>
+  <script>
+    const languageMap = {
+      en: ["CV Builder", "Cover Letter Writer", "Interview Coach", "LinkedIn Optimizer", "Job Referral Script", "Freelance Profile Setup", "Portfolio Builder", "Career Planner", "AI Career Agent"],
+      ha: ["Mai Ginin CV", "Mai Rubuta Takardar Neman Aiki", "Kocin Ganawa", "Mai Gyaran LinkedIn", "Rubutun Shawarar Aiki", "Fara Freelancing", "Mai Ginin Fayil", "Shirin Hanyar Sana'a", "AI Wakilin Sana'a"],
+      ig: ["Onye N’eme CV", "Onye N’ede Akwụkwọ Akwụkwọ Ọrụ", "Onye Nkuzi Ajụjụ Ọrụ", "Nkwado LinkedIn", "Akwụkwọ Ntinye Ọrụ", "Ihe Freelancing", "Ngwaọrụ Portfoliyo", "Nhazi Ọrụ", "AI Onye Nkuzi Ọrụ"],
+      yo: ["Oníṣèdá CV", "Onkọwé Iwé Ìbéèrè Iṣẹ", "Olùkọ́ Ajẹsára", "Atunṣe LinkedIn", "Ìwé ìtumọ̀ Fún Ìbáṣepọ̀", "Ẹ̀rọ Freelance", "Olùkọ́ Portfolio", "Alámàlà Ọ̀nà Ọ̀nà Iṣẹ́", "AI Asesewa Ọ̀nà Iṣẹ́"],
+      sw: ["Mtayarishaji wa CV", "Mwandishi wa Barua ya Maombi", "Kocha wa Mahojiano", "Msanifu wa LinkedIn", "Andiko la Marejeleo", "Profaili ya Freelance", "Mtayarishaji wa Portfolio", "Mpangaji wa Kazi", "Wakala wa AI"],
+      fr: ["Créateur de CV", "Rédacteur de Lettre de Motivation", "Coach d'Entretien", "Optimiseur LinkedIn", "Script de Référence", "Configuration Freelance", "Créateur de Portfolio", "Planificateur de Carrière", "Agent IA"],
+      ar: ["منشئ السيرة الذاتية", "كاتب خطاب التقديم", "مدرب مقابلة", "محسن LinkedIn", "نص التوصية", "إعداد حساب فريلانس", "منشئ الملف المهني", "مخطط المهنة", "وكيل AI المهني"],
+      zu: ["Umakhi we-CV", "Umbhali Wezincwadi Zesicelo", "Umqeqeshi Wezinkulumo Zomsebenzi", "Umenzi we-LinkedIn", "Iskripthi Sokudluliselwa Komsebenzi", "Ukusethwa Kwephrofayili Yama-Freelancer", "Umakhi Wephothifoliyo", "Uhleli Wezindlela Zomsebenzi", "I-AI Ummeleli Wezindlela Zomsebenzi"],
+      pg: ["CV Builder", "Na person we fit write Cover Letter", "Interview Helper", "Fix your LinkedIn", "Make Dem Refer You", "Setup Your Freelance", "Build Your Portfolio", "Plan Your Career", "AI Wey Go Guide You"]
+    };
 
-  <script src="career.js"></script>
+    document.getElementById("language").addEventListener("change", (e) => {
+      const lang = e.target.value;
+      const tools = document.querySelectorAll(".card.tool");
+      tools.forEach((tool, idx) => {
+        tool.innerText = languageMap[lang][idx] || languageMap["en"][idx];
+      });
+    });
+  </script>
 </body>
-      </html>
+</html>
