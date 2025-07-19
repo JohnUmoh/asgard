@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Career Zone  MVP LifeLine AI</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Career Zone MVP LifeLine AI</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -43,131 +42,422 @@
       text-decoration: none;
       color: #111;
       font-weight: bold;
+      cursor: pointer;
     }
-    .ai-form, .ai-result {
+    .ai-form {
+      display: none; /* Hidden initially */
       background: #f9f9f9;
       padding: 1rem;
       margin-bottom: 2rem;
       border-radius: 6px;
     }
-    input, textarea, button {
-      padding: 0.7rem;
+    .ai-result {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      min-height: 50px;
+    }
+    textarea, button {
       width: 100%;
       margin: 0.5rem 0;
       font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #ccc;
+      padding: 0.7rem;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
     }
     button {
       background-color: black;
       color: white;
       cursor: pointer;
     }
+    button:hover {
+      background-color: #333;
+    }
+    #languageSelectContainer {
+      text-align: center;
+      margin: 1rem 0 2rem;
+    }
+    #languageSelect {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .export-buttons-container {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .export-btn {
+      flex: 1;
+      background-color: #444;
+      border: none;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .export-btn:hover {
+      background-color: #222;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>🎯 Career Zone – MVP LifeLine AI</h1>
-    <p>Earn. Heal. Grow.</p>
+    <h1 id="headerTitle">🎯 Career Zone – MVP LifeLine AI</h1>
+    <p id="headerTagline">Earn. Heal. Grow.</p>
   </header>
+
   <div class="container">
-    <h2>🌍 Top 10 Career Tools</h2>
-    <ul>
-      <li><a href="#tool1">1. MVP Career Integrator</a></li>
-      <li><a href="#tool2">2. CV Builder</a></li>
-      <li><a href="#tool3">3. Cover Letter Writer</a></li>
-      <li><a href="#tool4">4. LinkedIn Bio Optimizer</a></li>
-      <li><a href="#tool5">5. Freelance Pitch Writer</a></li>
-      <li><a href="#tool6">6. AI Career Agent</a></li>
-      <li><a href="#tool7">7. Remote Job Finder</a></li>
-      <li><a href="#tool8">8. Skill Gap Analyzer</a></li>
-      <li><a href="#tool9">9. Interview Coach</a></li>
-      <li><a href="#tool10">10. Productivity Toolkit Builder</a></li>
-    </ul>
-
-    <!-- TOOL FORMS -->
-    <div class="ai-form" id="tool1">
-      <h2>1. MVP Career Integrator</h2>
-      <textarea placeholder="Your skills & interests" id="input1"></textarea>
-      <button onclick="generate('input1', 'output1', 'Integrated MVP Career suggestion')">Generate</button>
-      <div class="ai-result" id="output1"></div>
+    <div id="languageSelectContainer">
+      <label for="languageSelect" id="languageLabel">Choose Language:</label>
+      <select id="languageSelect" aria-label="Choose Language">
+        <option value="en">English</option>
+        <option value="fr">French</option>
+        <option value="sw">Swahili</option>
+        <option value="ar">Arabic</option>
+        <option value="ha">Hausa</option>
+        <option value="ig">Igbo</option>
+        <option value="yo">Yoruba</option>
+        <option value="pg">Pidgin</option>
+        <option value="zu">Zulu</option>
+      </select>
     </div>
 
-    <div class="ai-form" id="tool2">
-      <h2>2. CV Builder</h2>
-      <textarea placeholder="Your details (name, role, experience, education)" id="input2"></textarea>
-      <button onclick="generate('input2', 'output2', 'Generated CV summary')">Generate</button>
-      <div class="ai-result" id="output2"></div>
-    </div>
+    <h2 id="toolsHeader">🌍 Top 10 Career Tools</h2>
+    <ul id="toolList"></ul>
 
-    <div class="ai-form" id="tool3">
-      <h2>3. Cover Letter Writer</h2>
-      <textarea placeholder="Job description & your skills" id="input3"></textarea>
-      <button onclick="generate('input3', 'output3', 'Generated Cover Letter')">Generate</button>
-      <div class="ai-result" id="output3"></div>
-    </div>
+    <!-- AI Forms for tools 1-10 -->
+    <!-- Each form contains heading, textarea input, generate button, output, export buttons -->
 
-    <div class="ai-form" id="tool4">
-      <h2>4. LinkedIn Bio Optimizer</h2>
-      <textarea placeholder="Your current bio or summary" id="input4"></textarea>
-      <button onclick="generate('input4', 'output4', 'Optimized LinkedIn Bio')">Generate</button>
-      <div class="ai-result" id="output4"></div>
-    </div>
-
-    <div class="ai-form" id="tool5">
-      <h2>5. Freelance Pitch Writer</h2>
-      <textarea placeholder="What service are you offering?" id="input5"></textarea>
-      <button onclick="generate('input5', 'output5', 'Freelance Pitch Example')">Generate</button>
-      <div class="ai-result" id="output5"></div>
-    </div>
-
-    <div class="ai-form" id="tool6">
-      <h2>6. AI Career Agent</h2>
-      <textarea placeholder="Ask career questions..." id="input6"></textarea>
-      <button onclick="generate('input6', 'output6', 'AI Career Advice')">Generate</button>
-      <div class="ai-result" id="output6"></div>
-    </div>
-
-    <div class="ai-form" id="tool7">
-      <h2>7. Remote Job Finder</h2>
-      <textarea placeholder="Your skills or role" id="input7"></textarea>
-      <button onclick="generate('input7', 'output7', 'Remote Job Suggestion')">Generate</button>
-      <div class="ai-result" id="output7"></div>
-    </div>
-
-    <div class="ai-form" id="tool8">
-      <h2>8. Skill Gap Analyzer</h2>
-      <textarea placeholder="Your current vs target role" id="input8"></textarea>
-      <button onclick="generate('input8', 'output8', 'Skill Gap Analysis Result')">Generate</button>
-      <div class="ai-result" id="output8"></div>
-    </div>
-
-    <div class="ai-form" id="tool9">
-      <h2>9. Interview Coach</h2>
-      <textarea placeholder="Job role or industry" id="input9"></textarea>
-      <button onclick="generate('input9', 'output9', 'Sample Interview Q&A')">Generate</button>
-      <div class="ai-result" id="output9"></div>
-    </div>
-
-    <div class="ai-form" id="tool10">
-      <h2>10. Productivity Toolkit Builder</h2>
-      <textarea placeholder="Describe your workflow or productivity needs" id="input10"></textarea>
-      <button onclick="generate('input10', 'output10', 'Productivity Toolkit Suggestion')">Generate</button>
-      <div class="ai-result" id="output10"></div>
-    </div>
+    <!-- Generate 10 tool forms -->
   </div>
 
+  <!-- jsPDF for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <script>
-    // Dummy offline response generator
-    function generate(inputId, outputId, prefix) {
-      const userInput = document.getElementById(inputId).value.trim();
-      const output = document.getElementById(outputId);
-      if (userInput) {
-        output.innerHTML = `<p><strong>${prefix}:</strong> <br>${userInput} + AI-powered suggestion (offline test mode)</p>`;
-      } else {
-        output.innerHTML = "<p>Please enter some input first.</p>";
+    // Language data with text for UI and tools
+    const languageData = {
+      en: {
+        headerTitle: "🎯 Career Zone – MVP LifeLine AI",
+        headerTagline: "Earn. Heal. Grow.",
+        languageLabel: "Choose Language:",
+        toolsHeader: "🌍 Career Tools",
+        toolList: [
+          "1. MVP Career Integrator",
+          "2. CV Builder",
+          "3. Cover Letter Writer",
+          "4. LinkedIn Bio Optimizer",
+          "5. Freelance Pitch Writer",
+          "6. AI Career Agent",
+          "7. Remote Job Finder",
+          "8. Skill Gap Analyzer",
+          "9. Interview Coach",
+          "10. Productivity Toolkit Builder"
+        ],
+        toolHeadings: [
+          "1. MVP Career Integrator",
+          "2. CV Builder",
+          "3. Cover Letter Writer",
+          "4. LinkedIn Bio Optimizer",
+          "5. Freelance Pitch Writer",
+          "6. AI Career Agent",
+          "7. Remote Job Finder",
+          "8. Skill Gap Analyzer",
+          "9. Interview Coach",
+          "10. Productivity Toolkit Builder"
+        ],
+        placeholders: [
+          "Your skills & interests",
+          "Your details (name, role, experience, education)",
+          "Job description & your skills",
+          "Your current bio or summary",
+          "What service are you offering?",
+          "Ask career questions...",
+          "Your skills or role",
+          "Your current vs target role",
+          "Job role or industry",
+          "Describe your workflow or productivity needs"
+        ],
+        buttonText: "Generate",
+        generatePrefix: [
+          "Integrated MVP Career suggestion",
+          "Generated CV summary",
+          "Generated Cover Letter",
+          "Optimized LinkedIn Bio",
+          "Freelance Pitch Example",
+          "AI Career Advice",
+          "Remote Job Suggestion",
+          "Skill Gap Analysis Result",
+          "Sample Interview Q&A",
+          "Productivity Toolkit Suggestion"
+        ]
+      },
+      fr: {
+        headerTitle: "🎯 Zone de Carrière – MVP LifeLine AI",
+        headerTagline: "Gagnez. Guérissez. Grandissez.",
+        languageLabel: "Choisir la langue :",
+        toolsHeader: "🌍 Top 10 Outils de Carrière",
+        toolList: [
+          "1. Intégrateur de Carrière MVP",
+          "2. Créateur de CV",
+          "3. Rédacteur de Lettre de Motivation",
+          "4. Optimiseur de Bio LinkedIn",
+          "5. Rédacteur de Pitch Freelance",
+          "6. Agent de Carrière IA",
+          "7. Chercheur d'Emploi à Distance",
+          "8. Analyseur de Compétences",
+          "9. Coach d'Entretien",
+          "10. Créateur d'Outils de Productivité"
+        ],
+        toolHeadings: [
+          "1. Intégrateur de Carrière MVP",
+          "2. Créateur de CV",
+          "3. Rédacteur de Lettre de Motivation",
+          "4. Optimiseur de Bio LinkedIn",
+          "5. Rédacteur de Pitch Freelance",
+          "6. Agent de Carrière IA",
+          "7. Chercheur d'Emploi à Distance",
+          "8. Analyseur de Compétences",
+          "9. Coach d'Entretien",
+          "10. Créateur d'Outils de Productivité"
+        ],
+        placeholders: [
+          "Vos compétences et intérêts",
+          "Vos détails (nom, rôle, expérience, éducation)",
+          "Description du poste et vos compétences",
+          "Votre bio ou résumé actuel",
+          "Quel service offrez-vous ?",
+          "Posez des questions sur la carrière...",
+          "Vos compétences ou rôle",
+          "Votre rôle actuel vs rôle cible",
+          "Poste ou industrie",
+          "Décrivez votre flux de travail ou besoins en productivité"
+        ],
+        buttonText: "Générer",
+        generatePrefix: [
+          "Suggestion de carrière intégrée MVP",
+          "Résumé de CV généré",
+          "Lettre de motivation générée",
+          "Bio LinkedIn optimisée",
+          "Exemple de pitch freelance",
+          "Conseils de carrière IA",
+          "Suggestion d'emploi à distance",
+          "Résultat d'analyse des compétences",
+          "Questions et réponses d'entretien",
+          "Suggestion d'outils de productivité"
+        ]
+      },
+      // Add other languages here (sw, ar, ha, ig, yo, pg, zu) if needed
+      sw: {
+        headerTitle: "🎯 Eneo la Kazi – MVP LifeLine AI",
+        headerTagline: "Pata. Pona. Kua.",
+        languageLabel: "Chagua Lugha:",
+        toolsHeader: "🌍 Zana 10 Bora za Kazi",
+        toolList: [
+          "1. Muunganishaji wa Kazi wa MVP",
+          "2. Mjenzi wa CV",
+          "3. Mwandishi wa Barua ya Maombi",
+          "4. Mboreshaji wa Bio ya LinkedIn",
+          "5. Mwandishi wa Pitch wa Freelance",
+          "6. Wakala wa Kazi wa AI",
+          "7. Mtafutaji wa Kazi za Mbali",
+          "8. Mchambuzi wa Pengo la Ujuzi",
+          "9. Mshauri wa Mahojiano",
+          "10. Mjenzi wa Zana za Ufanisi"
+        ],
+        toolHeadings: [
+          "1. Muunganishaji wa Kazi wa MVP",
+          "2. Mjenzi wa CV",
+          "3. Mwandishi wa Barua ya Maombi",
+          "4. Mboreshaji wa Bio ya LinkedIn",
+          "5. Mwandishi wa Pitch wa Freelance",
+          "6. Wakala wa Kazi wa AI",
+          "7. Mtafutaji wa Kazi za Mbali",
+          "8. Mchambuzi wa Pengo la Ujuzi",
+          "9. Mshauri wa Mahojiano",
+          "10. Mjenzi wa Zana za Ufanisi"
+        ],
+        placeholders: [
+          "Ujuzi na maslahi yako",
+          "Maelezo yako (jina, kazi, uzoefu, elimu)",
+          "Maelezo ya kazi na ujuzi wako",
+          "Bio yako au muhtasari wa sasa",
+          "Huduma unayotoa?",
+          "Uliza maswali kuhusu kazi...",
+          "Ujuzi au kazi yako",
+          "Kazi yako ya sasa dhidi ya unayotaka",
+          "Kazi au sekta",
+          "Eleza mtiririko wa kazi au mahitaji ya ufanisi"
+        ],
+        buttonText: "Tengeneza",
+        generatePrefix: [
+          "Mapendekezo ya Kazi ya MVP",
+          "Muhtasari wa CV Uliotengenezwa",
+          "Barua ya Maombi Iliotengenezwa",
+          "Bio ya LinkedIn Iliyoboreshwa",
+          "Mfano wa Pitch wa Freelance",
+          "Ushauri wa Kazi wa AI",
+          "Mapendekezo ya Kazi za Mbali",
+          "Matokeo ya Uchambuzi wa Pengo la Ujuzi",
+          "Maswali na Majibu ya Mahojiano",
+          "Mapendekezo ya Zana za Ufanisi"
+        ]
+      }
+    };
+
+    // Create the 10 tool forms dynamically inside the container
+    function createToolForms() {
+      const container = document.querySelector('.container');
+      for(let i=1; i<=10; i++) {
+        const formDiv = document.createElement('div');
+        formDiv.className = 'ai-form';
+        formDiv.id = `tool${i}`;
+
+        formDiv.innerHTML = `
+          <h2 class="toolHeading"></h2>
+          <textarea id="input${i}" aria-label="Input for tool ${i}"></textarea>
+          <button id="btn${i}">${languageData.en.buttonText}</button>
+          <div class="ai-result" id="output${i}"></div>
+          <div class="export-buttons-container">
+            <button class="export-btn" onclick="exportToPDF('output${i}', 'CareerTool${i}_Output.pdf')">Export PDF</button>
+            <button class="export-btn" onclick="exportToGoogleDocs('output${i}', 'CareerTool${i}_Output')">Export to Google Docs</button>
+          </div>
+        `;
+        container.appendChild(formDiv);
+
+        // Attach generate onclick here after creation to use closure i
+        formDiv.querySelector('button').addEventListener('click', () => {
+          generate(`input${i}`, `output${i}`, i);
+        });
       }
     }
+
+    // Update UI language text and tool list
+    function updateLanguage(lang) {
+      const data = languageData[lang] || languageData.en;
+
+      document.getElementById('headerTitle').textContent = data.headerTitle;
+      document.getElementById('headerTagline').textContent = data.headerTagline;
+      document.getElementById('languageLabel').textContent = data.languageLabel;
+      document.getElementById('toolsHeader').textContent = data.toolsHeader;
+
+      const toolList = document.getElementById('toolList');
+      toolList.innerHTML = '';
+      data.toolList.forEach((toolName, idx) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#tool${idx+1}`;
+        a.textContent = toolName;
+        li.appendChild(a);
+        toolList.appendChild(li);
+      });
+
+      // Update each form heading, placeholder, and button text
+      for(let i=1; i<=10; i++) {
+        const form = document.getElementById(`tool${i}`);
+        if(!form) continue;
+
+        form.querySelector('.toolHeading').textContent = data.toolHeadings[i-1];
+        const textarea = form.querySelector('textarea');
+        textarea.placeholder = data.placeholders[i-1];
+        const btn = form.querySelector('button');
+        btn.textContent = data.buttonText;
+      }
+    }
+
+    // Show only one form, hide others
+    function showForm(id) {
+      document.querySelectorAll('.ai-form').forEach(f => {
+        f.style.display = (f.id === id) ? 'block' : 'none';
+      });
+      // Scroll to the visible form smoothly
+      const form = document.getElementById(id);
+      if(form) form.scrollIntoView({behavior: 'smooth'});
+    }
+
+    // Setup tool list click handlers to show forms
+    function setupToolLinks() {
+      const toolList = document.getElementById('toolList');
+      toolList.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const id = link.getAttribute('href').substring(1);
+          showForm(id);
+        });
+      });
+    }
+
+    // Simple generate function to simulate AI output
+    function generate(inputId, outputId, index) {
+      const inputEl = document.getElementById(inputId);
+      const outputEl = document.getElementById(outputId);
+      const lang = document.getElementById('languageSelect').value;
+      const prefix = (languageData[lang]?.generatePrefix && languageData[lang].generatePrefix[index-1]) 
+        || languageData.en.generatePrefix[index-1]
+        || "Generated";
+
+      const inputText = inputEl.value.trim();
+      if(inputText.length === 0) {
+        outputEl.textContent = "Please enter some input first.";
+        return;
+      }
+      // Demo output text (replace with actual AI call)
+      outputEl.textContent = `${prefix}:\n\n${inputText}\n\n[This is a demo AI-generated response.]`;
+    }
+
+    // Export output text content to PDF using jsPDF
+    function exportToPDF(outputId, filename) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const outputEl = document.getElementById(outputId);
+      const text = outputEl.textContent || "No content to export.";
+
+      // Simple text split for page break (optional)
+      const lines = doc.splitTextToSize(text, 180);
+      doc.text(lines, 10, 10);
+      doc.save(filename);
+    }
+
+    // Placeholder export to Google Docs (needs OAuth + Google API integration)
+    function exportToGoogleDocs(outputId, docName) {
+      alert(`Export to Google Docs not implemented yet.\nContent from ${outputId} would be exported as document named "${docName}".`);
+    }
+
+    // Initialize app on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      createToolForms();
+
+      const languageSelect = document.getElementById('languageSelect');
+
+      // Set initial language
+      updateLanguage(languageSelect.value);
+
+      // Show first tool form by default
+      showForm('tool1');
+
+      // Setup tool link clicks
+      setupToolLinks();
+
+      // Update language and UI on selection change
+      languageSelect.addEventListener('change', () => {
+        updateLanguage(languageSelect.value);
+        setupToolLinks();
+        // Show first form again on language switch
+        showForm('tool1');
+      });
+    });
   </script>
 </body>
-</html>
+  </html>
