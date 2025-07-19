@@ -29,7 +29,9 @@
       <option value="zu">Zulu</option>
       <option value="pg">Pidgin</option>
     </select>
-    <button id="dark-toggle" aria-label="Toggle Dark Mode">🌙</button>
+
+    <!-- 🎨 Half-moon theme toggle button -->
+    <button id="theme-toggle" aria-label="Cycle Theme Colors">🎨</button>
   </header>
 
   <main class="container">
@@ -42,23 +44,23 @@
     </div>
 
     <div class="modules-grid" aria-label="Modules Section">
-      <a href="career-zone.html" class="card"><h3>📁 Career Zone</h3><p>Jobs, CVs, and Interview Prep.</p></a>
-      <a href="emotional-zone.html" class="card"><h3>💔 Emotional Zone</h3><p>Track feelings and journaling.</p></a>
-      <a href="smartq-access.html" class="card"><h3>🤖 SmartQ Access</h3><p>Ask anything to your AI guide.</p></a>
-      <a href="dual-mode-ai.html" class="card"><h3>🧠 Dual Mode AI</h3><p>Switch between career/emotional help.</p></a>
-      <a href="digital-hustle-hub.html" class="card"><h3>💼 Digital Hustle Hub</h3><p>Freelance and gig economy tools.</p></a>
-      <a href="partner-zone.html" class="card"><h3>🤝 Partner Zone</h3><p>NGO, mentors and impact partners.</p></a>
-      <a href="productivity-zone.html" class="card"><h3>✅ Productivity Zone</h3><p>AI-powered Kanban and planner.</p></a>
-      <a href="language-zone.html" class="card"><h3>🌍 Language Zone</h3><p>Learn new languages fast with AI.</p></a>
-      <a href="wellness-zone.html" class="card"><h3>🧘 Wellness Zone</h3><p>Mental health & calming audio.</p></a>
-      <a href="finance-zone.html" class="card"><h3>💰 Finance Zone</h3><p>Budgeting and savings advice.</p></a>
-      <a href="onboarding-zone.html" class="card"><h3>🎓 Onboarding Zone</h3><p>Learn how the app works.</p></a>
-      <a href="help-zone.html" class="card"><h3>🆘 Help Zone</h3><p>FAQs and user support.</p></a>
-      <a href="privacy-zone.html" class="card"><h3>🔒 Privacy Zone</h3><p>Your data. Your control.</p></a>
-      <a href="security-zone.html" class="card"><h3>🛡️ Security Zone</h3><p>Keep your info protected.</p></a>
-      <a href="insight-zone.html" class="card"><h3>📊 Insight Zone</h3><p>Track usage & analytics insights.</p></a>
-      <a href="sync-zone.html" class="card"><h3>🔄 Sync Zone</h3><p>Manage your offline & online data.</p></a>
-      <a href="monetization-zone.html" class="card"><h3>💼 Monetization Zone</h3><p>Premium features & earning tools.</p></a>
+      <a href="career-zone.html" class="card" data-zone="career-zone"><h3>📁 Career Zone</h3><p>Jobs, CVs, and Interview Prep.</p></a>
+      <a href="emotional-zone.html" class="card" data-zone="emotional-zone"><h3>💔 Emotional Zone</h3><p>Track feelings and journaling.</p></a>
+      <a href="smartq-access.html" class="card" data-zone="smartq-access"><h3>🤖 SmartQ Access</h3><p>Ask anything to your AI guide.</p></a>
+      <a href="dual-mode-ai.html" class="card" data-zone="dual-mode-ai"><h3>🧠 Dual Mode AI</h3><p>Switch between career/emotional help.</p></a>
+      <a href="digital-hustle-hub.html" class="card" data-zone="digital-hustle-hub"><h3>💼 Digital Hustle Hub</h3><p>Freelance and gig economy tools.</p></a>
+      <a href="partner-zone.html" class="card" data-zone="partner-zone"><h3>🤝 Partner Zone</h3><p>NGO, mentors and impact partners.</p></a>
+      <a href="productivity-zone.html" class="card" data-zone="productivity-zone"><h3>✅ Productivity Zone</h3><p>AI-powered Kanban and planner.</p></a>
+      <a href="language-zone.html" class="card" data-zone="language-zone"><h3>🌍 Language Zone</h3><p>Learn new languages fast with AI.</p></a>
+      <a href="wellness-zone.html" class="card" data-zone="wellness-zone"><h3>🧘 Wellness Zone</h3><p>Mental health & calming audio.</p></a>
+      <a href="finance-zone.html" class="card" data-zone="finance-zone"><h3>💰 Finance Zone</h3><p>Budgeting and savings advice.</p></a>
+      <a href="onboarding-zone.html" class="card" data-zone="onboarding-zone"><h3>🎓 Onboarding Zone</h3><p>Learn how the app works.</p></a>
+      <a href="help-zone.html" class="card" data-zone="help-zone"><h3>🆘 Help Zone</h3><p>FAQs and user support.</p></a>
+      <a href="privacy-zone.html" class="card" data-zone="privacy-zone"><h3>🔒 Privacy Zone</h3><p>Your data. Your control.</p></a>
+      <a href="security-zone.html" class="card" data-zone="security-zone"><h3>🛡️ Security Zone</h3><p>Keep your info protected.</p></a>
+      <a href="insight-zone.html" class="card" data-zone="insight-zone"><h3>📊 Insight Zone</h3><p>Track usage & analytics insights.</p></a>
+      <a href="sync-zone.html" class="card" data-zone="sync-zone"><h3>🔄 Sync Zone</h3><p>Manage your offline & online data.</p></a>
+      <a href="monetization-zone.html" class="card" data-zone="monetization-zone"><h3>💼 Monetization Zone</h3><p>Premium features & earning tools.</p></a>
     </div>
 
     <section id="gpt-reply-box" class="card" style="display:none; margin-top:2rem;">
@@ -76,4 +78,4 @@
 
   <script src="app.js"></script>
 </body>
-</html>
+                                                                                                 </html>
