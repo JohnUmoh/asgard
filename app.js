@@ -1,6 +1,7 @@
 // MVP LifeLine AI – all-zones frontend helper
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------- DOM refs ---------- */
+  const offlineMode = false; // 🛑 Set to true to use dummy replies instead of real pages
+
   const languageSelect = document.getElementById("language");
   const greeting       = document.querySelector(".greeting h2");
   const micBtn         = document.getElementById("mic-btn");
@@ -9,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle    = document.getElementById("theme-toggle");
   const moduleCards    = document.querySelectorAll(".card");
 
-  /* ---------- Translations ---------- */
   const translations = {
     en: "Welcome, Hope,<br><span>Let’s grow today.</span>",
     ha: "Barka da zuwa, Hope,<br><span>Mu ci gaba yau.</span>",
@@ -22,31 +22,25 @@ document.addEventListener("DOMContentLoaded", () => {
     pg: "You don show, Hope,<br><span>Make we move today.</span>"
   };
 
-  /* ---------- Language switch ---------- */
   languageSelect?.addEventListener("change", () => {
     const sel = languageSelect.value;
     if (translations[sel]) greeting.innerHTML = translations[sel];
   });
 
-  /* ---------- Dark-mode toggle ---------- */
   darkToggle?.addEventListener("click", () =>
     document.body.classList.toggle("dark")
   );
 
-  /* ---------- Theme color toggle ---------- */
   const themeColors = ["red", "black", "white", "yellow", "blue"];
   let currentColorIndex = 0;
 
   themeToggle?.addEventListener("click", () => {
-    // Remove all existing color classes
     themeColors.forEach(c => document.body.classList.remove("theme-" + c));
-    // Add next color
     const nextColor = themeColors[currentColorIndex];
     document.body.classList.add("theme-" + nextColor);
     currentColorIndex = (currentColorIndex + 1) % themeColors.length;
   });
 
-  /* ---------- Voice-input (Web Speech) ---------- */
   micBtn?.addEventListener("click", () => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) return alert("SpeechRecognition not supported on this browser.");
@@ -62,14 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
     recog.start();
   });
 
-  /* ---------- Card-click → ask GPT ---------- */
   moduleCards.forEach(card => {
     card.addEventListener("click", e => {
-      e.preventDefault();                                     // stay on page
-      const zone   = card.dataset.zone || "smartq-access";    // fallback
+      const zone   = card.dataset.zone || "smartq-access";
       const title  = card.querySelector("h3")?.innerText || zone;
-      const prompt = `I clicked "${title}". Guide me on getting started.`;
-      getGPTResponse({ zone, prompt });
+
+      if (offlineMode) {
+        e.preventDefault(); // Stay on page in dummy mode
+        const prompt = `I clicked "${title}". Guide me on getting started.`;
+        getGPTResponse({ zone, prompt });
+      } 
+      // else: let it naturally go to href
     });
   });
 });
@@ -94,4 +91,4 @@ async function getGPTResponse({ zone, prompt }) {
   } catch (err) {
     replyText.innerText = "⚠️ GPT error: " + err.message;
   }
-}
+                           }
