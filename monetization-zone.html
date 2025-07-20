@@ -3,130 +3,243 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monetization Zone – MVP LifeLine AI</title>
+  <title>Monetization Tools Hub – MVP LifeLine AI</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
+      background-color: #ffffff;
       color: #111;
       margin: 0;
       padding: 20px;
     }
+
     h1 {
-      text-align: center;
-      color: #c00;
+      color: #b30000;
+      font-size: 2.2em;
+      border-bottom: 2px solid #b30000;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
     }
-    .tool {
+
+    h2 {
+      color: #b30000;
+      margin-top: 40px;
+      font-size: 1.4em;
+    }
+
+    p {
       margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background-color: #f9f9f9;
-      overflow: hidden;
+      color: #333;
     }
-    .tool h2 {
-      margin: 0;
-      padding: 15px;
-      background-color: #eee;
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: #b30000;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    form {
+      margin-top: 15px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      width: 70%;
+      max-width: 400px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #b30000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
       cursor: pointer;
-      color: #000;
     }
-    .tool h2:hover {
-      background-color: #ddd;
-      color: #c00;
+
+    button:hover {
+      background-color: #8a0000;
     }
-    .tool-content {
-      display: none;
-      padding: 0 15px 15px 15px;
+
+    .cta {
+      margin-top: 50px;
+      padding: 15px;
+      background-color: #b30000;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 8px;
     }
-    .tool-content p {
-      margin: 8px 0;
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6em;
+      }
+
+      h2 {
+        font-size: 1.2em;
+      }
+
+      .cta {
+        font-size: 1em;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>💼 Monetization Zone –  Global Earning Tools</h1>
+  <h1>💼 Monetization Tools Hub</h1>
 
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">1. Freelance Gig Marketplaces</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://www.upwork.com" target="_blank">Upwork</a>, Fiverr, Toptal</p>
-      <p>Why: Lets users earn from remote skills (design, writing, coding, etc.)</p>
-    </div>
+  <section>
+    <h2>1. Freelance Gig Marketplaces</h2>
+    <p>Offer your skills and land paid gigs through global freelance platforms:</p>
+    <ul>
+      <li>
+        <a href="https://www.upwork.com" target="_blank">Upwork</a>
+        — <a href="/tools?platform=Upwork">Open in Tools Hub</a>
+      </li>
+      <li>
+        <a href="https://www.fiverr.com" target="_blank">Fiverr</a>
+        — <a href="/tools?platform=Fiverr">Open in Tools Hub</a>
+      </li>
+      <li>
+        <a href="https://www.peopleperhour.com" target="_blank">PeoplePerHour</a>
+        — <a href="/tools?platform=PeoplePerHour">Open in Tools Hub</a>
+      </li>
+      <li>
+        <a href="https://www.toptal.com" target="_blank">Toptal</a>
+        — <a href="/tools?platform=Toptal">Open in Tools Hub</a>
+      </li>
+    </ul>
+    <form>
+      <label>Not sure which to start with?</label><br />
+      <input type="text" placeholder="What’s your skill or interest?" />
+      <button type="submit">Ask AI</button>
+    </form>
+  </section>
+
+  <section>
+    <h2>2. Affiliate Marketing Networks</h2>
+    <p>Earn commission by promoting other people’s products and services:</p>
+    <ul>
+      <li><a href="https://affiliate-program.amazon.com" target="_blank">Amazon Associates</a></li>
+      <li><a href="https://partnerstack.com" target="_blank">PartnerStack</a></li>
+      <li><a href="https://impact.com" target="_blank">Impact</a></li>
+      <li><a href="https://clickbank.com" target="_blank">ClickBank</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. Digital Product Sales</h2>
+    <p>Sell ebooks, templates, or software through these digital storefronts:</p>
+    <ul>
+      <li><a href="https://gumroad.com" target="_blank">Gumroad</a></li>
+      <li><a href="https://payhip.com" target="_blank">Payhip</a></li>
+      <li><a href="https://sellfy.com" target="_blank">Sellfy</a></li>
+      <li><a href="https://notion.so" target="_blank">Notion (for template sales)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Online Course Creation</h2>
+    <p>Create and sell courses on topics you know well using these platforms:</p>
+    <ul>
+      <li><a href="https://teachable.com" target="_blank">Teachable</a></li>
+      <li><a href="https://thinkific.com" target="_blank">Thinkific</a></li>
+      <li><a href="https://udemy.com" target="_blank">Udemy</a></li>
+      <li><a href="https://skillshare.com" target="_blank">Skillshare</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Creator Monetization Tools</h2>
+    <p>Earn from your content and followers with creator-focused platforms:</p>
+    <ul>
+      <li><a href="https://patreon.com" target="_blank">Patreon</a></li>
+      <li><a href="https://ko-fi.com" target="_blank">Ko-fi</a></li>
+      <li><a href="https://buymeacoffee.com" target="_blank">Buy Me a Coffee</a></li>
+      <li><a href="https://substack.com" target="_blank">Substack</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. Print-on-Demand & Dropshipping</h2>
+    <p>Sell custom-designed items without holding inventory:</p>
+    <ul>
+      <li><a href="https://printful.com" target="_blank">Printful</a></li>
+      <li><a href="https://printify.com" target="_blank">Printify</a></li>
+      <li><a href="https://redbubble.com" target="_blank">Redbubble</a></li>
+      <li><a href="https://shopify.com" target="_blank">Shopify (Dropshipping)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. Remote Job Boards & Microtasking</h2>
+    <p>Get paid for remote tasks, jobs, and simple micro work:</p>
+    <ul>
+      <li><a href="https://remoteok.com" target="_blank">Remote OK</a></li>
+      <li><a href="https://weworkremotely.com" target="_blank">We Work Remotely</a></li>
+      <li><a href="https://microworkers.com" target="_blank">Microworkers</a></li>
+      <li><a href="https://clickworker.com" target="_blank">Clickworker</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Crypto & NFT Platforms</h2>
+    <p>Explore digital ownership, NFT marketplaces, and crypto income tools:</p>
+    <ul>
+      <li><a href="https://opensea.io" target="_blank">OpenSea</a></li>
+      <li><a href="https://rarible.com" target="_blank">Rarible</a></li>
+      <li><a href="https://binance.com" target="_blank">Binance</a></li>
+      <li><a href="https://coinbase.com" target="_blank">Coinbase</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>9. Passive Income & Royalty Platforms</h2>
+    <p>Generate recurring income through royalty-based systems:</p>
+    <ul>
+      <li><a href="https://kdp.amazon.com" target="_blank">Amazon KDP</a></li>
+      <li><a href="https://acx.com" target="_blank">ACX (Audiobook Publishing)</a></li>
+      <li><a href="https://soundrop.com" target="_blank">Soundrop (Music Distribution)</a></li>
+      <li><a href="https://shutterstock.com" target="_blank">Shutterstock (Photo Royalties)</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>10. Side Hustle Planner</h2>
+    <p>Plan and track multiple income streams with digital productivity tools:</p>
+    <ul>
+      <li><a href="https://notion.so" target="_blank">Notion</a></li>
+      <li><a href="https://trello.com" target="_blank">Trello</a></li>
+      <li><a href="https://asana.com" target="_blank">Asana</a></li>
+      <li><a href="https://todoist.com" target="_blank">Todoist</a></li>
+    </ul>
+  </section>
+
+  <div class="cta">
+    🚀 Ready to Start? Launch your full monetization journey now with the above tools!
   </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">2. Affiliate Marketing Networks</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://affiliate-program.amazon.com/" target="_blank">Amazon Associates</a>, ShareASale, PartnerStack</p>
-      <p>Why: Earn passive income by promoting products & earning commission</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">3. Digital Product Sales</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://gumroad.com/" target="_blank">Gumroad</a>, Sellfy, Payhip</p>
-      <p>Why: Sell eBooks, templates, courses, and other digital goods directly</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">4. Online Course Creation</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://teachable.com/" target="_blank">Teachable</a>, Thinkific, Udemy</p>
-      <p>Why: Turn knowledge into income by selling courses globally</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">5. Creator Monetization Tools</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://www.youtube.com/creators/monetize/" target="_blank">YouTube Partner Program</a>, TikTok Creator Fund, Instagram Subscriptions</p>
-      <p>Why: Monetize content through ads, fan support, or premium content</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">6. Print-on-Demand & Dropshipping</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://www.printful.com/" target="_blank">Printful</a>, Redbubble, Shopify (with Oberlo alternatives)</p>
-      <p>Why: Start an eCommerce store with zero inventory</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">7. Remote Job Boards & Microtasking</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://www.remotive.io/" target="_blank">Remotive</a>, Clickworker, Appen</p>
-      <p>Why: Earn from microtasks, surveys, transcription, remote roles</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">8. Crypto & NFT Platforms</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://opensea.io/" target="_blank">OpenSea</a>, Rarible, Binance NFT, Coinbase Earn</p>
-      <p>Why: Leverage digital assets and earn via trading or art/token sales</p>
-    </div>
-  </div>
-
-  <div class="tool">
-    <h2 onclick="toggleTool(this)">9. Passive Income & Royalty Platforms</h2>
-    <div class="tool-content">
-      <p>Platforms: <a href="https://medium.com/creators" target="_blank">Medium Partner Program</a>, Substack, Anchor.fm (podcast monetization)</p>
-      <p>Why: Earn royalties or recurring revenue from writing, podcasts, newsletters</p>
-    </div>
-  </div>
-
-  <script>
-    function toggleTool(header) {
-      const content = header.nextElementSibling;
-      const allContents = document.querySelectorAll('.tool-content');
-      allContents.forEach(el => {
-        if (el !== content) el.style.display = 'none';
-      });
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
 </body>
   </html>
