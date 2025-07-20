@@ -1,13 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SmartQ Access – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartQ Access – MVP LifeLine AI</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #fff;
+      color: #111;
+      padding: 20px;
+      margin-bottom: 80px;
+    }
+    h1 {
+      color: #e60000;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .card {
+      background-color: #fdf0f0;
+      border-left: 6px solid #e60000;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    .card .title {
+      font-weight: bold;
+      font-size: 18px;
+      color: #e60000;
+    }
+    .card .desc {
+      font-size: 16px;
+      margin-top: 4px;
+    }
+    .card .expand {
+      display: none;
+      margin-top: 10px;
+      font-size: 15px;
+      color: #444;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #e60000;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #e60000;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .sticky-chat {
+      position: fixed;
+      bottom: 15px;
+      right: 20px;
+      background-color: #e60000;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+  </style>
+  <script>
+    function toggleExpand(id) {
+      const el = document.getElementById('expand-' + id);
+      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
 </head>
 <body>
-  <h1>🤖 SmartQ Access</h1>
-  <p>Ask anything. Your AI guide is listening.</p>
-  <a href="index.html">⬅ Back to Home</a>
+  <h1>🚀 SmartQ Access – </h1>
+  <a href="https://wa.me/234XXXXXXXXXX" class="cta-button">🚀 Chat With SmartQ Now</a>
+
+  <div class="card" onclick="toggleExpand(1)">
+    <div class="title">1. 📡 Offline AI via USSD + Local Cache</div>
+    <div class="desc">Use <span class="highlight">*123#</span> to ask SmartQ anything via USSD. Get AI replies by SMS.</div>
+    <div class="expand" id="expand-1">
+      SmartQ stores popular answers locally by topic and language. Works offline or with minimal connection.<br><br>
+      <a href="tel:*123#">📞 Dial Now</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(2)">
+    <div class="title">2. 🧑🏽‍🤝‍🧑🏿 Peer-to-Peer Q&A + Mentorship</div>
+    <div class="desc">Connect with others for answers and mentorship.</div>
+    <div class="expand" id="expand-2">
+      Users can ask or answer questions in local languages.<br><br>
+      <a href="/ask.html">💬 Ask a Question</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(3)">
+    <div class="title">3. 🧠 Culture-Smart NLP Engine</div>
+    <div class="desc">Understands slang, culture, and local idioms.</div>
+    <div class="expand" id="expand-3">
+      Built with African languages and tone in mind.<br><br>
+      <a href="/demo-chat.html">🧪 Try Demo</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(4)">
+    <div class="title">4. 🔊 Voice Answer in Local Language</div>
+    <div class="desc">Listen to answers in Hausa, Igbo, Yoruba, and more.</div>
+    <div class="expand" id="expand-4">
+      Spoken replies help users with low literacy or reading fatigue.<br><br>
+      <p class="highlight">🎧 Listen in your language:</p>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>🇳🇬 Hausa:<br>
+          <audio controls>
+            <source src="/audio-hausa.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+        <li>🇳🇬 Yoruba:<br>
+          <audio controls>
+            <source src="/audio-yoruba.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+        <li>🇳🇬 Igbo:<br>
+          <audio controls>
+            <source src="/audio-igbo.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+        <li>🇰🇪 Swahili:<br>
+          <audio controls>
+            <source src="/audio-swahili.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+        <li>🇫🇷 French:<br>
+          <audio controls>
+            <source src="/audio-french.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+        <li>🇸🇦 Arabic:<br>
+          <audio controls>
+            <source src="/audio-arabic.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(5)">
+    <div class="title">5. 💬 WhatsApp AI SmartQ Bot</div>
+    <div class="desc">Chat with SmartQ like a friend on WhatsApp.</div>
+    <div class="expand" id="expand-5">
+      Available 24/7 with multilingual support.<br><br>
+      <a href="https://wa.me/234XXXXXXXXXX">📲 Message SmartQ</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(6)">
+    <div class="title">6. 🎯 Smart Gig Match Engine</div>
+    <div class="desc">Find remote or local gigs instantly.</div>
+    <div class="expand" id="expand-6">
+      AI filters gigs by your location, skill, and time.<br><br>
+      <a href="/gig-form.html">💼 Find Gigs</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(7)">
+    <div class="title">7. 🆘 E-FAP (Emotional First Aid Protocol)</div>
+    <div class="desc">Mental health self-check + support group match.</div>
+    <div class="expand" id="expand-7">
+      Offers self-check tools and peer connection.<br><br>
+      <a href="https://wa.me/234XXXXXXXXXX">💗 Need Support?</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(8)">
+    <div class="title">8. 🧬 Personalized Lifeline Profiles</div>
+    <div class="desc">Custom interface for students, hustlers, parents, etc.</div>
+    <div class="expand" id="expand-8">
+      Adapts questions, answers, and advice based on user type.<br><br>
+      <a href="/choose-profile.html">🎭 Choose Your Role</a>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleExpand(9)">
+    <div class="title">9. 🌍 Multilingual Access + Auto Matching</div>
+    <div class="desc">Supports 9 languages + smart answer matching.</div>
+    <div class="expand" id="expand-9">
+      Choose your language once. SmartQ replies in it by default.<br><br>
+      <a href="/languages.html">🌐 Select Language</a>
+    </div>
+  </div>
+
+  <a href="https://wa.me/234XXXXXXXXXX" class="sticky-chat">💬 Chat SmartQ</a>
 </body>
-</html>
+  </html>
