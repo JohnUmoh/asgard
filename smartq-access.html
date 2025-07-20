@@ -78,8 +78,41 @@
   <h1>🚀 SmartQ Access – </h1>
   <a href="https://wa.me/234XXXXXXXXXX" class="cta-button">🚀 Chat With SmartQ Now</a>
 
+  <!-- Moved Section 10 here and renamed it to 1 -->
+  <div class="card" onclick="toggleExpand(10)">
+    <div class="title">1. ⏳ SmartQ Virtual Queue System</div>
+    <div class="desc">Join or monitor queues at NIN, NYSC, banks, and hospitals.</div>
+    <div class="expand" id="expand-10">
+      <p>Skip physical wait lines! SmartQ Queue lets you:</p>
+      <ul style="padding-left: 18px;">
+        <li>📍 Join virtual queues near you</li>
+        <li>📱 Get SMS alerts when it's your turn</li>
+        <li>📊 View real-time wait times</li>
+        <li>👥 Choose queue type (NIN, NYSC, Bank, etc.)</li>
+      </ul>
+      <hr style="margin: 15px 0;">
+      <h3>🪪 Join Now</h3>
+      <label for="service">Choose Service Type:</label>
+      <select id="service">
+        <option>NIN Registration</option>
+        <option>NYSC Clearance</option>
+        <option>Hospital Outpatient</option>
+        <option>Bank Customer Service</option>
+      </select>
+      <label for="location">Enter Your Location:</label>
+      <input type="text" id="location" placeholder="e.g., Wuse, Abuja" />
+      <div class="info-box" id="queueStatus">⏳ Waiting for location...</div>
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" placeholder="Your name" />
+      <label for="phone">Phone (for SMS alert):</label>
+      <input type="tel" id="phone" placeholder="080xxxxxxxx" />
+      <button class="btn" onclick="joinQueue()">🚀 Join Queue</button>
+    </div>
+  </div>
+
+  <!-- Renumbered the rest -->
   <div class="card" onclick="toggleExpand(1)">
-    <div class="title">1. 📡 Offline AI via USSD + Local Cache</div>
+    <div class="title">2. 📡 Offline AI via USSD + Local Cache</div>
     <div class="desc">Use <span class="highlight">*123#</span> to ask SmartQ anything via USSD. Get AI replies by SMS.</div>
     <div class="expand" id="expand-1">
       SmartQ stores popular answers locally by topic and language. Works offline or with minimal connection.<br><br>
@@ -88,7 +121,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(2)">
-    <div class="title">2. 🧑🏽‍🤝‍🧑🏿 Peer-to-Peer Q&A + Mentorship</div>
+    <div class="title">3. 🧑🏽‍🤝‍🧑🏿 Peer-to-Peer Q&A + Mentorship</div>
     <div class="desc">Connect with others for answers and mentorship.</div>
     <div class="expand" id="expand-2">
       Users can ask or answer questions in local languages.<br><br>
@@ -97,7 +130,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(3)">
-    <div class="title">3. 🧠 Culture-Smart NLP Engine</div>
+    <div class="title">4. 🧠 Culture-Smart NLP Engine</div>
     <div class="desc">Understands slang, culture, and local idioms.</div>
     <div class="expand" id="expand-3">
       Built with African languages and tone in mind.<br><br>
@@ -106,7 +139,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(4)">
-    <div class="title">4. 🔊 Voice Answer in Local Language</div>
+    <div class="title">5. 🔊 Voice Answer in Local Language</div>
     <div class="desc">Listen to answers in Hausa, Igbo, Yoruba, and more.</div>
     <div class="expand" id="expand-4">
       Spoken replies help users with low literacy or reading fatigue.<br><br>
@@ -115,37 +148,31 @@
         <li>🇳🇬 Hausa:<br>
           <audio controls>
             <source src="/audio-hausa.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
         </li>
         <li>🇳🇬 Yoruba:<br>
           <audio controls>
             <source src="/audio-yoruba.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
         </li>
         <li>🇳🇬 Igbo:<br>
           <audio controls>
             <source src="/audio-igbo.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
         </li>
         <li>🇰🇪 Swahili:<br>
           <audio controls>
             <source src="/audio-swahili.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
         </li>
         <li>🇫🇷 French:<br>
           <audio controls>
             <source src="/audio-french.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
         </li>
         <li>🇸🇦 Arabic:<br>
           <audio controls>
             <source src="/audio-arabic.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
         </li>
       </ul>
@@ -153,7 +180,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(5)">
-    <div class="title">5. 💬 WhatsApp AI SmartQ Bot</div>
+    <div class="title">6. 💬 WhatsApp AI SmartQ Bot</div>
     <div class="desc">Chat with SmartQ like a friend on WhatsApp.</div>
     <div class="expand" id="expand-5">
       Available 24/7 with multilingual support.<br><br>
@@ -162,7 +189,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(6)">
-    <div class="title">6. 🎯 Smart Gig Match Engine</div>
+    <div class="title">7. 🎯 Smart Gig Match Engine</div>
     <div class="desc">Find remote or local gigs instantly.</div>
     <div class="expand" id="expand-6">
       AI filters gigs by your location, skill, and time.<br><br>
@@ -171,7 +198,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(7)">
-    <div class="title">7. 🆘 E-FAP (Emotional First Aid Protocol)</div>
+    <div class="title">8. 🆘 E-FAP (Emotional First Aid Protocol)</div>
     <div class="desc">Mental health self-check + support group match.</div>
     <div class="expand" id="expand-7">
       Offers self-check tools and peer connection.<br><br>
@@ -180,7 +207,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(8)">
-    <div class="title">8. 🧬 Personalized Lifeline Profiles</div>
+    <div class="title">9. 🧬 Personalized Lifeline Profiles</div>
     <div class="desc">Custom interface for students, hustlers, parents, etc.</div>
     <div class="expand" id="expand-8">
       Adapts questions, answers, and advice based on user type.<br><br>
@@ -189,7 +216,7 @@
   </div>
 
   <div class="card" onclick="toggleExpand(9)">
-    <div class="title">9. 🌍 Multilingual Access + Auto Matching</div>
+    <div class="title">10. 🌍 Multilingual Access + Auto Matching</div>
     <div class="desc">Supports 9 languages + smart answer matching.</div>
     <div class="expand" id="expand-9">
       Choose your language once. SmartQ replies in it by default.<br><br>
