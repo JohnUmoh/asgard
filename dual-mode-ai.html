@@ -1,13 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dual Mode AI – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dual Mode AI – MVP LifeLine</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #000;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #c62828;
+      margin-bottom: 20px;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .toggle-buttons button {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      color: #ffffff;
+    }
+
+    .earn-mode-btn {
+      background-color: #c62828;
+    }
+
+    .heal-mode-btn {
+      background-color: #111111;
+    }
+
+    .mode-box {
+      padding: 25px;
+      border-radius: 12px;
+      background-color: #f7f7f7;
+      color: #111;
+      transition: 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .mode-box h2 {
+      margin-top: 0;
+      color: #c62828;
+    }
+
+    .mode-box ul {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    .mode-box ul li {
+      background-color: #ffffff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      border: 1px solid #ccc;
+    }
+
+    .mode-box ul li:hover {
+      background-color: #ffecec;
+      transform: scale(1.02);
+    }
+
+    .clicked {
+      background-color: #fce4e4 !important;
+      border-color: #c62828 !important;
+    }
+
+    #descriptionBox {
+      padding: 20px;
+      background-color: #fff0f0;
+      border: 1px solid #c62828;
+      border-radius: 12px;
+      color: #c62828;
+      min-height: 80px;
+      text-align: left;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <h1>🧠 Dual Mode AI</h1>
-  <p>Switch between Career and Emotional Support modes.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <div class="container">
+    <h1>🔁 Dual Mode AI</h1>
+
+    <div class="toggle-buttons">
+      <button class="earn-mode-btn" onclick="switchMode('earn')">Earn Mode</button>
+      <button class="heal-mode-btn" onclick="switchMode('heal')">Heal Mode</button>
+    </div>
+
+    <div id="modeContent" class="mode-box">
+      <!-- Default: Earn Mode -->
+      <h2>💼 Career Zone – Earn Mode</h2>
+      <ul>
+        <li onclick="itemClicked(this)">📄 AI-Powered Personalized Career Path Mapping</li>
+        <li onclick="itemClicked(this)">🔍 Smart Gig & Freelance Matching with Regional Focus</li>
+        <li onclick="itemClicked(this)">🎙️ Automated Interview Simulator with AI Feedback</li>
+        <li onclick="itemClicked(this)">📈 Localized Salary Benchmarking & Negotiation Coach</li>
+        <li onclick="itemClicked(this)">📚 Offline CV & Portfolio Builder with Export Options</li>
+        <li onclick="itemClicked(this)">🧠 Skill Gap Analysis & Microlearning Recommendations</li>
+        <li onclick="itemClicked(this)">✍️ AI-Powered Proposal & Contract Drafting Assistant</li>
+        <li onclick="itemClicked(this)">📲 Multi-language Job & Gig Alerts via SMS & App</li>
+        <li onclick="itemClicked(this)">🤝 Career Networking & Mentorship Matchmaking Platform</li>
+        <li onclick="itemClicked(this)">💼 Soft Skills Development with Interactive AI Coaching</li>
+      </ul>
+    </div>
+
+    <div id="descriptionBox">Select a tool above to see its description here.</div>
+  </div>
+
+  <script>
+    const descriptions = {
+      earn: {
+        "📄 AI-Powered Personalized Career Path Mapping": "Dynamic, AI-driven career plans tailored to your skills, market trends, and local opportunities.",
+        "🔍 Smart Gig & Freelance Matching with Regional Focus": "Find gigs and freelance jobs matching your skills, location, and payment preferences.",
+        "🎙️ Automated Interview Simulator with AI Feedback": "Practice interviews with AI that gives personalized feedback to boost your confidence.",
+        "📈 Localized Salary Benchmarking & Negotiation Coach": "Access real-time salary data and get tips on negotiating pay effectively in your local market.",
+        "📚 Offline CV & Portfolio Builder with Export Options": "Create and export professional resumes and portfolios even without internet access.",
+        "🧠 Skill Gap Analysis & Microlearning Recommendations": "Identify skill gaps and get bite-sized learning modules recommended by AI.",
+        "✍️ AI-Powered Proposal & Contract Drafting Assistant": "Quickly draft professional proposals and contracts with AI assistance.",
+        "📲 Multi-language Job & Gig Alerts via SMS & App": "Receive job and gig alerts in your preferred local language via SMS and app notifications.",
+        "🤝 Career Networking & Mentorship Matchmaking Platform": "Connect with mentors and peers who align with your career goals.",
+        "💼 Soft Skills Development with Interactive AI Coaching": "Improve communication, leadership, and teamwork with guided AI coaching."
+      },
+      heal: {
+        "🤖 AI-Powered Emotional Resilience Coach": "Personalized AI coaching to build your emotional strength and resilience over time.",
+        "🎤 Real-Time Emotion Recognition (Voice & Text)": "AI detects your emotions from voice and text to provide instant support.",
+        "🎯 Mood-Based Dynamic Activity Suggestions": "Get personalized activity recommendations based on your current mood.",
+        "📊 Emotion Energy & Pattern Tracker": "Track emotional highs and lows and get insights to improve your wellbeing.",
+        "🕶️ VR/AR Guided Mindfulness & Emotional Release Sessions": "Immersive mindfulness and healing experiences using VR/AR technology.",
+        "💌 AI-Driven Personalized Affirmations & Motivations": "Receive daily affirmations and motivation tailored to your feelings and goals.",
+        "🎭 Interactive Empathy & Emotional Intelligence Builder": "Engage in AI-led exercises to enhance your empathy and social skills.",
+        "🔔 Emotion-Triggered Smart Notifications & Interventions": "Get smart alerts with coping strategies when negative emotions arise.",
+        "🎨 Creative Expression Studio with AI Assistance": "Use AI tools to create art, music, or poetry as emotional expression.",
+        "🚀 Emotion-Focused Micro-Challenges with Adaptive Difficulty": "Take daily emotional skill-building challenges that adjust to your progress."
+      }
+    };
+
+    function switchMode(mode) {
+      const content = document.getElementById('modeContent');
+      const descBox = document.getElementById('descriptionBox');
+      descBox.textContent = "Select a tool above to see its description here.";
+      let html = '';
+      if (mode === 'earn') {
+        html = `
+          <h2>💼 Career Zone – Earn Mode</h2>
+          <ul>
+            ${Object.keys(descriptions.earn).map(tool => `<li onclick="itemClicked(this)">${tool}</li>`).join('')}
+          </ul>`;
+      } else {
+        html = `
+          <h2>💖 Emotional Zone – Heal Mode</h2>
+          <ul>
+            ${Object.keys(descriptions.heal).map(tool => `<li onclick="itemClicked(this)">${tool}</li>`).join('')}
+          </ul>`;
+      }
+      content.innerHTML = html;
+    }
+
+    function itemClicked(element) {
+      const descBox = document.getElementById('descriptionBox');
+      // Remove 'clicked' class from all siblings
+      const siblings = element.parentElement.children;
+      for (let i = 0; i < siblings.length; i++) {
+        siblings[i].classList.remove('clicked');
+      }
+
+      // Add 'clicked' class to clicked item
+      element.classList.add('clicked');
+
+      // Determine current mode by heading
+      const modeHeading = document.querySelector('#modeContent h2').textContent;
+      const mode = modeHeading.includes('Career') ? 'earn' : 'heal';
+
+      // Show description for clicked tool
+      const desc = descriptions[mode][element.textContent] || "Description not found.";
+      descBox.textContent = desc;
+    }
+  </script>
+
 </body>
-</html>
+  </html>
