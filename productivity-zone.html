@@ -1,13 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Productivity Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✅ Productivity Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --blue: #007bff;
+      --yellow: #ffd60a;
+      --white: #ffffff;
+      --light-blue: #e6f0ff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    body {
+      background: var(--white);
+      color: #000;
+      padding: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+    h2, h3 {
+      margin-bottom: 10px;
+      color: var(--blue);
+    }
+    p {
+      margin-bottom: 20px;
+    }
+    .kanban-board {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .column {
+      background: var(--light-blue);
+      border: 2px solid var(--blue);
+      border-radius: 10px;
+      width: 280px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .column h2 {
+      background: var(--blue);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+    .tasks {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .task {
+      background: var(--white);
+      border-left: 6px solid var(--yellow);
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: grab;
+    }
+    .task:hover {
+      background: #fff9c4;
+    }
+    .task-text {
+      flex: 1;
+      word-break: break-word;
+    }
+    .task button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 2px 6px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .add-btn {
+      background: var(--yellow);
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 0 0 10px 10px;
+    }
+    .top-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    .top-controls button,
+    .top-controls input {
+      padding: 10px;
+      border: 1px solid var(--blue);
+      border-radius: 6px;
+      background: var(--light-blue);
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+    .tool-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .tool-card:hover {
+      transform: scale(1.03);
+      background-color: #f9f9f9;
+    }
+    .tool-desc {
+      display: none;
+      text-align: left;
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+    .tool-card.active .tool-desc {
+      display: block;
+    }
+    .bottom-message {
+      margin-top: 30px;
+      font-weight: bold;
+      font-style: italic;
+      color: #d32f2f;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .dark-mode {
+      background: #222;
+      color: #eee;
+    }
+    .dark-mode .column {
+      background: #333;
+      border-color: #555;
+    }
+    .dark-mode .column h2 {
+      background: #444;
+    }
+    .dark-mode .task {
+      background: #2d2d2d;
+    }
+    .dark-mode .top-controls button,
+    .dark-mode .top-controls input {
+      background: #555;
+      color: #eee;
+      border-color: #888;
+    }
+    #plannerSection {
+      display: none;
+      margin-top: 30px;
+    }
+    .planner-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .planner-day {
+      flex: 1 1 300px;
+      background: #f1faff;
+      border: 1px solid var(--blue);
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .planner-day h3 {
+      margin-bottom: 10px;
+    }
+    .planner-day textarea,
+    .planner-day input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue);
+      border-top: 1px solid var(--blue);
+    }
+  </style>
 </head>
 <body>
-  <h1>✅ Productivity Zone</h1>
-  <p>Plan tasks with AI-powered Kanban tools.</p>
-  <a href="index.html">⬅ Back to Home</a>
+  <h2>✅ Productivity Zone</h2>
+  <p>AI-powered Kanban board, planner, and essential tools to supercharge your daily grind.</p>
+
+  <div class="top-controls">
+    <input id="taskInput" type="text" placeholder="Enter task..." />
+    <button id="askAiBtn">🤖 Ask AI</button>
+    <button id="speakBtn">🎙️ Speak</button>
+    <button id="togglePlannerBtn">📅 Show Planner</button>
+  </div>
+
+  <div class="kanban-board">
+    <div class="column" data-status="todo">
+      <h2>To Do</h2>
+      <div class="tasks"></div>
+      <button class="add-btn">+ Add Task</button>
+    </div>
+    <div class="column" data-status="inprogress">
+      <h2>In Progress</h2>
+      <div class="tasks"></div>
+      <button class="add-btn">+ Add Task</button>
+    </div>
+    <div class="column" data-status="done">
+      <h2>Done</h2>
+      <div class="tasks"></div>
+      <button class="add-btn">+ Add Task</button>
+    </div>
+  </div>
+
+  <div id="plannerSection">
+    <h2>📅 Daily & Weekly Planner</h2>
+    <div class="planner-grid">
+      <div class="planner-day">
+        <h3>🗓️ Today</h3>
+        <textarea placeholder="Today's goals or plans..."></textarea>
+      </div>
+      <div class="planner-day">
+        <h3>📆 Weekly Overview</h3>
+        <ul>
+          <li>Monday: <input type="text"></li>
+          <li>Tuesday: <input type="text"></li>
+          <li>Wednesday: <input type="text"></li>
+          <li>Thursday: <input type="text"></li>
+          <li>Friday: <input type="text"></li>
+          <li>Saturday: <input type="text"></li>
+          <li>Sunday: <input type="text"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" id="toolsGrid"></div>
+
+  <footer>Plan. Prioritize. Perform. Productivity isn't a goal—it's your daily superpower.</footer>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+
+    function setupDrag(task) {
+      task.addEventListener("dragstart", () => task.classList.add("dragging"));
+      task.addEventListener("dragend", () => task.classList.remove("dragging"));
+    }
+
+    function createTask(text) {
+      const task = document.createElement("div");
+      task.className = "task";
+      task.draggable = true;
+      task.innerHTML = `<span class="task-text">${text}</span><button onclick="this.parentElement.remove(); saveTasks();">×</button>`;
+      setupDrag(task);
+      return task;
+    }
+
+    document.querySelectorAll(".add-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const inputText = taskInput.value.trim();
+        if (!inputText) return alert("Please enter a task!");
+        const task = createTask(inputText);
+        button.previousElementSibling.appendChild(task);
+        taskInput.value = "";
+        saveTasks();
+      });
+    });
+
+    taskInput.addEventListener("keypress", e => {
+      if (e.key === "Enter") {
+        document.querySelector('[data-status="todo"] .add-btn').click();
+      }
+    });
+
+    document.querySelectorAll(".tasks").forEach(zone => {
+      zone.addEventListener("dragover", e => {
+        e.preventDefault();
+        const dragging = document.querySelector(".dragging");
+        if (dragging && zone !== dragging.parentElement) {
+          zone.appendChild(dragging);
+          saveTasks();
+        }
+      });
+    });
+
+    function saveTasks() {
+      const data = {};
+      document.querySelectorAll(".column").forEach(column => {
+        const status = column.dataset.status;
+        const texts = Array.from(column.querySelectorAll(".task-text")).map(t => t.textContent);
+        data[status] = texts;
+      });
+      localStorage.setItem("kanbanData", JSON.stringify(data));
+    }
+
+    function loadTasks() {
+      const data = JSON.parse(localStorage.getItem("kanbanData") || "{}");
+      for (let status in data) {
+        const column = document.querySelector(`[data-status="${status}"] .tasks`);
+        data[status].forEach(text => {
+          const task = createTask(text);
+          column.appendChild(task);
+        });
+      }
+    }
+
+    loadTasks();
+
+    document.getElementById("toggleModeBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    document.getElementById("askAiBtn").addEventListener("click", () => {
+      alert("🤖 AI help is not available yet. Coming soon!");
+    });
+
+    document.getElementById("speakBtn").addEventListener("click", () => {
+      alert("🎙️ Voice input feature coming soon!");
+    });
+
+    document.getElementById("togglePlannerBtn").addEventListener("click", () => {
+      const planner = document.getElementById("plannerSection");
+      planner.style.display = planner.style.display === "none" ? "block" : "none";
+    });
+
+    const tools = [
+      { title: '🗓️ Calendar', desc: 'Daily/Weekly/Monthly view\nReminders\nGoogle Sync' },
+      { title: '📋 To-do List', desc: 'Prioritize\nLabels\nRecurring tasks' },
+      { title: '⏱️ Time Tracker', desc: 'Pomodoro\nCategories\nExport Logs' },
+      { title: '🧘 Focus Timer', desc: 'Ambient Sounds\nFocus Stats\nReflection' },
+      { title: '🧠 Brain Dump', desc: 'Free Write\nAI Sort\nMood Emoji' },
+      { title: '📂 File Vault', desc: 'Upload\nAuto-sort\nSmart Folders' },
+      { title: '🔐 Blocker', desc: 'Block apps/sites\nEmergency unlock\nReports' },
+      { title: '📎 Notes Pad', desc: 'Quick Notes\nVoice\nDaily Prompt' },
+      { title: '🔁 Habit Tracker', desc: 'Streaks\nBadges\nAuto Suggestions' },
+      { title: '🛠️ Workspace Setup', desc: 'Themes\nWidgets\nAI Organizer' }
+    ];
+
+    const toolsGrid = document.getElementById("toolsGrid");
+    tools.forEach(tool => {
+      const card = document.createElement("div");
+      card.className = "tool-card";
+      card.innerHTML = `<strong>${tool.title}</strong><div class="tool-desc">${tool.desc.replace(/\n/g, "<br>")}</div>`;
+      card.addEventListener("click", () => card.classList.toggle("active"));
+      toolsGrid.appendChild(card);
+    });
+  </script>
 </body>
-</html>
+  </html>
