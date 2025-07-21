@@ -1,13 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Language Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🌍 Language Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    h1 {
+      color: var(--red);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .innovation {
+      border: 2px solid var(--red);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .innovation:hover {
+      background-color: #ffeaea;
+    }
+
+    .innovation h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .innovation-content {
+      display: none;
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .emoji {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .toggle-btn {
+      font-size: 1.2rem;
+      color: var(--red);
+      user-select: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>🌍 Language Zone</h1>
-  <p>Learn new languages with AI-based support.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <h1>🌍 Language Zone – 8 Bold Innovations</h1>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>1. 🔁 Auto-Detect + Auto-Switch Language Engine</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>The app that speaks your language before you ask.</strong></p>
+      <ul>
+        <li>Detects language via device, IP, or past usage</li>
+        <li>Auto-switches to Hausa, Igbo, Yoruba, Swahili, Zulu, French, Arabic, or Pidgin</li>
+        <li>Enhances onboarding, reduces friction, feels personal</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>2. 🗣️ Dual Mode Translation Assistant (Text + Voice)</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>Talk or type. It listens, learns, and responds.</strong></p>
+      <ul>
+        <li>Real-time voice and text input/output</li>
+        <li>Offline support using phrasebooks</li>
+        <li>STT + TTS for full accessibility</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>3. 🤝 Crowdsourced Community Phrase Expansion</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>Let users become co-creators of the language engine.</strong></p>
+      <ul>
+        <li>Submit slang, idioms, or proverbs</li>
+        <li>Vote on accuracy with rewards (airtime, badges)</li>
+        <li>Admin-reviewed for quality control</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>4. 🎭 Cultural Context Layering</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>Translate meaning, not just words.</strong></p>
+      <ul>
+        <li>Explains deeper cultural or emotional meanings</li>
+        <li>Tooltips with context (e.g., “I dey manage” → struggling but hopeful)</li>
+        <li>Great for emotional and professional advice</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>5. 👵🏽 AI Voice Persona Selector</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>Choose who talks back to you—Aunty, Uncle, or Grandma.</strong></p>
+      <ul>
+        <li>Select familiar voice types for emotional connection</li>
+        <li>Examples: Hausa Uncle, Igbo Aunty, Yoruba Grandma, Pidgin Broda</li>
+        <li>Boosts empathy and engagement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>6. 📶 Offline Language Survival Kit</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>You don’t need data to understand, express, or connect.</strong></p>
+      <ul>
+        <li>Downloadable packs for career, gig, emotional support</li>
+        <li>Visual cards for low-literacy users</li>
+        <li>Essential in rural or low-data areas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>7. 🎉 Pidgin Pro Mode</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>Your hustle app now dey talk your way.</strong></p>
+      <ul>
+        <li>Full app switch into deep Naija Pidgin</li>
+        <li>Localized UI with humor and slang</li>
+        <li>Drives relatability and virality among youth</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="innovation" onclick="toggleContent(this)">
+    <h2><span>8. 🧏🏾 Sign Language Visual Module</span> <span class="toggle-btn">+</span></h2>
+    <div class="innovation-content">
+      <p><strong>No voice? No wahala. We see you.</strong></p>
+      <ul>
+        <li>Animated avatars teach Nigerian Sign Language (NSL)</li>
+        <li>Emotional expressions, career terms</li>
+        <li>Future feature: video sign dictionary, text-to-sign</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function toggleContent(element) {
+      const content = element.querySelector(".innovation-content");
+      const toggle = element.querySelector(".toggle-btn");
+      if (content.classList.contains("show")) {
+        content.classList.remove("show");
+        toggle.textContent = "+";
+      } else {
+        content.classList.add("show");
+        toggle.textContent = "–";
+      }
+    }
+  </script>
+
 </body>
-</html>
+  </html>
