@@ -1,13 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Finance Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💰 Finance Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    header {
+      background-color: var(--red);
+      color: var(--white);
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 1.5rem;
+    }
+
+    .tool-card {
+      background-color: var(--white);
+      border: 2px solid var(--red);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .tool-card h3 {
+      color: var(--red);
+    }
+
+    .multilingual {
+      font-size: 0.85rem;
+      color: #444;
+      margin-top: 0.4rem;
+    }
+
+    button {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 0.6rem 1.1rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--red);
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>💰 Finance Zone</h1>
-  <p>Track your budget and get saving tips.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <header>💰 Finance Zone – MVP LifeLine AI</header>
+
+  <div class="container">
+
+    <div class="tool-card">
+      <h3>📊 Smart Budget Planner</h3>
+      <p>Create, edit, and track monthly expenses – online or offline.</p>
+      <p class="multilingual">Yoruba: Ṣeto isuna rẹ · Hausa: Tsara kasafin kuɗi · Igbo: Mee atụmatụ ego gị · Pidgin: Arrange your money plan · Swahili: Panga bajeti yako · French: Planifiez votre budget · Arabic: خطط ميزانيتك · Zulu: Hlela isabelomali sakho</p>
+      <button onclick="alert('🧾 Budget tool opening...')">Start Budgeting</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>🎯 Auto-Save Goal Tracker</h3>
+      <p>Track savings progress visually toward personal or business goals.</p>
+      <p class="multilingual">Yoruba: Tẹle ibi-afẹde fipamọ · Hausa: Bin burin ajiya · Igbo: Soro ego ị na-echekwa · Pidgin: Watch how your savings dey grow · Swahili: Fuata malengo yako ya akiba · French: Suivez vos objectifs d’épargne · Arabic: تتبع أهداف التوفير · Zulu: Landelela imigomo yokonga yakho</p>
+      <button onclick="alert('📈 You’re 12% closer to your ₦50k goal.')">Track Savings</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>🤖 AI Financial Coach</h3>
+      <p>Get personalized financial advice in any supported language.</p>
+      <p class="multilingual">Pidgin: Ask your money question · Hausa: Tambayi mai bada shawara · Yoruba: Beere fun imoran inawo · Igbo: Jụọ maka ego · Swahili: Uliza kocha wa fedha · French: Posez votre question financière · Arabic: اسأل مستشارك المالي · Zulu: Buza iseluleko ngemali</p>
+      <button onclick="alert('🧠 Tip: Save first, then spend. Budget with your “why” in mind.')">Ask for Advice</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>💡 Daily ₦1k Challenge</h3>
+      <p>Learn how to survive and grow with only ₦1,000 per day.</p>
+      <p class="multilingual">Yoruba: Lo dọla pẹlu ₦1k · Hausa: Rayu da ₦1k a rana · Igbo: Gbaa ndụ n'ụbọchị na ₦1k · Pidgin: Stretch that ₦1k like pro · Swahili: Tumia ₦1k kwa siku · French: Vivez avec ₦1k par jour · Arabic: عِش بـ ₦1k يوميًا · Zulu: Phila ngo-₦1k ngosuku</p>
+      <button onclick="alert('📌 Today’s Hack: Cook instead of buying. Save ₦800.')">Try Today’s Hack</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>📉 Spending Habit Visualizer</h3>
+      <p>See how moods affect spending — and build healthier money habits.</p>
+      <p class="multilingual">Pidgin: Your feelings fit make you spend pass · Hausa: Yanayin ka yana shafar kashe kuɗi · Yoruba: Bi o ṣe n rilara le ni ipa lori inawo rẹ · Igbo: Obi gị nwere ike imetụta mmefu ego gị · Swahili: Hisia zako huathiri matumizi · French: Vos émotions influencent vos dépenses · Arabic: مشاعرك تؤثر على إنفاقك · Zulu: Imizwa yakho ithinta ukusebenzisa kwakho imali</p>
+      <button onclick="alert('🧠 Alert: Overspending triggered by stress detected.')">View Insights</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>👥 Group Savings Circles</h3>
+      <p>Save together with digital Ajo / Esusu / Chama groups.</p>
+      <p class="multilingual">Yoruba: Fipamọ pọ · Hausa: Ajo tare · Igbo: Esusu · Pidgin: Save with your people · Swahili: Okoa pamoja · French: Épargnez en groupe · Arabic: ادخر مع الآخرين · Zulu: Londoloza ndawonye</p>
+      <button onclick="alert('Group: Hustlers Fund - ₦2,000 due this week.')">Join a Circle</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>🎧 Financial Literacy Micro-Courses</h3>
+      <p>Learn money skills in 3 minutes or less.</p>
+      <p class="multilingual">Pidgin: Learn sharp-sharp · Yoruba: Kọ ẹkọ ni kiakia · Igbo: Mụta ngwa ngwa · Hausa: Koyi da sauri · Swahili: Jifunze haraka · French: Apprenez vite · Arabic: تعلّم بسرعة · Zulu: Funda ngokushesha</p>
+      <button onclick="alert('🔊 Now playing: How to budget ₦10k per month.')">Start Lesson</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>🚨 Smart Expense Warnings</h3>
+      <p>Get alerts when you're overspending on airtime, food, or impulse buys.</p>
+      <p class="multilingual">Hausa: Sanarwar kashe kuɗi mai yawa · Pidgin: You don dey over-spend · Yoruba: Ikilọ inawo ju · Igbo: Egwu mmefu ego · Swahili: Onyo la matumizi kupita kiasi · French: Alerte de dépenses excessives · Arabic: تحذير: الإنفاق الزائد · Zulu: Isixwayiso sokusetshenziswa ngokweqile</p>
+      <button onclick="alert('⚠ You’ve spent ₦6,400 on data this month. Consider a night plan.')">Check Alerts</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>📲 Offline Money Toolkit (USSD/SMS)</h3>
+      <p>Send SMS/USSD to plan budgets, update savings, or get help — no data needed.</p>
+      <p class="multilingual">Pidgin: No data? Just send SMS · Hausa: Aiki da saƙo kawai · Igbo: Zip-internet, text o! · Yoruba: Rán SMS láìsí data · Swahili: Tuma SMS bila data · French: Utilisez les SMS · Arabic: استخدم الرسائل القصيرة · Zulu: Thumela umyalezo ngaphandle kwedatha</p>
+      <button onclick="alert('Text SAVE 500 to 32052 to update your goal!')">Use Offline Tool</button>
+    </div>
+
+  </div>
+
+  <footer>
+    💼 MVP LifeLine AI App – Earn. Heal. Grow. | Empowering Financial Confidence for African Youth.
+  </footer>
+
 </body>
-</html>
+        </html>
