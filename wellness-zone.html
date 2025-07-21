@@ -1,13 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Wellness Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🧘 Wellness Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    header {
+      background-color: var(--red);
+      color: var(--white);
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 1.5rem;
+    }
+
+    .tool-card {
+      background-color: var(--white);
+      border: 2px solid var(--red);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .tool-card h3 {
+      color: var(--red);
+    }
+
+    button {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 0.7rem 1.2rem;
+      margin-top: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--red);
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>🧘 Wellness Zone</h1>
-  <p>Mental health tips, calm audio, and wellness tools.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <header>🧘 Wellness Zone – MVP LifeLine AI</header>
+
+  <div class="container">
+
+    <!-- 1. Mood Tracker -->
+    <div class="tool-card">
+      <h3>😌 Mood Tracker</h3>
+      <p>Tap your mood and receive personalized healing suggestions instantly.</p>
+      <button onclick="alert('🧠 Mood logged. You’re recommended to try our “Deep Calm” audio now.')">Log Mood</button>
+    </div>
+
+    <!-- 2. Guided Journaling -->
+    <div class="tool-card">
+      <h3>📓 Guided Journaling</h3>
+      <p>Reflect on your emotions with AI-powered prompts and responses.</p>
+      <button onclick="alert('Prompt: What’s something you’ve been holding in? Let it out.')">Start Journaling</button>
+    </div>
+
+    <!-- 3. Calming Audio -->
+    <div class="tool-card">
+      <h3>🎧 Calming Audio</h3>
+      <p>Enjoy African soundscapes, nature tones, and mental detox audio.</p>
+      <button onclick="alert('🎧 Now playing: Rain on Zinc – African Calm Series')">Play Audio</button>
+    </div>
+
+    <!-- 4. Language Meditations -->
+    <div class="tool-card">
+      <h3>🌍 Local Language Meditations</h3>
+      <p>Experience mindfulness in Hausa, Yoruba, Zulu,Igbo, Arabic, French, Swahili, and Pidgin English.</p>
+      <button onclick="alert('Meditation starting in Yoruba: “Mo wa l’okan balẹ”')">Try Now</button>
+    </div>
+
+    <!-- 5. Offline Wellness Kit -->
+    <div class="tool-card">
+      <h3>📲 Offline Wellness Kit</h3>
+      <p>Use SMS or USSD to receive calming affirmations and exercises offline.</p>
+      <button onclick="alert('📩 Text CALM1 to 32052. No data? No problem.')">Access Offline</button>
+    </div>
+
+    <!-- 6. Sleep Coaching -->
+    <div class="tool-card">
+      <h3>🛌 Sleep Coaching</h3>
+      <p>Fall asleep to bedtime stories, gentle music, and voice-guided breathing.</p>
+      <button onclick="alert('🎙 Sleep Coach: Breathing in... Hold... Exhale...')">Start Sleep Mode</button>
+    </div>
+
+    <!-- 7. Emotion-Aware Audio -->
+    <div class="tool-card">
+      <h3>🤖 Emotion-Aware Audio</h3>
+      <p>AI detects how you feel from your entries or voice, then selects ideal audio.</p>
+      <button onclick="alert('Detected: Stressed. Suggesting “Soothing Drum & Rain Mix.”')">Auto-Detect & Play</button>
+    </div>
+
+    <!-- 8. Streak & Rewards -->
+    <div class="tool-card">
+      <h3>🔥 Wellness Streak & Rewards</h3>
+      <p>Earn streaks and unlock gifts by completing daily wellness tasks.</p>
+      <button onclick="alert('✅ Day 3 complete! 2 more days to unlock “Inner Peace Wallpaper.”')">Check Progress</button>
+    </div>
+
+    <!-- 9. Community Soundboard -->
+    <div class="tool-card">
+      <h3>🎤 Community Soundboard</h3>
+      <p>Listen to or upload calming sounds from your local environment.</p>
+      <button onclick="alert('🔊 Now playing: “Evening Rain in Kano – submitted by Yusuf A.”')">Play Community Sound</button>
+    </div>
+
+  </div>
+
+  <footer>
+    ❤️ Powered by MVP LifeLine AI App – Earn. Heal. Grow. | Empowering Africa's Youth Through Wellness.
+  </footer>
+
 </body>
-</html>
+        </html>
