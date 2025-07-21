@@ -1,13 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Onboarding Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎓 Onboarding Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+header {
+  background-color: var(--red);
+  color: var(--white);
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.tool-card {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.tool-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--red);
+}
+
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+  </style>
 </head>
 <body>
-  <h1>🎓 Onboarding Zone</h1>
-  <p>Learn how to use the app step-by-step.</p>
-  <a href="index.html">⬅ Back to Home</a>
+  <header>🎓 Onboarding Zone – Learn How the App Works</header>  <div class="container">
+    <div class="tool-card">
+      <div class="tool-title">📱 App Tour</div>
+      <div>Interactive guide to explore MVP LifeLine AI App features step-by-step.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">🌍 Language Selection</div>
+      <div>Supports Hausa, Igbo, Yoruba, Pidgin, Swahili, French, Arabic, Zulu – switch anytime!</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">🎙️ Voice-Guided Tutorial</div>
+      <div>Audio instructions to guide users with low literacy or visual challenges.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">🎮 Gamified Learning</div>
+      <div>Earn points for completing onboarding steps and tutorials.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">📶 Offline Walkthrough</div>
+      <div>Learn how to use the app via SMS or USSD in low-connectivity areas.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">👤 Personalized Guide</div>
+      <div>Dynamic onboarding based on your profile, goals, and region.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">📖 User Handbook</div>
+      <div>Quick reference guide for each module inside the app.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">🎥 Video Lessons</div>
+      <div>Short onboarding videos to visually demonstrate how features work.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-title">💬 Chatbot Support</div>
+      <div>Ask questions during onboarding and get instant answers from AI.</div>
+    </div>
+  </div>  <footer>
+    ✨ MVP LifeLine AI App – Earn. Heal. Grow. ✨ Multilingual | Youth-Driven | Offline-Ready
+  </footer>
 </body>
 </html>
