@@ -1,13 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Help Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🆘 Help Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+header {
+  background-color: var(--red);
+  padding: 1rem;
+  text-align: center;
+  color: var(--white);
+}
+
+.container {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--red);
+}
+
+.bottom {
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 1rem;
+  font-style: italic;
+}
+
+a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+  </style>
 </head>
 <body>
-  <h1>🆘 Help Zone</h1>
-  <p>Need help? FAQs and user support live here.</p>
-  <a href="index.html">⬅ Back to Home</a>
+  <header>
+    <h1>🆘 Help Zone – We’ve Got You</h1>
+    <p>Empowering users in 8 languages — anytime, anywhere.</p>
+  </header>  <div class="container">
+    <div class="card">
+      <h3>🔹 FAQs in 8 Languages</h3>
+      <p>Browse answers in Hausa, Igbo, Yoruba, Pidgin, Swahili, French, Arabic, Zulu. Smart search included.</p>
+    </div><div class="card">
+  <h3>🔹 Voice-Based Help</h3>
+  <p>Listen to responses in your language. Offline audio available for low-literacy support.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 Report a Problem</h3>
+  <p>Fill a form, send a voice message, or upload a screenshot. Offline submissions sync later.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 Live Chat (Multilingual)</h3>
+  <p>Chat in real time or request a callback. Supports English, Pidgin, Swahili, French.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 Support Ticket System</h3>
+  <p>Submit and track help requests with status: Pending → Responded → Resolved.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 Video & Animation Tutorials</h3>
+  <p>How-to guides for Emotional Journal, CV Builder, Gig Tracker. Subtitled in 8 languages.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 Community Forum (Ask MVP)</h3>
+  <p>Ask, vote, share — user-driven help moderated for safety and clarity.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 Offline Help (USSD + SMS)</h3>
+  <p>Text “HELP” or dial *123# to get step-by-step tips in your language.</p>
+</div>
+
+<div class="card">
+  <h3>🔹 AI Help Assistant (Coming Soon)</h3>
+  <p>24/7 chatbot in 8 languages, trained on app features and youth support.</p>
+</div>
+
+  </div>  <div class="bottom">
+    ✨ Help is never far – MVP LifeLine AI App has your back in 8 languages, online or offline. ✨
+  </div>
 </body>
 </html>
