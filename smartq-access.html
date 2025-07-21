@@ -3,61 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartQ Access – MVP LifeLine AI</title>
+  <title>🌐 SmartQ Access – MVP LifeLine AI</title>
   <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #fff;
-      color: #111;
+      background-color: var(--white);
+      color: var(--black);
       padding: 20px;
       margin-bottom: 80px;
     }
+
     h1 {
-      color: #e60000;
+      color: var(--red);
       font-size: 28px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
+
     .card {
-      background-color: #fdf0f0;
-      border-left: 6px solid #e60000;
+      background-color: #fff5f5;
+      border-left: 6px solid var(--red);
       border-radius: 12px;
       padding: 16px;
       margin-bottom: 15px;
-      cursor: pointer;
+      transition: 0.3s;
     }
-    .card .title {
+
+    .card:hover {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .title {
       font-weight: bold;
       font-size: 18px;
-      color: #e60000;
+      color: var(--red);
+      cursor: pointer;
     }
-    .card .desc {
+
+    .desc {
       font-size: 16px;
       margin-top: 4px;
     }
-    .card .expand {
+
+    .expand {
       display: none;
       margin-top: 10px;
       font-size: 15px;
       color: #444;
     }
+
     .highlight {
       font-weight: bold;
-      color: #e60000;
+      color: var(--red);
     }
+
     .cta-button {
       display: inline-block;
-      background: #e60000;
-      color: #fff;
+      background: var(--red);
+      color: var(--white);
       padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .btn {
+      background: var(--red);
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       margin-top: 10px;
     }
+
     .sticky-chat {
       position: fixed;
       bottom: 15px;
       right: 20px;
-      background-color: #e60000;
+      background-color: var(--red);
       color: white;
       padding: 12px 18px;
       border-radius: 50px;
@@ -66,164 +103,158 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       z-index: 999;
     }
-  </style>
-  <script>
-    function toggleExpand(id) {
-      const el = document.getElementById('expand-' + id);
-      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+
+    ul {
+      padding-left: 20px;
     }
-  </script>
+  </style>
 </head>
 <body>
-  <h1>🚀 SmartQ Access – </h1>
-  <a href="https://wa.me/234XXXXXXXXXX" class="cta-button">🚀 Chat With SmartQ Now</a>
 
-  <!-- Moved Section 10 here and renamed it to 1 -->
-  <div class="card" onclick="toggleExpand(10)">
-    <div class="title">1. ⏳ SmartQ Virtual Queue System</div>
-    <div class="desc">Join or monitor queues at NIN, NYSC, banks, and hospitals.</div>
-    <div class="expand" id="expand-10">
-      <p>Skip physical wait lines! SmartQ Queue lets you:</p>
-      <ul style="padding-left: 18px;">
-        <li>📍 Join virtual queues near you</li>
-        <li>📱 Get SMS alerts when it's your turn</li>
-        <li>📊 View real-time wait times</li>
-        <li>👥 Choose queue type (NIN, NYSC, Bank, etc.)</li>
-      </ul>
-      <hr style="margin: 15px 0;">
-      <h3>🪪 Join Now</h3>
-      <label for="service">Choose Service Type:</label>
-      <select id="service">
+<h1>🚀 SmartQ Access – MVP LifeLine AI</h1>
+<a href="https://chat.whatsapp.com/FicWd0fOVgtDV7ePS3ZzDd?mode=ac_t" class="cta-button" target="_blank">🚀 Chat With SmartQ Now</a>
+
+<!-- TOOL 1 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(1)">1. ⏳ SmartQ Virtual Queue System</div>
+  <div class="desc">Join or monitor queues at NIN, NYSC, banks, and hospitals.</div>
+  <div class="expand" id="expand-1">
+    <ul>
+      <li>📍 Join virtual queues near you</li>
+      <li>📱 Get SMS alerts when it's your turn</li>
+      <li>📊 View real-time wait times</li>
+      <li>👥 Select queue type (NIN, NYSC, Bank, etc.)</li>
+    </ul>
+    <form onsubmit="joinQueue(event)">
+      <label>Choose Service:</label>
+      <select id="service" required>
+        <option value="">-- Select --</option>
         <option>NIN Registration</option>
         <option>NYSC Clearance</option>
         <option>Hospital Outpatient</option>
         <option>Bank Customer Service</option>
       </select>
-      <label for="location">Enter Your Location:</label>
-      <input type="text" id="location" placeholder="e.g., Wuse, Abuja" />
-      <div class="info-box" id="queueStatus">⏳ Waiting for location...</div>
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" placeholder="Your name" />
-      <label for="phone">Phone (for SMS alert):</label>
-      <input type="tel" id="phone" placeholder="080xxxxxxxx" />
-      <button class="btn" onclick="joinQueue()">🚀 Join Queue</button>
-    </div>
+      <label>Location:</label>
+      <input type="text" id="location" placeholder="e.g. Wuse, Abuja" required />
+      <label>Full Name:</label>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <label>Phone Number:</label>
+      <input type="tel" id="phone" placeholder="080xxxxxxx" required />
+      <button class="btn" type="submit">🚀 Join Queue</button>
+    </form>
   </div>
+</div>
 
-  <!-- Renumbered the rest -->
-  <div class="card" onclick="toggleExpand(1)">
-    <div class="title">2. 📡 Offline AI via USSD + Local Cache</div>
-    <div class="desc">Use <span class="highlight">*123#</span> to ask SmartQ anything via USSD. Get AI replies by SMS.</div>
-    <div class="expand" id="expand-1">
-      SmartQ stores popular answers locally by topic and language. Works offline or with minimal connection.<br><br>
-      <a href="tel:*123#">📞 Dial Now</a>
-    </div>
+<!-- TOOL 2 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(2)">2. 🌐 USSD + SMS Smart AI (Offline Mode)</div>
+  <div class="desc">Use <span class="highlight">*123#</span> for SmartQ via SMS.</div>
+  <div class="expand" id="expand-2">
+    Ask SmartQ anything via USSD. Replies come by SMS.<br><br>
+    <a href="tel:*123#">📞 Dial Now</a>
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(2)">
-    <div class="title">3. 🧑🏽‍🤝‍🧑🏿 Peer-to-Peer Q&A + Mentorship</div>
-    <div class="desc">Connect with others for answers and mentorship.</div>
-    <div class="expand" id="expand-2">
-      Users can ask or answer questions in local languages.<br><br>
-      <a href="/ask.html">💬 Ask a Question</a>
-    </div>
+<!-- TOOL 3 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(3)">3. 🧑🏽‍🤝‍🧑🏿 Peer Q&A + Mentorship</div>
+  <div class="desc">Find support or mentor others in your language.</div>
+  <div class="expand" id="expand-3">
+    Engage with community-based knowledge in Hausa, Yoruba, Igbo, and more.
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(3)">
-    <div class="title">4. 🧠 Culture-Smart NLP Engine</div>
-    <div class="desc">Understands slang, culture, and local idioms.</div>
-    <div class="expand" id="expand-3">
-      Built with African languages and tone in mind.<br><br>
-      <a href="/demo-chat.html">🧪 Try Demo</a>
-    </div>
+<!-- TOOL 4 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(4)">4. 🧠 Culture-Smart NLP</div>
+  <div class="desc">Understands African slang and phrases.</div>
+  <div class="expand" id="expand-4">
+    Designed to understand culture, tone, and real-life context.
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(4)">
-    <div class="title">5. 🔊 Voice Answer in Local Language</div>
-    <div class="desc">Listen to answers in Hausa, Igbo, Yoruba, and more.</div>
-    <div class="expand" id="expand-4">
-      Spoken replies help users with low literacy or reading fatigue.<br><br>
-      <p class="highlight">🎧 Listen in your language:</p>
-      <ul style="list-style: none; padding-left: 0;">
-        <li>🇳🇬 Hausa:<br>
-          <audio controls>
-            <source src="/audio-hausa.mp3" type="audio/mpeg">
-          </audio>
-        </li>
-        <li>🇳🇬 Yoruba:<br>
-          <audio controls>
-            <source src="/audio-yoruba.mp3" type="audio/mpeg">
-          </audio>
-        </li>
-        <li>🇳🇬 Igbo:<br>
-          <audio controls>
-            <source src="/audio-igbo.mp3" type="audio/mpeg">
-          </audio>
-        </li>
-        <li>🇰🇪 Swahili:<br>
-          <audio controls>
-            <source src="/audio-swahili.mp3" type="audio/mpeg">
-          </audio>
-        </li>
-        <li>🇫🇷 French:<br>
-          <audio controls>
-            <source src="/audio-french.mp3" type="audio/mpeg">
-          </audio>
-        </li>
-        <li>🇸🇦 Arabic:<br>
-          <audio controls>
-            <source src="/audio-arabic.mp3" type="audio/mpeg">
-          </audio>
-        </li>
-      </ul>
-    </div>
+<!-- TOOL 5 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(5)">5. 🔊 Voice Replies in Local Languages</div>
+  <div class="desc">Audio answers in Hausa, Igbo, Yoruba, and more.</div>
+  <div class="expand" id="expand-5">
+    <p>🎧 Choose Language:</p>
+    <ul>
+      <li>🇳🇬 Hausa – <audio controls><source src="audio-hausa.mp3" type="audio/mpeg"></audio></li>
+      <li>🇳🇬 Yoruba – <audio controls><source src="audio-yoruba.mp3" type="audio/mpeg"></audio></li>
+      <li>🇳🇬 Igbo – <audio controls><source src="audio-igbo.mp3" type="audio/mpeg"></audio></li>
+    </ul>
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(5)">
-    <div class="title">6. 💬 WhatsApp AI SmartQ Bot</div>
-    <div class="desc">Chat with SmartQ like a friend on WhatsApp.</div>
-    <div class="expand" id="expand-5">
-      Available 24/7 with multilingual support.<br><br>
-      <a href="https://wa.me/234XXXXXXXXXX">📲 Message SmartQ</a>
-    </div>
+<!-- TOOL 6 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(6)">6. 💬 WhatsApp AI Chat</div>
+  <div class="desc">Talk with SmartQ 24/7 on WhatsApp.</div>
+  <div class="expand" id="expand-6">
+    <a href="https://wa.me/09078189381" target="_blank">📲 Message SmartQ Now</a>
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(6)">
-    <div class="title">7. 🎯 Smart Gig Match Engine</div>
-    <div class="desc">Find remote or local gigs instantly.</div>
-    <div class="expand" id="expand-6">
-      AI filters gigs by your location, skill, and time.<br><br>
-      <a href="/gig-form.html">💼 Find Gigs</a>
-    </div>
+<!-- TOOL 7 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(7)">7. 🎯 Smart Gig Match</div>
+  <div class="desc">Find gigs by location, skill, and availability.</div>
+  <div class="expand" id="expand-7">
+    <a href="/gig-form.html">💼 Find Gigs</a>
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(7)">
-    <div class="title">8. 🆘 E-FAP (Emotional First Aid Protocol)</div>
-    <div class="desc">Mental health self-check + support group match.</div>
-    <div class="expand" id="expand-7">
-      Offers self-check tools and peer connection.<br><br>
-      <a href="https://wa.me/234XXXXXXXXXX">💗 Need Support?</a>
-    </div>
+<!-- TOOL 8 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(8)">8. 🆘 E-FAP (Emotional First Aid)</div>
+  <div class="desc">Mental health check + peer group referral.</div>
+  <div class="expand" id="expand-8">
+    <a href="https://wa.me/09078189381" target="_blank">💗 Connect Now</a>
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(8)">
-    <div class="title">9. 🧬 Personalized Lifeline Profiles</div>
-    <div class="desc">Custom interface for students, hustlers, parents, etc.</div>
-    <div class="expand" id="expand-8">
-      Adapts questions, answers, and advice based on user type.<br><br>
-      <a href="/choose-profile.html">🎭 Choose Your Role</a>
-    </div>
+<!-- TOOL 9 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(9)">9. 🧬 Lifeline Profiles</div>
+  <div class="desc">Custom dashboard for students, hustlers, etc.</div>
+  <div class="expand" id="expand-9">
+    <a href="/choose-profile.html">🎭 Set My Role</a>
   </div>
+</div>
 
-  <div class="card" onclick="toggleExpand(9)">
-    <div class="title">10. 🌍 Multilingual Access + Auto Matching</div>
-    <div class="desc">Supports 9 languages + smart answer matching.</div>
-    <div class="expand" id="expand-9">
-      Choose your language once. SmartQ replies in it by default.<br><br>
-      <a href="/languages.html">🌐 Select Language</a>
-    </div>
+<!-- TOOL 10 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(10)">10. 🌍 Multilingual + Smart Answer Matching</div>
+  <div class="desc">Supports 8+ languages with AI-based auto-matching.</div>
+  <div class="expand" id="expand-10">
+    <a href="/languages.html">🌐 Select Language</a>
   </div>
+</div>
 
-  <a href="https://wa.me/234XXXXXXXXXX" class="sticky-chat">💬 Chat SmartQ</a>
+<!-- Sticky Chat -->
+<a href="https://chat.whatsapp.com/FicWd0fOVgtDV7ePS3ZzDd?mode=ac_t" class="sticky-chat" target="_blank">💬 Chat SmartQ</a>
+
+<script>
+  function toggleExpand(id) {
+    const el = document.getElementById('expand-' + id);
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+
+  function joinQueue(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const location = document.getElementById("location").value;
+    const phone = document.getElementById("phone").value;
+    const service = document.getElementById("service").value;
+
+    if (name && location && phone && service) {
+      alert(`✅ ${name}, you have joined the queue for ${service} at ${location}!`);
+    } else {
+      alert("⚠️ Please fill out all fields.");
+    }
+  }
+</script>
+
 </body>
-  </html>
+</html>
