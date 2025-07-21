@@ -1,13 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Insight Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📊 Insight Zone – MVP LifeLine AI</title>
+  <style>
+    :root {
+      --red: #e60000;
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    header {
+      background-color: var(--red);
+      padding: 1rem;
+      color: var(--white);
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .tool-card {
+      border: 2px solid var(--red);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      background-color: #fff5f5;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .tool-card:hover {
+      transform: scale(1.02);
+      background-color: #ffeaea;
+    }
+
+    .tool-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .bottom-message {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: var(--red);
+      color: var(--white);
+      text-align: center;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .lang-list {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-left: 4px solid var(--red);
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-  <h1>📊 Insight Zone</h1>
-  <p>Track your usage, growth, and analytics insights.</p>
-  <a href="index.html">⬅ Back to Home</a>
+
+  <header>📊 Insight Zone – Data That Empowers You</header>
+
+  <div class="container">
+
+    <p><strong>Mission:</strong> Give users the power to track their activity, reflect on patterns, and make smarter decisions across career, emotional wellness, and productivity — all in 8 languages.</p>
+
+    <div class="tool-card" onclick="alert('Viewing Personal Usage Dashboard')">
+      <div class="tool-title">1. Personal Usage Dashboard</div>
+      <p>Visual time logs for Career Zone, Emotional Journal, Productivity Tools, Language Learning — by day, week, or month.</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Tracking Progress')">
+      <div class="tool-title">2. Progress Tracker (Streaks & Wins)</div>
+      <p>Earn badges like “3 Days of Healing” or “5 Gigs Completed.” Stay motivated.</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Checking Notifications')">
+      <div class="tool-title">3. Smart Notifications</div>
+      <p>Get personalized nudges based on your activity: “Great job prioritizing your wellbeing!”</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Checking Offline Sync')">
+      <div class="tool-title">4. Offline Data Sync</div>
+      <p>Track progress without internet — syncs when online returns.</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Viewing Language Reports')">
+      <div class="tool-title">5. Multilingual Reports</div>
+      <p>Weekly insights in Hausa, Igbo, Yoruba, Pidgin, Swahili, French, Arabic, Zulu. Download or share PDF.</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Setting Goals')">
+      <div class="tool-title">6. Custom Goals & Reminders</div>
+      <p>“Apply to 5 jobs this week” – Set your own reminders and stay on track.</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Viewing AI Suggestions')">
+      <div class="tool-title">7. AI Insights & Suggestions</div>
+      <p>Get personalized feedback: “Want to update your CV?”</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Viewing Mood Data')">
+      <div class="tool-title">8. Mood Analytics (Emotional Zone Sync)</div>
+      <p>Chart your emotional patterns. See growth over time.</p>
+    </div>
+
+    <div class="tool-card" onclick="alert('Managing Privacy')">
+      <div class="tool-title">9. Data Privacy First</div>
+      <p>All tracking is optional. You control what’s collected and can delete anytime.</p>
+    </div>
+
+    <div class="lang-list">
+      <strong>Languages Supported:</strong> Hausa, Igbo, Yoruba, Pidgin, Swahili, French, Arabic, Zulu.
+    </div>
+
+    <div class="bottom-message">
+      📊 Your progress matters. Insight Zone helps you reflect, refocus, and rise — in your own language, at your own pace.
+    </div>
+
+  </div>
 </body>
 </html>
