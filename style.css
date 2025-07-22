@@ -95,27 +95,27 @@ body {
   font-weight: bold;
 }
 
-/* ─── Mic Button ─────────────────── */
-#mic-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #c8102e;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
+/* ─── Mic Button (New) ───────────── */
+#mic-button {
+  color: white;
+  background-color: red;
   font-size: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  z-index: 999;
-  animation: pulseGlow 2.5s infinite;
-  transition: background-color 0.3s;
+  cursor: move;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.2s ease, background-color 0.3s;
 }
 
-#mic-btn:hover {
-  background-color: #a20d23;
+#mic-button:hover {
+  background-color: darkred;
+  transform: scale(1.1);
 }
 
 /* ─── Footer ─────────────────────── */
@@ -173,17 +173,14 @@ body.dark {
   background-color: #111;
   color: #eee;
 }
-
 body.dark .card {
   background-color: #222;
   border-color: #555;
   color: #eee;
 }
-
 body.dark .card h3 {
   color: #ff4c4c;
 }
-
 body.dark .footer,
 body.dark .header {
   background-color: #000;
@@ -249,4 +246,4 @@ body.theme-blue .card {
 }
 body.theme-blue .card h3 {
   color: #1e90ff;
-}
+  }
