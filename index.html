@@ -104,7 +104,7 @@
     </nav>
   </footer>
 
-  <!-- 🧠 Translations Script -->
+  <!-- 🧠 Language Script -->
   <script>
     const translations = {
       en: { greeting: "Welcome, Hope,\nLet’s grow today." },
@@ -128,6 +128,27 @@
 
     updateTexts(languageSelector.value);
     languageSelector.addEventListener("change", () => updateTexts(languageSelector.value));
+  </script>
+
+  <!-- 🎨 Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    const themes = ['light', 'dark', 'blue', 'green'];
+    let currentThemeIndex = 0;
+
+    function applyTheme(theme) {
+      document.body.className = ''; // Clear previous themes
+      document.body.classList.add(`theme-${theme}`);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      applyTheme(themes[currentThemeIndex]);
+    });
+
+    applyTheme(themes[0]); // Set default theme
   </script>
 
   <!-- 🎤 Voice Recognition Script -->
@@ -175,7 +196,6 @@
       const micHeight = micButton.offsetHeight;
       const footerTop = footer.offsetTop;
 
-      // Show mic only after user scrolls 150px
       if (scrollY > 150) {
         micButton.style.opacity = "1";
         micButton.style.pointerEvents = "auto";
@@ -184,7 +204,6 @@
         micButton.style.pointerEvents = "none";
       }
 
-      // Adjust mic position if overlapping footer
       const windowBottom = scrollY + window.innerHeight;
       if (windowBottom > footerTop) {
         micButton.style.position = 'absolute';
