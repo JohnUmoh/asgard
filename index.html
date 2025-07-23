@@ -1,277 +1,247 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-    }
-
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      background-color: #ffffff;
-      border-bottom: 2px solid #ddd;
-    }
-
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .logo-img {
-      height: 80px;
-      width: auto;
-      margin-bottom: 0.5rem;
-    }
-
-    .tagline {
-      font-size: 0.95rem;
-      color: #333;
-      margin: 1rem 0;
-    }
-
-    .tag-punch {
-      color: red;
-      font-weight: bold;
-    }
-
-    #mic-button {
-      color: white;
-      background-color: red;
-      font-size: 2rem;
-      cursor: pointer;
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      z-index: 1000;
-      border-radius: 50%;
-      padding: 10px 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.2s ease;
-    }
-
-    #mic-button:hover {
-      background-color: darkred;
-      transform: scale(1.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #f9f9f9;
-      font-size: 0.9rem;
-      color: #444;
-      border-top: 1px solid #ddd;
-    }
-
-    footer nav a {
-      margin: 0 5px;
-      text-decoration: none;
-      color: #555;
-    }
-
-    footer nav a:hover {
-      color: red;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 🧠 Header -->
-  <header class="header">
-    <div class="logo-container">
-      <img src="assets/logo.png" alt="MVP LifeLine AI Logo" class="logo-img" />
-      <h1>MVP LifeLine AI App</h1>
-    </div>
-    <p class="tagline">
-      <strong>Built for Africa’s bold dreamers.</strong><br />
-      This isn’t just an app — it’s your digital lifeline.<br />
-      <span class="tag-punch">Earn smarter. Heal deeper. Grow faster.</span>
-    </p>
-
-    <select id="language" aria-label="Select Language">
-      <option value="en">English</option>
-      <option value="ha">Hausa</option>
-      <option value="ig">Igbo</option>
-      <option value="yo">Yoruba</option>
-      <option value="sw">Swahili</option>
-      <option value="fr">French</option>
-      <option value="ar">Arabic</option>
-      <option value="zu">Zulu</option>
-      <option value="pg">Pidgin</option>
-    </select>
-
-    <button id="theme-toggle" aria-label="Cycle Theme Colors">🎨</button>
-  </header>
-
-  <!-- 🚀 Main Content -->
-  <main class="container">
-    <section class="greeting" aria-label="App Greeting">
-      <h2>Welcome, Hope,<br><span>Let’s grow today.</span></h2>
-    </section>
-
-    <div id="speech-output" class="speech-box" aria-label="Speech Result">
-      <p><strong>Voice Input:</strong> <span id="speech-text">[Waiting for input...]</span></p>
-    </div>
-
-    <div class="modules-grid" aria-label="Modules Section">
-      <!-- 🌍 App Zones -->
-      <a href="career-zone.html" class="card"><h3>📁 Career Zone</h3><p>Jobs, CVs, and Interview Prep.</p></a>
-      <a href="emotional-zone.html" class="card"><h3>💔 Emotional Zone</h3><p>Track feelings and journaling.</p></a>
-      <a href="smartq-access.html" class="card"><h3>🤖 SmartQ Access</h3><p>Ask anything to your AI guide.</p></a>
-      <a href="dual-mode-ai.html" class="card"><h3>🧠 Dual Mode AI</h3><p>Switch between career/emotional help.</p></a>
-      <a href="digital-hustle-hub.html" class="card"><h3>💼 Digital Hustle Hub</h3><p>Freelance and gig economy tools.</p></a>
-      <a href="partner-zone.html" class="card"><h3>🤝 Partner Zone</h3><p>NGO, mentors and impact partners.</p></a>
-      <a href="productivity-zone.html" class="card"><h3>✅ Productivity Zone</h3><p>AI-powered Kanban and planner.</p></a>
-      <a href="wellness-zone.html" class="card"><h3>🧘 Wellness Zone</h3><p>Mental health & calming audio.</p></a>
-      <a href="finance-zone.html" class="card"><h3>💰 Finance Zone</h3><p>Budgeting and savings advice.</p></a>
-      <a href="insight-zone.html" class="card"><h3>📊 Insight Zone</h3><p>Track usage & analytics insights.</p></a>
-      <a href="sync-zone.html" class="card"><h3>🔄 Sync Zone</h3><p>Manage your offline & online data.</p></a>
-    </div>
-
-    <section id="gpt-reply-box" class="card" style="display:none; margin-top:2rem;">
-      <h3>🤖 SmartQ says:</h3>
-      <p id="gpt-reply-text">...</p>
-    </section>
-  </main>
-
-  <!-- 🎤 Floating Mic Button -->
-  <div id="mic-button" aria-label="Voice Assistant">🎤</div>
-
-  <!-- 📘 Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 MVP LifeLine AI App. Built by John Umoh.</p>
-    <nav aria-label="Footer navigation">
-      <a href="privacy-zone.html">Privacy</a> |
-      <a href="help-zone.html">Help</a> |
-      <a href="security-zone.html">Security</a> |
-      <a href="language-zone.html">Language</a> |
-      <a href="monetization-zone.html">Monetization</a> |
-      <a href="onboarding-zone.html">Onboarding</a>
-    </nav>
-  </footer>
-
-  <!-- 🧠 Language Script -->
-  <script>
-    const translations = {
-      en: { greeting: "Welcome, Hope,\nLet’s grow today." },
-      ha: { greeting: "Barka da zuwa, Hope,\nMu ci gaba yau." },
-      ig: { greeting: "Nnọọ, Hope,\nKa too tupu taa." },
-      yo: { greeting: "Kaabo, Hope,\nJẹ ká dagba lónìí." },
-      sw: { greeting: "Karibu, Hope,\nTukue leo." },
-      fr: { greeting: "Bienvenue, Hope,\nGrandissons aujourd’hui." },
-      ar: { greeting: "مرحباً، Hope،\nلننمو اليوم." },
-      zu: { greeting: "Siyakwamukela, Hope,\nMakhule namuhla." },
-      pg: { greeting: "Wetin dey Hope,\nMake we grow today." }
-    };
-
-    const languageSelector = document.getElementById("language");
-    const greetingEl = document.querySelector(".greeting h2");
-
-    function updateTexts(lang) {
-      const t = translations[lang] || translations.en;
-      greetingEl.innerText = t.greeting;
-    }
-
-    updateTexts(languageSelector.value);
-    languageSelector.addEventListener("change", () => updateTexts(languageSelector.value));
-  </script>
-
-  <!-- 🎨 Theme Toggle Script -->
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themes = ['light', 'dark', 'blue', 'green'];
-    let currentThemeIndex = 0;
-
-    function applyTheme(theme) {
-      document.body.className = '';
-      document.body.classList.add(`theme-${theme}`);
-    }
-
-    themeToggle.addEventListener('click', () => {
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      applyTheme(themes[currentThemeIndex]);
-    });
-
-    applyTheme(themes[0]);
-  </script>
-
-  <!-- 🎤 Voice Recognition Script -->
-  <script>
-    const micButton = document.getElementById('mic-button');
-    const speechText = document.getElementById('speech-text');
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const languageMap = {
-      en: 'en-US', ha: 'ha-NG', ig: 'ig-NG', yo: 'yo-NG',
-      sw: 'sw-KE', fr: 'fr-FR', ar: 'ar-SA', zu: 'zu-ZA', pg: 'en-NG'
-    };
-
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      recognition.interimResults = false;
-
-      micButton.addEventListener('click', () => {
-        recognition.lang = languageMap[languageSelector.value] || 'en-US';
-        speechText.textContent = '🎙️ Listening...';
-        recognition.start();
-      });
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        speechText.textContent = transcript;
-      };
-
-      recognition.onerror = (event) => {
-        speechText.textContent = '❌ Error: ' + event.error;
-      };
-    } else {
-      micButton.addEventListener('click', () => {
-        speechText.textContent = '❌ Speech recognition not supported on this device.';
-      });
-    }
-  </script>
-
-  <!-- 📌 Mic Scroll Visibility Script -->
-  <script>
-    const footer = document.querySelector('footer');
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const micHeight = micButton.offsetHeight;
-      const footerTop = footer.offsetTop;
-
-      if (scrollY > 150) {
-        micButton.style.opacity = "1";
-        micButton.style.pointerEvents = "auto";
-      } else {
-        micButton.style.opacity = "0";
-        micButton.style.pointerEvents = "none";
-      }
-
-      const windowBottom = scrollY + window.innerHeight;
-      if (windowBottom > footerTop) {
-        micButton.style.position = 'absolute';
-        micButton.style.top = `${footerTop - micHeight - 20}px`;
-        micButton.style.bottom = 'auto';
-      } else {
-        micButton.style.position = 'fixed';
-        micButton.style.bottom = '100px';
-        micButton.style.top = '';
-      }
-    });
-  </script>
-
-</body>
-                                                                     </html>
+<!DOCTYPE html>    <html lang="en">      
+<head>      
+  <meta charset="UTF-8" />      
+  <meta name="viewport" content="width=device-width, initial-scale=1" />      
+  <title>MVP LifeLine AI App</title>      
+  <link rel="stylesheet" href="style.css" />      
+  <style>      
+    body {      
+      margin: 0;      
+      font-family: 'Segoe UI', sans-serif;      
+      background-color: #fff;      
+    }    .header {      
+  display: flex;      
+  flex-direction: column;      
+  align-items: center;      
+  text-align: center;      
+  padding: 1.5rem 1rem;      
+  background-color: #ffffff;      
+  border-bottom: 2px solid #ddd;      
+}      
+  
+.logo-container {      
+  display: flex;      
+  flex-direction: column;      
+  align-items: center;      
+}      
+  
+.logo-img {      
+  height: 80px;      
+  width: auto;      
+  margin-bottom: 0.5rem;      
+}      
+  
+.tagline {      
+  font-size: 0.95rem;      
+  color: #333;      
+  margin: 1rem 0;      
+}      
+  
+.tag-punch {      
+  color: red;      
+  font-weight: bold;      
+}      
+  
+#mic-button {      
+  color: white;      
+  background-color: red;      
+  font-size: 2rem;      
+  cursor: pointer;      
+  position: fixed;      
+  bottom: 100px;      
+  right: 20px;      
+  z-index: 1000;      
+  border-radius: 50%;      
+  padding: 10px 15px;      
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);      
+  opacity: 0;      
+  pointer-events: none;      
+  transition: opacity 0.3s ease, transform 0.2s ease;      
+}      
+  
+#mic-button:hover {      
+  background-color: darkred;      
+  transform: scale(1.1);      
+}      
+  
+footer {      
+  text-align: center;      
+  padding: 1rem;      
+  background-color: #f9f9f9;      
+  font-size: 0.9rem;      
+  color: #444;      
+  border-top: 1px solid #ddd;      
+}      
+  
+footer nav a {      
+  margin: 0 5px;      
+  text-decoration: none;      
+  color: #555;      
+}      
+  
+footer nav a:hover {      
+  color: red;      
+}  
+  
+  </style>      
+</head>      
+<body>      <!-- 🧠 Header -->      <header class="header">      
+    <div class="logo-container">      
+     <img src="assets/mvp-logo.png" alt="MVP LifeLine AI Logo" class="logo-img" />    
+      <h1>MVP LifeLine AI App</h1>      
+    </div>      
+    <p class="tagline">      
+      <strong>Built for Africa’s bold dreamers.</strong><br />      
+      This isn’t just an app — it’s your digital lifeline.<br />      
+      <span class="tag-punch">Earn smarter. Heal deeper. Grow faster.</span>      
+    </p>    <select id="language" aria-label="Select Language">      
+  <option value="en">English</option>      
+  <option value="ha">Hausa</option>      
+  <option value="ig">Igbo</option>      
+  <option value="yo">Yoruba</option>      
+  <option value="sw">Swahili</option>      
+  <option value="fr">French</option>      
+  <option value="ar">Arabic</option>      
+  <option value="zu">Zulu</option>      
+  <option value="pg">Pidgin</option>      
+</select>      
+  
+<button id="theme-toggle" aria-label="Cycle Theme Colors">🎨</button>  
+  
+  </header>      <!-- 🚀 Main Content -->      <main class="container">      
+    <section class="greeting" aria-label="App Greeting">      
+      <h2>Welcome, Hope,<br><span>Let’s grow today.</span></h2>      
+    </section>    <div id="speech-output" class="speech-box" aria-label="Speech Result">      
+  <p><strong>Voice Input:</strong> <span id="speech-text">[Waiting for input...]</span></p>      
+</div>      
+  
+<div class="modules-grid" aria-label="Modules Section">      
+  <!-- 🌍 App Zones -->      
+  <a href="career-zone.html" class="card"><h3>📁 Career Zone</h3><p>Jobs, CVs, and Interview Prep.</p></a>      
+  <a href="emotional-zone.html" class="card"><h3>💔 Emotional Zone</h3><p>Track feelings and journaling.</p></a>      
+  <a href="smartq-access.html" class="card"><h3>🤖 SmartQ Access</h3><p>Ask anything to your AI guide.</p></a>      
+  <a href="dual-mode-ai.html" class="card"><h3>🧠 Dual Mode AI</h3><p>Switch between career/emotional help.</p></a>      
+  <a href="digital-hustle-hub.html" class="card"><h3>💼 Digital Hustle Hub</h3><p>Freelance and gig economy tools.</p></a>      
+  <a href="partner-zone.html" class="card"><h3>🤝 Partner Zone</h3><p>NGO, mentors and impact partners.</p></a>      
+  <a href="productivity-zone.html" class="card"><h3>✅ Productivity Zone</h3><p>AI-powered Kanban and planner.</p></a>      
+  <a href="wellness-zone.html" class="card"><h3>🧘 Wellness Zone</h3><p>Mental health & calming audio.</p></a>      
+  <a href="finance-zone.html" class="card"><h3>💰 Finance Zone</h3><p>Budgeting and savings advice.</p></a>      
+  <a href="insight-zone.html" class="card"><h3>📊 Insight Zone</h3><p>Track usage & analytics insights.</p></a>      
+  <a href="sync-zone.html" class="card"><h3>🔄 Sync Zone</h3><p>Manage your offline & online data.</p></a>      
+</div>      
+  
+<section id="gpt-reply-box" class="card" style="display:none; margin-top:2rem;">      
+  <h3>🤖 SmartQ says:</h3>      
+  <p id="gpt-reply-text">...</p>      
+</section>  
+  
+  </main>      <!-- 🎤 Floating Mic Button -->      <div id="mic-button" aria-label="Voice Assistant">🎤</div>      <!-- 📘 Footer -->      <footer class="footer">      
+    <p>&copy; 2025 MVP LifeLine AI App. Built by John Umoh.</p>      
+    <nav aria-label="Footer navigation">      
+      <a href="privacy-zone.html">Privacy</a> |      
+      <a href="help-zone.html">Help</a> |      
+      <a href="security-zone.html">Security</a> |      
+      <a href="language-zone.html">Language</a> |      
+      <a href="monetization-zone.html">Monetization</a> |      
+      <a href="onboarding-zone.html">Onboarding</a>      
+    </nav>      
+  </footer>      <!-- 🧠 Language Script -->      <script>      
+    const translations = {      
+      en: { greeting: "Welcome, Hope,\nLet’s grow today." },      
+      ha: { greeting: "Barka da zuwa, Hope,\nMu ci gaba yau." },      
+      ig: { greeting: "Nnọọ, Hope,\nKa too tupu taa." },      
+      yo: { greeting: "Kaabo, Hope,\nJẹ ká dagba lónìí." },      
+      sw: { greeting: "Karibu, Hope,\nTukue leo." },      
+      fr: { greeting: "Bienvenue, Hope,\nGrandissons aujourd’hui." },      
+      ar: { greeting: "مرحباً، Hope،\nلننمو اليوم." },      
+      zu: { greeting: "Siyakwamukela, Hope,\nMakhule namuhla." },      
+      pg: { greeting: "Wetin dey Hope,\nMake we grow today." }      
+    };      
+      
+    const languageSelector = document.getElementById("language");      
+    const greetingEl = document.querySelector(".greeting h2");      
+      
+    function updateTexts(lang) {      
+      const t = translations[lang] || translations.en;      
+      greetingEl.innerText = t.greeting;      
+    }      
+      
+    updateTexts(languageSelector.value);      
+    languageSelector.addEventListener("change", () => updateTexts(languageSelector.value));      
+  </script>      <!-- 🎨 Theme Toggle Script -->      <script>      
+    const themeToggle = document.getElementById('theme-toggle');      
+    const themes = ['light', 'dark', 'blue', 'green'];      
+    let currentThemeIndex = 0;      
+      
+    function applyTheme(theme) {      
+      document.body.className = '';      
+      document.body.classList.add(`theme-${theme}`);      
+    }      
+      
+    themeToggle.addEventListener('click', () => {      
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;      
+      applyTheme(themes[currentThemeIndex]);      
+    });      
+      
+    applyTheme(themes[0]);      
+  </script>      <!-- 🎤 Voice Recognition Script -->      <script>      
+    const micButton = document.getElementById('mic-button');      
+    const speechText = document.getElementById('speech-text');      
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;      
+    const languageMap = {      
+      en: 'en-US', ha: 'ha-NG', ig: 'ig-NG', yo: 'yo-NG',      
+      sw: 'sw-KE', fr: 'fr-FR', ar: 'ar-SA', zu: 'zu-ZA', pg: 'en-NG'      
+    };      
+      
+    if (SpeechRecognition) {      
+      const recognition = new SpeechRecognition();      
+      recognition.interimResults = false;      
+      
+      micButton.addEventListener('click', () => {      
+        recognition.lang = languageMap[languageSelector.value] || 'en-US';      
+        speechText.textContent = '🎙️ Listening...';      
+        recognition.start();      
+      });      
+      
+      recognition.onresult = (event) => {      
+        const transcript = event.results[0][0].transcript;      
+        speechText.textContent = transcript;      
+      };      
+      
+      recognition.onerror = (event) => {      
+        speechText.textContent = '❌ Error: ' + event.error;      
+      };      
+    } else {      
+      micButton.addEventListener('click', () => {      
+        speechText.textContent = '❌ Speech recognition not supported on this device.';      
+      });      
+    }      
+  </script>      <!-- 📌 Mic Scroll Visibility Script -->      <script>      
+    const footer = document.querySelector('footer');      
+      
+    window.addEventListener('scroll', () => {      
+      const scrollY = window.scrollY;      
+      const micHeight = micButton.offsetHeight;      
+      const footerTop = footer.offsetTop;      
+      
+      if (scrollY > 150) {      
+        micButton.style.opacity = "1";      
+        micButton.style.pointerEvents = "auto";      
+      } else {      
+        micButton.style.opacity = "0";      
+        micButton.style.pointerEvents = "none";      
+      }      
+      
+      const windowBottom = scrollY + window.innerHeight;      
+      if (windowBottom > footerTop) {      
+        micButton.style.position = 'absolute';      
+        micButton.style.top = `${footerTop - micHeight - 20}px`;      
+        micButton.style.bottom = 'auto';      
+      } else {      
+        micButton.style.position = 'fixed';      
+        micButton.style.bottom = '100px';      
+        micButton.style.top = '';      
+      }      
+    });      
+  </script>    </body>      
+                                                                     </html>    
