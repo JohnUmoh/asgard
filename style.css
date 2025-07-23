@@ -67,6 +67,80 @@ body {
 .card {
   background-color: #fff;
   border: 2px solid #c8102e;
+/* ─── Base Reset & Typography ───────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, p, h1, h2, h3, h4, h5, h6, span {
+  font-weight: bold;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fff;
+  color: #111;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+.header {
+  background-color: #000;
+  color: #fff;
+  padding: 1.5rem;
+  text-align: center;
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.logo-img {
+  width: 60px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+.tag-punch {
+  color: #c8102e;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+/* ─── Layout ────────────────────────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* ─── Cards ─────────────────────────────────────────── */
+.card {
+  background-color: #fff;
+  border: 2px solid #c8102e;
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
@@ -92,7 +166,7 @@ body {
   color: #111;
 }
 
-/* ─── Mic Button ───────────────────────── */
+/* ─── Floating Mic Button ───────────────────────────── */
 #mic-button {
   position: fixed;
   bottom: 100px;
@@ -117,7 +191,7 @@ body {
   transform: scale(1.1);
 }
 
-/* ─── Footer ───────────────────────────── */
+/* ─── Footer ────────────────────────────────────────── */
 .footer {
   background-color: #111;
   color: #fff;
@@ -132,7 +206,7 @@ body {
   margin: 0 8px;
 }
 
-/* ─── Animations ───────────────────────── */
+/* ─── Animations ────────────────────────────────────── */
 @keyframes slideDown {
   from {
     transform: translateY(-60px);
@@ -164,7 +238,7 @@ body {
   }
 }
 
-/* ─── Card Staggering ───────────────────── */
+/* ─── Card Staggering ──────────────────────────────── */
 .card:nth-child(n) {
   animation-delay: calc(0.1s * var(--i));
 }
@@ -182,7 +256,7 @@ body {
 .card:nth-child(11) { --i: 12; }
 .card:nth-child(12) { --i: 13; }
 
-/* ─── Dark Mode ─────────────────────────── */
+/* ─── Dark Mode ─────────────────────────────────────── */
 body.dark {
   background-color: #111;
   color: #eee;
@@ -203,17 +277,19 @@ body.dark .footer {
   background-color: #000;
 }
 
-/* ─── Themes ────────────────────────────── */
+/* ─── Themes ────────────────────────────────────────── */
 
 /* 🔴 Red Theme */
 body.theme-red {
   background-color: #ffe5e5;
   color: #600000;
 }
+
 body.theme-red .card {
   background-color: #fff0f0;
   border-color: #c8102e;
 }
+
 body.theme-red .card h3 {
   color: #c8102e;
 }
@@ -223,10 +299,12 @@ body.theme-black {
   background-color: #111;
   color: #eee;
 }
+
 body.theme-black .card {
   background-color: #222;
   border-color: #444;
 }
+
 body.theme-black .card h3 {
   color: #fff;
 }
@@ -236,10 +314,12 @@ body.theme-white {
   background-color: #ffffff;
   color: #111;
 }
+
 body.theme-white .card {
   background-color: #ffffff;
   border-color: #ccc;
 }
+
 body.theme-white .card h3 {
   color: #222;
 }
@@ -249,10 +329,12 @@ body.theme-yellow {
   background-color: #fffdd0;
   color: #332800;
 }
+
 body.theme-yellow .card {
   background-color: #ffffe0;
   border-color: #c9a602;
 }
+
 body.theme-yellow .card h3 {
   color: #c9a602;
 }
@@ -262,10 +344,12 @@ body.theme-blue {
   background-color: #e7f0fd;
   color: #003366;
 }
+
 body.theme-blue .card {
   background-color: #f0f8ff;
   border-color: #1e90ff;
 }
+
 body.theme-blue .card h3 {
   color: #1e90ff;
-}
+  }
