@@ -6,6 +6,45 @@
   <title>MVP LifeLine AI App</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background-color: #ffffff;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 80px;
+      width: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: #333;
+      margin: 1rem 0;
+    }
+
+    .tag-punch {
+      color: red;
+      font-weight: bold;
+    }
+
     #mic-button {
       color: white;
       background-color: red;
@@ -27,9 +66,29 @@
       background-color: darkred;
       transform: scale(1.1);
     }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      font-size: 0.9rem;
+      color: #444;
+      border-top: 1px solid #ddd;
+    }
+
+    footer nav a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #555;
+    }
+
+    footer nav a:hover {
+      color: red;
+    }
   </style>
 </head>
 <body>
+
   <!-- 🧠 Header -->
   <header class="header">
     <div class="logo-container">
@@ -133,13 +192,11 @@
   <!-- 🎨 Theme Toggle Script -->
   <script>
     const themeToggle = document.getElementById('theme-toggle');
-    const root = document.documentElement;
-
     const themes = ['light', 'dark', 'blue', 'green'];
     let currentThemeIndex = 0;
 
     function applyTheme(theme) {
-      document.body.className = ''; // Clear previous themes
+      document.body.className = '';
       document.body.classList.add(`theme-${theme}`);
     }
 
@@ -148,14 +205,13 @@
       applyTheme(themes[currentThemeIndex]);
     });
 
-    applyTheme(themes[0]); // Set default theme
+    applyTheme(themes[0]);
   </script>
 
   <!-- 🎤 Voice Recognition Script -->
   <script>
     const micButton = document.getElementById('mic-button');
     const speechText = document.getElementById('speech-text');
-
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const languageMap = {
       en: 'en-US', ha: 'ha-NG', ig: 'ig-NG', yo: 'yo-NG',
@@ -216,5 +272,6 @@
       }
     });
   </script>
+
 </body>
-  </html>
+                                                                     </html>
