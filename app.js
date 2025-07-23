@@ -6,11 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const greeting        = document.querySelector(".greeting h2");
   const micBtn          = document.getElementById("mic-button");
   const speechText      = document.getElementById("speech-text");
-  const darkToggle      = document.getElementById("dark-toggle");
   const themeToggle     = document.getElementById("theme-toggle");
   const moduleCards     = document.querySelectorAll(".card");
-  const replyBox        = document.getElementById("gpt-reply-box");
-  const replyText       = document.getElementById("gpt-reply-text");
 
   // 🌍 Translations
   const translations = {
@@ -25,29 +22,30 @@ document.addEventListener("DOMContentLoaded", () => {
     pg: "You don show, Hope,<br><span>Make we move today.</span>"
   };
 
-  // 🗣️ Language Change
+  // 🗣️ Language Switcher
   languageSelect?.addEventListener("change", () => {
     const selected = languageSelect.value;
-    if (translations[selected]) {
-      greeting.innerHTML = translations[selected];
-    }
+    greeting.innerHTML = translations[selected] || translations.en;
   });
 
-  // 🌘 Dark Mode Toggle
-  darkToggle?.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-  });
-
-  // 🎨 Theme Toggle
-  const themeColors = ["red", "black", "white", "yellow", "blue"];
-  let currentTheme = 0;
+  // 🎨 Theme Toggle (Red, Yellow, Blue, White)
+  const themes = ["red", "yellow", "blue", "white"];
+  let currentThemeIndex = 0;
 
   themeToggle?.addEventListener("click", () => {
-    themeColors.forEach(color => document.body.classList.remove(`theme-${color}`));
-    const nextTheme = themeColors[currentTheme];
-    document.body.classList.add(`theme-${nextTheme}`);
-    currentTheme = (currentTheme + 1) % themeColors.length;
+    document.body.classList.remove(...themes.map(t => `theme-${t}`));
+    const next = themes[currentThemeIndex];
+    document.body.classList.add(`theme-${next}`);
+    localStorage.setItem("lifeline-theme", next);
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
   });
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("lifeline-theme");
+  if (savedTheme && themes.includes(savedTheme)) {
+    document.body.classList.add(`theme-${savedTheme}`);
+    currentThemeIndex = (themes.indexOf(savedTheme) + 1) % themes.length;
+  }
 
   // 🎤 Voice Recognition
   micBtn?.addEventListener("click", () => {
@@ -72,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     recog.start();
   });
 
-  // 🧭 Card Navigation Logic
+  // 🧭 Module Click Handler
   moduleCards.forEach(card => {
     card.addEventListener("click", e => {
       const zone = card.dataset.zone || "smartq-access";
@@ -86,41 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 🛠️ Career Tools Redirect
-  document.querySelectorAll(".card.tool").forEach(tool => {
-    tool.addEventListener("click", () => {
-      const toolName = tool.dataset.tool;
-      const urlMap = {
-        cv: "cv-builder.html",
-        cover: "cover-letter.html",
-        interview: "interview-coach.html",
-        linkedin: "linkedin-optimizer.html",
-        referral: "job-referral.html",
-        freelance: "freelance-profile.html",
-        portfolio: "portfolio-builder.html",
-        careerplan: "career-planner.html",
-        aiagent: "ai-career-agent.html"
-      };
-
-      const targetUrl = urlMap[toolName];
-      if (targetUrl) {
-        window.location.href = targetUrl;
-      } else {
-        alert("⚠️ Page not found!");
-      }
-    });
-  });
-
-  // 📱 Mic Button Scroll Visibility (Fix overlap)
+  // 🎤 Mic Button Scroll Visibility
   window.addEventListener("scroll", () => {
     if (!micBtn) return;
-    if (window.scrollY > 150) {
-      micBtn.style.opacity = "1";
-      micBtn.style.pointerEvents = "auto";
-    } else {
-      micBtn.style.opacity = "0";
-      micBtn.style.pointerEvents = "none";
-    }
+    micBtn.style.opacity = window.scrollY > 150 ? "1" : "0";
+    micBtn.style.pointerEvents = window.scrollY > 150 ? "auto" : "none";
   });
 });
 
@@ -147,4 +115,4 @@ async function getGPTResponse({ zone, prompt }) {
   } catch (err) {
     replyText.innerText = "⚠️ GPT error: " + err.message;
   }
-  }
+      }
