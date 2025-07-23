@@ -1,13 +1,14 @@
 // MVP LifeLine AI – All-Zones Frontend Helper
 
 document.addEventListener("DOMContentLoaded", () => {
-  const offlineMode     = false;
-  const languageSelect  = document.getElementById("language");
-  const greeting        = document.querySelector(".greeting h2");
-  const micBtn          = document.getElementById("mic-button");
-  const speechText      = document.getElementById("speech-text");
-  const themeToggle     = document.getElementById("theme-toggle");
-  const moduleCards     = document.querySelectorAll(".card");
+  const offlineMode = false;
+
+  const languageSelect = document.getElementById("language");
+  const greeting = document.querySelector(".greeting h2");
+  const micBtn = document.getElementById("mic-button");
+  const speechText = document.getElementById("speech-text");
+  const themeToggle = document.getElementById("theme-toggle");
+  const moduleCards = document.querySelectorAll(".card");
 
   // 🌍 Translations
   const translations = {
@@ -23,52 +24,76 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // 🗣️ Language Switcher
-  languageSelect?.addEventListener("change", () => {
-    const selected = languageSelect.value;
-    greeting.innerHTML = translations[selected] || translations.en;
-  });
+  if (languageSelect) {
+    const savedLang = localStorage.getItem("lifeline-lang");
+    if (savedLang && translations[savedLang]) {
+      languageSelect.value = savedLang;
+    }
+
+    const updateLanguage = (lang) => {
+      greeting.innerHTML = translations[lang] || translations.en;
+      localStorage.setItem("lifeline-lang", lang);
+    };
+
+    updateLanguage(languageSelect.value);
+
+    languageSelect.addEventListener("change", () => {
+      updateLanguage(languageSelect.value);
+    });
+  }
 
   // 🎨 Theme Toggle (Red, Yellow, Blue, White)
   const themes = ["red", "yellow", "blue", "white"];
   let currentThemeIndex = 0;
 
-  themeToggle?.addEventListener("click", () => {
-    document.body.classList.remove(...themes.map(t => `theme-${t}`));
-    const next = themes[currentThemeIndex];
-    document.body.classList.add(`theme-${next}`);
-    localStorage.setItem("lifeline-theme", next);
-    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-  });
+  if (themeToggle) {
+    const savedTheme = localStorage.getItem("lifeline-theme");
+    if (savedTheme && themes.includes(savedTheme)) {
+      document.body.classList.add(`theme-${savedTheme}`);
+      currentThemeIndex = (themes.indexOf(savedTheme) + 1) % themes.length;
+    }
 
-  // Load saved theme
-  const savedTheme = localStorage.getItem("lifeline-theme");
-  if (savedTheme && themes.includes(savedTheme)) {
-    document.body.classList.add(`theme-${savedTheme}`);
-    currentThemeIndex = (themes.indexOf(savedTheme) + 1) % themes.length;
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.remove(...themes.map(t => `theme-${t}`));
+      const nextTheme = themes[currentThemeIndex];
+      document.body.classList.add(`theme-${nextTheme}`);
+      localStorage.setItem("lifeline-theme", nextTheme);
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    });
   }
 
   // 🎤 Voice Recognition
-  micBtn?.addEventListener("click", () => {
+  if (micBtn) {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) {
-      speechText.innerText = "❌ SpeechRecognition not supported.";
-      return;
+      micBtn.addEventListener("click", () => {
+        speechText.textContent = "❌ SpeechRecognition not supported.";
+      });
+    } else {
+      const recog = new SR();
+      recog.interimResults = false;
+
+      micBtn.addEventListener("click", () => {
+        const selectedLang = languageSelect?.value || "en";
+        recog.lang = selectedLang === "pg" ? "en-NG" : `${selectedLang}-NG`;
+        recog.start();
+      });
+
+      recog.onstart = () => {
+        speechText.textContent = "🎙️ Listening...";
+      };
+
+      recog.onerror = (e) => {
+        speechText.textContent = "❌ Error: " + e.error;
+      };
+
+      recog.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        speechText.textContent = transcript;
+        getGPTResponse({ zone: "smartq-access", prompt: transcript });
+      };
     }
-
-    const recog = new SR();
-    recog.lang = languageSelect.value === "pg" ? "en-NG" : `${languageSelect.value}-NG`;
-    recog.interimResults = false;
-
-    recog.onstart = () => speechText.innerText = "🎙️ Listening...";
-    recog.onerror = e => speechText.innerText = "❌ Error: " + e.error;
-    recog.onresult = e => {
-      const transcript = e.results[0][0].transcript;
-      speechText.innerText = transcript;
-      getGPTResponse({ zone: "smartq-access", prompt: transcript });
-    };
-
-    recog.start();
-  });
+  }
 
   // 🧭 Module Click Handler
   moduleCards.forEach(card => {
@@ -94,13 +119,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 🤖 GPT Response Fetcher
 async function getGPTResponse({ zone, prompt }) {
-  const replyBox  = document.getElementById("gpt-reply-box");
+  const replyBox = document.getElementById("gpt-reply-box");
   const replyText = document.getElementById("gpt-reply-text");
 
   if (!replyBox || !replyText) return;
 
   replyBox.style.display = "block";
-  replyText.innerText = "Thinking...";
+  replyText.textContent = "Thinking...";
 
   try {
     const res = await fetch("/.netlify/functions/gpt-handler", {
@@ -110,9 +135,9 @@ async function getGPTResponse({ zone, prompt }) {
     });
 
     const data = await res.json();
-    replyText.innerText = "🤖 " + (data.answer || "No response from GPT.");
+    replyText.textContent = "🤖 " + (data.answer || "No response from GPT.");
     replyBox.scrollIntoView({ behavior: "smooth" });
   } catch (err) {
-    replyText.innerText = "⚠️ GPT error: " + err.message;
+    replyText.textContent = "⚠️ GPT error: " + err.message;
   }
-      }
+}
