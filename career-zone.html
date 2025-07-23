@@ -50,6 +50,14 @@
       border: 1px solid #ccc;
       white-space: pre-wrap;
     }
+    footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      text-align: center;
+      background-color: #f0f0f0;
+      color: #555;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -98,7 +106,7 @@
             <button onclick="generate(${toolNum})">Generate</button>
             <button onclick="downloadPDF(${toolNum})">Download PDF</button>
             <button onclick="exportToGoogleDoc(${toolNum})">Export to Google Doc</button>
-            <a class="tool-link" href="career-tools.html#tool${toolNum}" target="_blank">🔗 Open in Tools Hub</a>
+            <a class="tool-link" href="career-tools/tool-${toolNum}.html" target="_blank">🔗 Open in Tools Hub</a>
           </div>
           <div class="output" id="output-${toolNum}"></div>
         </div>
@@ -114,7 +122,7 @@
         const res = await fetch("https://api.openai.com/v1/chat/completions", {
           method: "POST",
           headers: {
-            "Authorization": "Bearer YOUR_API_KEY",
+            "Authorization": "Bearer YOUR_API_KEY", // Replace with your API key
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
@@ -147,7 +155,7 @@
       const content = document.getElementById(`output-${toolNum}`).innerText;
       const form = document.createElement("form");
       form.method = "POST";
-      form.action = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+      form.action = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // Replace with your script ID
       const textarea = document.createElement("textarea");
       textarea.name = "content";
       textarea.value = content;
@@ -157,5 +165,9 @@
       document.body.removeChild(form);
     }
   </script>
+
+  <footer>
+    &copy; 2025 MVP LifeLine AI. Empowering your career journey with smart tools.
+  </footer>
 </body>
 </html>
