@@ -1,1 +1,72 @@
-
+const translations = {
+  en: {
+    greeting: "MVP LifeLine AI App",
+    tagline: "Earn. Heal. Grow.",
+    selectLanguage: "Select Language",
+    micLabel: "Voice Input",
+    darkMode: "Dark Mode",
+  },
+  fr: {
+    greeting: "Application MVP LifeLine AI",
+    tagline: "Gagner. Guérir. Évoluer.",
+    selectLanguage: "Choisir la langue",
+    micLabel: "Entrée vocale",
+    darkMode: "Mode Sombre",
+  },
+  es: {
+    greeting: "Aplicación MVP LifeLine AI",
+    tagline: "Ganar. Sanar. Crecer.",
+    selectLanguage: "Seleccionar idioma",
+    micLabel: "Entrada de voz",
+    darkMode: "Modo oscuro",
+  },
+  ar: {
+    greeting: "تطبيق MVP LifeLine AI",
+    tagline: "اكسب. اشف. نمُ.",
+    selectLanguage: "اختر اللغة",
+    micLabel: "إدخال صوتي",
+    darkMode: "الوضع الداكن",
+  },
+  hi: {
+    greeting: "एमवीपी लाइफलाइन एआई ऐप",
+    tagline: "कमाओ. चंगा करो. बढ़ो.",
+    selectLanguage: "भाषा चुनें",
+    micLabel: "वॉयस इनपुट",
+    darkMode: "डार्क मोड",
+  },
+  zh: {
+    greeting: "MVP LifeLine AI 应用",
+    tagline: "赚钱。疗愈。成长。",
+    selectLanguage: "选择语言",
+    micLabel: "语音输入",
+    darkMode: "深色模式",
+  },
+  pt: {
+    greeting: "Aplicativo MVP LifeLine AI",
+    tagline: "Ganhar. Curar. Crescer.",
+    selectLanguage: "Selecionar idioma",
+    micLabel: "Entrada de voz",
+    darkMode: "Modo escuro",
+  },
+  ru: {
+    greeting: "Приложение MVP LifeLine AI",
+    tagline: "Зарабатывай. Исцеляйся. Расти.",
+    selectLanguage: "Выбрать язык",
+    micLabel: "Голосовой ввод",
+    darkMode: "Темный режим",
+  },
+  bn: {
+    greeting: "এমভিপি লাইফলাইন এআই অ্যাপ",
+    tagline: "আয় করুন। সুস্থ হন। বেড়ে উঠুন।",
+    selectLanguage: "ভাষা নির্বাচন করুন",
+    micLabel: "ভয়েস ইনপুট",
+    darkMode: "ডার্ক মোড",
+  },
+  pg: {
+    greeting: "MVP LifeLine AI App",
+    tagline: "Make money. Get better. Grow up.",
+    selectLanguage: "Pick ya language",
+    micLabel: "Talk put",
+    darkMode: "Dark mode",
+  }
+};
