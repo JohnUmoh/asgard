@@ -1,8 +1,4 @@
-// MVP LifeLine AI – All-Zones Frontend Helper with i18n
-
 document.addEventListener("DOMContentLoaded", () => {
-const offlineMode = false;
-
 const languageSelect = document.getElementById("language");
 const micBtn = document.getElementById("mic-button");
 const speechText = document.getElementById("speech-text");
@@ -735,8 +731,7 @@ onboarding: "How to start"
 }
 </script> <!-- (this closes your last functional script) -->    <!-- 🚫 Remove this line: -->    <!-- const translations = { ... -->    <!-- ✅ Then close body and html properly -->
 
-<script src="translations.js"></script>              </body>                            </html>    en: {  greeting: "MVP LifeLine AI App",  tagline: "Earn. Heal. Grow.",  selectLanguage: "Select Language",
-micLabel: "Voice Input",
+<script src="translations.js"></script>              </body>                            </html>    en: {  greeting: "MVP LifeLine AI App",  tagline: "Earn. Heal. Grow.",  selectLanguage: "Select Language",          micLabel: "Voice Input",
 darkMode: "Dark Mode",
 },
 fr: {
@@ -803,4 +798,9 @@ micLabel: "Talk put",
 darkMode: "Dark mode",
 }
 };
+document.addEventListener("DOMContentLoaded", () => {
+const savedLanguage = localStorage.getItem("language") || "en";
+languageSelect.value = savedLanguage;
+updateTranslations(savedLanguage); // ✅ Important to translate immediately
+});
 
