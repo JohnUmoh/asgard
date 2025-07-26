@@ -10,77 +10,292 @@ const themeToggle = document.getElementById("theme-toggle");
 const moduleCards = document.querySelectorAll(".card");
 
 // 🌍 i18n Translations
+const translations = {
 en: {
-greeting: "Welcome, Hope,<br><span>Let’s grow today.</span>",
-heading: "Welcome to MVP LifeLine",
+welcome: "Welcome to MVP LifeLine",
 tagline: "Your digital hub to Earn. Heal. Grow.",
 get_started: "Get Started",
-description: "MVP LifeLine is built for Global bold dreamers. A powerful AI app to empower youth emotionally, financially, and professionally."
+description: "MVP LifeLine is built for Global bold dreamers. A powerful AI app to empower youth emotionally, financially, and professionally.",
+voice_input: "Voice Input: [Waiting for input...]",
+career_zone: "📁 Career Zone",
+career_desc: "Jobs, CVs, and Interview Prep.",
+emotional_zone: "💖 Emotional Zone",
+emotional_desc: "Healing tools, Journaling, Community support.",
+smartq_access: "🔑 SmartQ Access",
+smartq_desc: "Quizzes, Surveys, Polls.",
+digital_hustle_hub: "💼 Digital Hustle Hub",
+digital_hustle_desc: "Side gigs, remote work, and passive income ideas.",
+partner_zone: "🤝 Partner Zone",
+partner_desc: "NGOs, Community projects, and Startup Collabs.",
+choose_lang: "Choose Language",
+offline_mode: "Offline Mode",
+theme_mode: "Dark/Light Mode",
+intro_voice: "Tap mic and say: 'How can you help me today?'"
 },
 fr: {
-greeting: "Bienvenue, Hope,<br><span>Faisons des progrès aujourd’hui.</span>",
-heading: "Bienvenue à MVP LifeLine",
+welcome: "Bienvenue sur MVP LifeLine",
 tagline: "Votre hub numérique pour Gagner. Guérir. Grandir.",
 get_started: "Commencer",
-description: "MVP LifeLine est conçu pour les rêveurs audacieux du monde..."
-},
-es: {
-greeting: "Bienvenido, Hope,<br><span>Crecemos hoy.</span>",
-heading: "Bienvenido a MVP LifeLine",
-tagline: "Tu centro digital para Ganar. Sanar. Crecer.",
-get_started: "Comenzar",
-description: "MVP LifeLine está hecho para los soñadores audaces del mundo..."
-},
-ar: {
-greeting: "مرحبًا، Hope،<br><span>لنتقدم اليوم.</span>",
-heading: "مرحبًا بك في MVP LifeLine",
-tagline: "منصتك الرقمية للكسب. الشفاء. النمو.",
-get_started: "ابدأ",
-description: "تم إنشاء MVP LifeLine للحالمين الجريئين عالميًا..."
-},
-hi: {
-greeting: "स्वागत है, Hope,<br><span>आज आगे बढ़ते हैं।</span>",
-heading: "MVP LifeLine में आपका स्वागत है",
-tagline: "कमाने, ठीक होने और बढ़ने के लिए आपका डिजिटल केंद्र।",
-get_started: "शुरू करें",
-description: "MVP LifeLine वैश्विक साहसी सपने देखने वालों के लिए..."
-},
-zh: {
-greeting: "欢迎, Hope,<br><span>让我们今天成长。</span>",
-heading: "欢迎来到 MVP LifeLine",
-tagline: "您的数字枢纽：赚钱、疗愈、成长。",
-get_started: "开始",
-description: "MVP LifeLine 是为全球有梦想的年轻人打造的..."
-},
-pt: {
-greeting: "Bem-vindo, Hope,<br><span>Vamos crescer hoje.</span>",
-heading: "Bem-vindo ao MVP LifeLine",
-tagline: "Seu centro digital para Ganhar. Curar. Crescer.",
-get_started: "Começar",
-description: "O MVP LifeLine é feito para os sonhadores ousados..."
-},
-ru: {
-greeting: "Добро пожаловать, Hope,<br><span>Давайте развиваться сегодня.</span>",
-heading: "Добро пожаловать в MVP LifeLine",
-tagline: "Ваш цифровой центр: Зарабатывать. Исцеляться. Расти.",
-get_started: "Начать",
-description: "MVP LifeLine создан для смелых мечтателей мира..."
-},
-bn: {
-greeting: "স্বাগতম, Hope,<br><span>আসুন আজ এগিয়ে যাই।</span>",
-heading: "স্বাগতম MVP LifeLine-এ",
-tagline: "আপনার ডিজিটাল কেন্দ্র উপার্জন, নিরাময় এবং বিকাশের জন্য।",
-get_started: "শুরু করুন",
-description: "MVP LifeLine বিশ্বব্যাপী সাহসী স্বপ্নদর্শীদের জন্য নির্মিত..."
-},
-pg: {
-greeting: "You don show, Hope,<br><span>Make we move today.</span>",
-heading: "Welcome to MVP LifeLine",
-tagline: "Na your digital place to Earn. Heal. Grow.",
-get_started: "Make we start",
-description: "MVP LifeLine na for Global youth wey get dream..."
+description: "MVP LifeLine est conçu pour les rêveurs audacieux du monde entier. Une puissante application d'IA pour autonomiser les jeunes émotionnellement, financièrement et professionnellement.",
+voice_input: "Entrée vocale : [En attente de l'entrée...]",
+career_zone: "📁 Zone de carrière",
+career_desc: "Emplois, CVs et préparation aux entretiens.",
+emotional_zone: "💖 Zone émotionnelle",
+emotional_desc: "Outils de guérison, journalisation, soutien communautaire.",
+smartq_access: "🔑 Accès SmartQ",
+smartq_desc: "Quiz, enquêtes, sondages.",
+digital_hustle_hub: "💼 Centre d'activité numérique",
+digital_hustle_desc: "Gigs secondaires, télétravail, idées de revenu passif.",
+partner_zone: "🤝 Zone de partenariat",
+partner_desc: "ONG, projets communautaires et collaborations startup.",
+choose_lang: "Choisir la langue",
+offline_mode: "Mode hors ligne",
+theme_mode: "Mode sombre/clair",
+intro_voice: "Touchez le micro et dites : 'Comment pouvez-vous m'aider aujourd'hui ?'"
 }
 };
+es: {
+welcome: "Bienvenido a MVP LifeLine",
+tagline: "Tu centro digital para Ganar. Sanar. Crecer.",
+get_started: "Comenzar",
+description: "MVP LifeLine está construido para soñadores audaces de todo el mundo. Una poderosa aplicación de IA para empoderar a los jóvenes emocional, financiera y profesionalmente.",
+voice_input: "Entrada de voz: [Esperando entrada...]",
+career_zone: "📁 Zona de carrera",
+career_desc: "Trabajos, CVs y preparación de entrevistas.",
+emotional_zone: "💔 Zona emocional",
+emotional_desc: "Seguimiento de sentimientos y diario.",
+smartq_access: "🤖 Acceso SmartQ",
+smartq_desc: "Pregunta lo que quieras a tu guía IA.",
+dual_mode_ai: "🧠 Modo dual IA",
+dual_mode_desc: "Cambia entre ayuda emocional y profesional.",
+digital_hustle: "💼 Centro de Trabajo Digital",
+digital_hustle_desc: "Herramientas para freelancers y gigs.",
+partner_zone: "🤝 Zona de socios",
+partner_desc: "ONGs, mentores y socios de impacto.",
+productivity_zone: "✅ Zona de productividad",
+productivity_desc: "Planificador y tablero Kanban con IA.",
+wellness_zone: "🧘 Zona de bienestar",
+wellness_desc: "Salud mental y audios calmantes.",
+finance_zone: "💰 Zona financiera",
+finance_desc: "Consejos de presupuesto y ahorro.",
+insight_zone: "📊 Zona de análisis",
+insight_desc: "Seguimiento del uso y estadísticas.",
+sync_zone: "🔄 Zona de sincronización",
+sync_desc: "Gestiona tus datos en línea y fuera de línea.",
+copyright: "© 2025 MVP LifeLine AI App. Creado por John Umoh.",
+footer_links: "Privacidad | Ayuda | Seguridad | Idioma | Monetización | Onboarding"
+}
+ar:  {
+welcome: "مرحبًا بك في MVP LifeLine",
+tagline: "مركزك الرقمي للكسب، الشفاء، والنمو.",
+get_started: "ابدأ",
+description: "تم بناء MVP LifeLine للحالمين الجريئين حول العالم. تطبيق ذكاء اصطناعي قوي لتمكين الشباب عاطفيًا وماليًا ومهنيًا.",
+voice_input: "إدخال صوتي: [بانتظار الإدخال...]",
+career_zone: "📁 منطقة الوظائف",
+career_desc: "وظائف، السير الذاتية، والتحضير للمقابلات.",
+emotional_zone: "💔 المنطقة العاطفية",
+emotional_desc: "تتبع المشاعر والكتابة اليومية.",
+smartq_access: "🤖 الوصول إلى SmartQ",
+smartq_desc: "اسأل دليلك الذكي أي شيء.",
+dual_mode_ai: "🧠 وضع الذكاء الثنائي",
+dual_mode_desc: "التبديل بين الدعم المهني والعاطفي.",
+digital_hustle: "💼 مركز الاقتصاد الرقمي",
+digital_hustle_desc: "أدوات العمل الحر واقتصاد المهام.",
+partner_zone: "🤝 منطقة الشركاء",
+partner_desc: "المنظمات غير الحكومية، المرشدين، وشركاء التأثير.",
+productivity_zone: "✅ منطقة الإنتاجية",
+productivity_desc: "لوحة كانبان ذكية ومخطط.",
+wellness_zone: "🧘 منطقة العافية",
+wellness_desc: "الصحة العقلية وأصوات التهدئة.",
+finance_zone: "💰 المنطقة المالية",
+finance_desc: "نصائح الميزانية والادخار.",
+insight_zone: "📊 منطقة التحليلات",
+insight_desc: "تتبع الاستخدام والرؤى.",
+sync_zone: "🔄 منطقة المزامنة",
+sync_desc: "إدارة بياناتك دون اتصال وباتصال.",
+copyright: "© 2025 تطبيق MVP LifeLine AI. أنشأه John Umoh.",
+footer_links: "الخصوصية | المساعدة | الأمان | اللغة | الربح | البدء"
+},hi: {
+welcome: "MVP LifeLine में आपका स्वागत है",
+tagline: "कमाओ। ठीक हो जाओ। आगे बढ़ो। आपका डिजिटल हब।",
+get_started: "शुरू करें",
+description: "MVP LifeLine वैश्विक साहसी सपनों वालों के लिए बना है। यह युवाओं को भावनात्मक, आर्थिक और प्रोफेशनल रूप से सशक्त करने वाला एक शक्तिशाली AI ऐप है।",
+voice_input: "वॉइस इनपुट: [इनपुट की प्रतीक्षा...]",
+career_zone: "📁 करियर ज़ोन",
+career_desc: "नौकरियां, CV और इंटरव्यू तैयारी।",
+emotional_zone: "💔 इमोशनल ज़ोन",
+emotional_desc: "भावनाओं की ट्रैकिंग और जर्नलिंग।",
+smartq_access: "🤖 SmartQ एक्सेस",
+smartq_desc: "अपने AI गाइड से कुछ भी पूछें।",
+dual_mode_ai: "🧠 ड्यूल मोड AI",
+dual_mode_desc: "करियर और इमोशनल हेल्प के बीच स्विच करें।",
+digital_hustle: "💼 डिजिटल हसल हब",
+digital_hustle_desc: "फ्रीलांसिंग और गिग इकॉनमी टूल्स।",
+partner_zone: "🤝 पार्टनर ज़ोन",
+partner_desc: "NGO, मेंटर्स और इम्पैक्ट पार्टनर्स।",
+productivity_zone: "✅ प्रोडक्टिविटी ज़ोन",
+productivity_desc: "AI आधारित कनबान और प्लानर।",
+wellness_zone: "🧘 वेलनेस ज़ोन",
+wellness_desc: "मेंटल हेल्थ और शांत करने वाला ऑडियो।",
+finance_zone: "💰 फाइनेंस ज़ोन",
+finance_desc: "बजट और सेविंग्स की सलाह।",
+insight_zone: "📊 इनसाइट ज़ोन",
+insight_desc: "उपयोग और एनालिटिक्स इनसाइट्स।",
+sync_zone: "🔄 सिंक ज़ोन",
+sync_desc: "ऑनलाइन और ऑफलाइन डेटा मैनेज करें।",
+copyright: "© 2025 MVP LifeLine AI App. John Umoh द्वारा निर्मित।",
+footer_links: "प्राइवेसी | मदद | सुरक्षा | भाषा | कमाई | ऑनबोर्डिंग"
+},zh: {
+welcome: "欢迎使用 MVP LifeLine",
+tagline: "你的数字平台：赚钱，疗愈，成长。",
+get_started: "开始使用",
+description: "MVP LifeLine 为全球有梦想的年轻人打造，是一个强大的 AI 应用，助力他们在情感、经济和职业上全面成长。",
+voice_input: "语音输入: [等待输入...]",
+career_zone: "📁 职业专区",
+career_desc: "工作机会、简历与面试准备。",
+emotional_zone: "💔 情感专区",
+emotional_desc: "记录情绪和日记。",
+smartq_access: "🤖 SmartQ 接入",
+smartq_desc: "向你的 AI 导师提问。",
+dual_mode_ai: "🧠 双模式 AI",
+dual_mode_desc: "在职业与情感帮助之间切换。",
+digital_hustle: "💼 数字副业中心",
+digital_hustle_desc: "自由职业与零工工具。",
+partner_zone: "🤝 合作伙伴区",
+partner_desc: "NGO、导师与影响力合作伙伴。",
+productivity_zone: "✅ 生产力专区",
+productivity_desc: "AI 驱动的看板与日程管理。",
+wellness_zone: "🧘 健康专区",
+wellness_desc: "心理健康与放松音频。",
+finance_zone: "💰 财务专区",
+finance_desc: "预算与储蓄建议。",
+insight_zone: "📊 洞察专区",
+insight_desc: "使用情况与数据分析。",
+sync_zone: "🔄 同步专区",
+sync_desc: "管理你的在线与离线数据。",
+copyright: "© 2025 MVP LifeLine AI App. 由 John Umoh 创建。",
+footer_links: "隐私 | 帮助 | 安全 | 语言 | 变现 | 入门"
+},pt: {
+welcome: "Bem-vindo ao MVP LifeLine",
+tagline: "Seu hub digital para Ganhar. Curar. Crescer.",
+get_started: "Começar",
+description: "O MVP LifeLine foi feito para sonhadores ousados do mundo todo. Um app de IA poderoso para capacitar jovens emocional, financeira e profissionalmente.",
+voice_input: "Entrada de voz: [Aguardando entrada...]",
+career_zone: "📁 Zona de Carreira",
+career_desc: "Empregos, currículos e preparação para entrevistas.",
+emotional_zone: "💔 Zona Emocional",
+emotional_desc: "Acompanhe sentimentos e faça seu diário.",
+smartq_access: "🤖 Acesso SmartQ",
+smartq_desc: "Pergunte o que quiser ao seu guia IA.",
+dual_mode_ai: "🧠 IA de Modo Duplo",
+dual_mode_desc: "Alterne entre ajuda profissional e emocional.",
+digital_hustle: "💼 Centro de Renda Digital",
+digital_hustle_desc: "Ferramentas para freelancers e gig economy.",
+partner_zone: "🤝 Zona de Parceiros",
+partner_desc: "ONGs, mentores e parceiros de impacto.",
+productivity_zone: "✅ Zona de Produtividade",
+productivity_desc: "Kanban com IA e planejador.",
+wellness_zone: "🧘 Zona de Bem-Estar",
+wellness_desc: "Saúde mental e áudio relaxante.",
+finance_zone: "💰 Zona Financeira",
+finance_desc: "Dicas de orçamento e economia.",
+insight_zone: "📊 Zona de Insights",
+insight_desc: "Acompanhe uso e dados analíticos.",
+sync_zone: "🔄 Zona de Sincronização",
+sync_desc: "Gerencie seus dados online e offline.",
+copyright: "© 2025 MVP LifeLine AI App. Criado por John Umoh.",
+footer_links: "Privacidade | Ajuda | Segurança | Idioma | Monetização | Onboarding"
+},ru: {
+welcome: "Добро пожаловать в MVP LifeLine",
+tagline: "Ваш цифровой центр: Зарабатывай. Исцеляйся. Развивайся.",
+get_started: "Начать",
+description: "MVP LifeLine создан для смелых мечтателей по всему миру. Мощное AI-приложение для поддержки молодежи эмоционально, финансово и профессионально.",
+voice_input: "Голосовой ввод: [Ожидание ввода...]",
+career_zone: "📁 Карьерная зона",
+career_desc: "Работа, резюме и подготовка к собеседованиям.",
+emotional_zone: "💔 Эмоциональная зона",
+emotional_desc: "Отслеживание эмоций и ведение дневника.",
+smartq_access: "🤖 Доступ к SmartQ",
+smartq_desc: "Задайте вопрос вашему AI-гиду.",
+dual_mode_ai: "🧠 Двойной режим AI",
+dual_mode_desc: "Переключение между карьерной и эмоциональной помощью.",
+digital_hustle: "💼 Центр цифрового заработка",
+digital_hustle_desc: "Инструменты для фриланса и подработок.",
+partner_zone: "🤝 Зона партнеров",
+partner_desc: "НКО, наставники и партнёры по влиянию.",
+productivity_zone: "✅ Зона продуктивности",
+productivity_desc: "AI Канбан-доска и планировщик.",
+wellness_zone: "🧘 Зона благополучия",
+wellness_desc: "Психическое здоровье и успокаивающее аудио.",
+finance_zone: "💰 Финансовая зона",
+finance_desc: "Советы по бюджету и накоплениям.",
+insight_zone: "📊 Зона аналитики",
+insight_desc: "Анализ использования и данных.",
+sync_zone: "🔄 Зона синхронизации",
+sync_desc: "Управление онлайн и оффлайн данными.",
+copyright: "© 2025 MVP LifeLine AI App. Создано John Umoh.",
+footer_links: "Конфиденциальность | Помощь | Безопасность | Язык | Монетизация | Ввод"
+},bn: {
+welcome: "স্বাগতম MVP LifeLine-এ",
+tagline: "আপনার ডিজিটাল হাব: উপার্জন করুন। সুস্থ হোন। উন্নতি করুন।",
+get_started: "শুরু করুন",
+description: "MVP LifeLine গ্লোবাল সাহসী স্বপ্নবাজদের জন্য তৈরি। এটি একটি শক্তিশালী AI অ্যাপ যা যুব সমাজকে মানসিক, আর্থিক ও পেশাগতভাবে শক্তিশালী করে।",
+voice_input: "ভয়েস ইনপুট: [ইনপুটের জন্য অপেক্ষা...]",
+career_zone: "📁 ক্যারিয়ার জোন",
+career_desc: "চাকরি, সিভি ও ইন্টারভিউ প্রস্তুতি।",
+emotional_zone: "💔 ইমোশনাল জোন",
+emotional_desc: "মনের অবস্থা ও ডায়েরি রেকর্ড।",
+smartq_access: "🤖 SmartQ অ্যাক্সেস",
+smartq_desc: "আপনার AI গাইডকে যেকোন প্রশ্ন জিজ্ঞাসা করুন।",
+dual_mode_ai: "🧠 ডুয়াল মোড AI",
+dual_mode_desc: "ক্যারিয়ার/ইমোশনাল সহায়তার মধ্যে সুইচ করুন।",
+digital_hustle: "💼 ডিজিটাল হাসল হাব",
+digital_hustle_desc: "ফ্রিল্যান্স ও গিগ টুলস।",
+partner_zone: "🤝 পার্টনার জোন",
+partner_desc: "NGO, মেন্টর এবং প্রভাবশালী পার্টনার।",
+productivity_zone: "✅ প্রোডাক্টিভিটি জোন",
+productivity_desc: "AI চালিত কানবান ও পরিকল্পনা টুল।",
+wellness_zone: "🧘 ওয়েলনেস জোন",
+wellness_desc: "মানসিক স্বাস্থ্য ও শান্তিপূর্ণ অডিও।",
+finance_zone: "💰 ফাইনান্স জোন",
+finance_desc: "বাজেট ও সঞ্চয় পরামর্শ।",
+insight_zone: "📊 ইনসাইট জোন",
+insight_desc: "ব্যবহার বিশ্লেষণ ও পরিসংখ্যান।",
+sync_zone: "🔄 সিঙ্ক জোন",
+sync_desc: "অনলাইন এবং অফলাইন ডেটা পরিচালনা করুন।",
+copyright: "© 2025 MVP LifeLine AI App. জন উমোহ দ্বারা নির্মিত।",
+footer_links: "প্রাইভেসি | সহায়তা | নিরাপত্তা | ভাষা | আয় | অনবোর্ডিং"
+},pg: {
+welcome: "Welcome to MVP LifeLine",
+tagline: "Your digital hub to Make Money. Heal. Grow.",
+get_started: "Start Now",
+description: "MVP LifeLine na for people wey get bold dreams. Na correct AI app to help youth for heart, pocket, and hustle.",
+voice_input: "Voice Input: [Wait make you yarn...]",
+career_zone: "📁 Work Zone",
+career_desc: "Job, CV, and how to prepare for interview.",
+emotional_zone: "💔 Heart Zone",
+emotional_desc: "Track how you dey feel and write am down.",
+smartq_access: "🤖 SmartQ Corner",
+smartq_desc: "Ask your AI guide anything wey dey worry you.",
+dual_mode_ai: "🧠 Dual Mode Brain",
+dual_mode_desc: "Switch between hustle talk and life talk.",
+digital_hustle: "💼 Hustle Center",
+digital_hustle_desc: "Freelance and online work tools.",
+partner_zone: "🤝 Partner Ground",
+partner_desc: "NGOs, mentors, and correct partners.",
+productivity_zone: "✅ Work Smart Zone",
+productivity_desc: "Kanban and planner powered by AI.",
+wellness_zone: "🧘 Calm Zone",
+wellness_desc: "Mental health and better sound to calm you.",
+finance_zone: "💰 Money Zone",
+finance_desc: "How to plan and save your money.",
+insight_zone: "📊 Know Better Zone",
+insight_desc: "Track how you dey use the app.",
+sync_zone: "🔄 Sync Area",
+sync_desc: "Keep your online and offline data together.",
+copyright: "© 2025 MVP LifeLine AI App. Na John Umoh build am.",
+footer_links: "Privacy | Help | Security | Language | Monetize | Join Us"
+},
 
 // 🗣️ Language Switcher
 if (languageSelect) {
@@ -89,25 +304,25 @@ if (savedLang && translations[savedLang]) {
 languageSelect.value = savedLang;
 }
 
-const updateLanguage = (lang) => {            
-  const t = translations[lang] || translations.en;            
-  document.querySelectorAll("[data-i18n]").forEach(el => {            
-    const key = el.getAttribute("data-i18n");            
-    if (t[key]) {            
-      if (key === "greeting") {            
-        el.innerHTML = t[key];            
-      } else {            
-        el.textContent = t[key];            
-      }            
-    }            
-  });            
-  localStorage.setItem("lifeline-lang", lang);            
-};            
-        
-updateLanguage(languageSelect.value);            
-        
-languageSelect.addEventListener("change", () => {            
-  updateLanguage(languageSelect.value);            
+const updateLanguage = (lang) => {
+const t = translations[lang] || translations.en;
+document.querySelectorAll("[data-i18n]").forEach(el => {
+const key = el.getAttribute("data-i18n");
+if (t[key]) {
+if (key === "greeting") {
+el.innerHTML = t[key];
+} else {
+el.textContent = t[key];
+}
+}
+});
+localStorage.setItem("lifeline-lang", lang);
+};
+
+updateLanguage(languageSelect.value);
+
+languageSelect.addEventListener("change", () => {
+updateLanguage(languageSelect.value);
 });
 
 }
@@ -123,12 +338,12 @@ document.body.classList.add(theme-${savedTheme});
 currentThemeIndex = (themes.indexOf(savedTheme) + 1) % themes.length;
 }
 
-themeToggle.addEventListener("click", () => {            
-  document.body.classList.remove(...themes.map(t => `theme-${t}`));            
-  const nextTheme = themes[currentThemeIndex];            
-  document.body.classList.add(`theme-${nextTheme}`);            
-  localStorage.setItem("lifeline-theme", nextTheme);            
-  currentThemeIndex = (currentThemeIndex + 1) % themes.length;            
+themeToggle.addEventListener("click", () => {
+document.body.classList.remove(...themes.map(t => theme-${t}));
+const nextTheme = themes[currentThemeIndex];
+document.body.classList.add(theme-${nextTheme});
+localStorage.setItem("lifeline-theme", nextTheme);
+currentThemeIndex = (currentThemeIndex + 1) % themes.length;
 });
 
 }
@@ -144,25 +359,25 @@ speechText.textContent = "❌ SpeechRecognition not supported.";
 const recog = new SR();
 recog.interimResults = false;
 
-micBtn.addEventListener("click", () => {            
-    const selectedLang = languageSelect?.value || "en";            
-    recog.lang = selectedLang === "pg" ? "en-NG" : `${selectedLang}-NG`;            
-    recog.start();            
-  });            
-        
-  recog.onstart = () => {            
-    speechText.textContent = "🎙️ Listening...";            
-  };            
-        
-  recog.onerror = (e) => {            
-    speechText.textContent = "❌ Error: " + e.error;            
-  };            
-        
-  recog.onresult = (e) => {            
-    const transcript = e.results[0][0].transcript;            
-    speechText.textContent = transcript;            
-    getGPTResponse({ zone: "smartq-access", prompt: transcript });            
-  };            
+micBtn.addEventListener("click", () => {
+const selectedLang = languageSelect?.value || "en";
+recog.lang = selectedLang === "pg" ? "en-NG" : ${selectedLang}-NG;
+recog.start();
+});
+
+recog.onstart = () => {
+speechText.textContent = "🎙️ Listening...";
+};
+
+recog.onerror = (e) => {
+speechText.textContent = "❌ Error: " + e.error;
+};
+
+recog.onresult = (e) => {
+const transcript = e.results[0][0].transcript;
+speechText.textContent = transcript;
+getGPTResponse({ zone: "smartq-access", prompt: transcript });
+};
 }
 
 }
@@ -173,11 +388,11 @@ card.addEventListener("click", (e) => {
 const zone = card.dataset.zone || "smartq-access";
 const title = card.querySelector("h3")?.innerText || zone;
 
-if (offlineMode) {            
-    e.preventDefault();            
-    const prompt = `I clicked "${title}". Guide me on getting started.`;            
-    getGPTResponse({ zone, prompt });            
-  }            
+if (offlineMode) {
+e.preventDefault();
+const prompt = I clicked "${title}". Guide me on getting started.;
+getGPTResponse({ zone, prompt });
+}
 });
 
 });
@@ -208,15 +423,14 @@ headers: { "Content-Type": "application/json" },
 body: JSON.stringify({ zone, prompt })
 });
 
-const data = await res.json();            
-replyText.textContent = "🤖 " + (data.answer || "No response from GPT.");            
+const data = await res.json();
+replyText.textContent = "🤖 " + (data.answer || "No response from GPT.");
 replyBox.scrollIntoView({ behavior: "smooth" });
 
 } catch (err) {
 replyText.textContent = "⚠️ GPT error: " + err.message;
 }
 }
-const translations = {
 en: {
 welcome: "Welcome to MVP LifeLine",
 tagline: "Your digital hub to Earn. Heal. Grow.",
@@ -560,76 +774,75 @@ onboarding: "How to start"
 }
 </script> <!-- (this closes your last functional script) -->    <!-- 🚫 Remove this line: -->    <!-- const translations = { ... -->    <!-- ✅ Then close body and html properly -->
 
-<script src="translations.js"></script>              </body>                
-                                               </html>            
-  en: {            
-    greeting: "MVP LifeLine AI App",            
-    tagline: "Earn. Heal. Grow.",            
-    selectLanguage: "Select Language",            
-    micLabel: "Voice Input",            
-    darkMode: "Dark Mode",            
-  },            
-  fr: {            
-    greeting: "Application MVP LifeLine AI",            
-    tagline: "Gagner. Guérir. Évoluer.",            
-    selectLanguage: "Choisir la langue",            
-    micLabel: "Entrée vocale",            
-    darkMode: "Mode Sombre",            
-  },            
-  es: {            
-    greeting: "Aplicación MVP LifeLine AI",            
-    tagline: "Ganar. Sanar. Crecer.",            
-    selectLanguage: "Seleccionar idioma",            
-    micLabel: "Entrada de voz",            
-    darkMode: "Modo oscuro",            
-  },            
-  ar: {            
-    greeting: "تطبيق MVP LifeLine AI",            
-    tagline: "اكسب. اشف. نمُ.",            
-    selectLanguage: "اختر اللغة",            
-    micLabel: "إدخال صوتي",            
-    darkMode: "الوضع الداكن",            
-  },            
-  hi: {            
-    greeting: "एमवीपी लाइफलाइन एआई ऐप",            
-    tagline: "कमाओ. चंगा करो. बढ़ो.",            
-    selectLanguage: "भाषा चुनें",            
-    micLabel: "वॉयस इनपुट",            
-    darkMode: "डार्क मोड",            
-  },            
-  zh: {            
-    greeting: "MVP LifeLine AI 应用",            
-    tagline: "赚钱。疗愈。成长。",            
-    selectLanguage: "选择语言",            
-    micLabel: "语音输入",            
-    darkMode: "深色模式",            
-  },            
-  pt: {            
-    greeting: "Aplicativo MVP LifeLine AI",            
-    tagline: "Ganhar. Curar. Crescer.",            
-    selectLanguage: "Selecionar idioma",            
-    micLabel: "Entrada de voz",            
-    darkMode: "Modo escuro",            
-  },            
-  ru: {            
-    greeting: "Приложение MVP LifeLine AI",            
-    tagline: "Зарабатывай. Исцеляйся. Расти.",            
-    selectLanguage: "Выбрать язык",            
-    micLabel: "Голосовой ввод",            
-    darkMode: "Темный режим",            
-  },            
-  bn: {            
-    greeting: "এমভিপি লাইফলাইন এআই অ্যাপ",            
-    tagline: "আয় করুন। সুস্থ হন। বেড়ে উঠুন।",            
-    selectLanguage: "ভাষা নির্বাচন করুন",            
-    micLabel: "ভয়েস ইনপুট",            
-    darkMode: "ডার্ক মোড",            
-  },            
-  pg: {            
-    greeting: "MVP LifeLine AI App",            
-    tagline: "Make money. Get better. Grow up.",            
-    selectLanguage: "Pick ya language",            
-    micLabel: "Talk put",            
-    darkMode: "Dark mode",            
-  }            
-};            
+<script src="translations.js"></script>              </body>                            </html>    en: {
+greeting: "MVP LifeLine AI App",
+tagline: "Earn. Heal. Grow.",
+selectLanguage: "Select Language",
+micLabel: "Voice Input",
+darkMode: "Dark Mode",
+},
+fr: {
+greeting: "Application MVP LifeLine AI",
+tagline: "Gagner. Guérir. Évoluer.",
+selectLanguage: "Choisir la langue",
+micLabel: "Entrée vocale",
+darkMode: "Mode Sombre",
+},
+es: {
+greeting: "Aplicación MVP LifeLine AI",
+tagline: "Ganar. Sanar. Crecer.",
+selectLanguage: "Seleccionar idioma",
+micLabel: "Entrada de voz",
+darkMode: "Modo oscuro",
+},
+ar: {
+greeting: "تطبيق MVP LifeLine AI",
+tagline: "اكسب. اشف. نمُ.",
+selectLanguage: "اختر اللغة",
+micLabel: "إدخال صوتي",
+darkMode: "الوضع الداكن",
+},
+hi: {
+greeting: "एमवीपी लाइफलाइन एआई ऐप",
+tagline: "कमाओ. चंगा करो. बढ़ो.",
+selectLanguage: "भाषा चुनें",
+micLabel: "वॉयस इनपुट",
+darkMode: "डार्क मोड",
+},
+zh: {
+greeting: "MVP LifeLine AI 应用",
+tagline: "赚钱。疗愈。成长。",
+selectLanguage: "选择语言",
+micLabel: "语音输入",
+darkMode: "深色模式",
+},
+pt: {
+greeting: "Aplicativo MVP LifeLine AI",
+tagline: "Ganhar. Curar. Crescer.",
+selectLanguage: "Selecionar idioma",
+micLabel: "Entrada de voz",
+darkMode: "Modo escuro",
+},
+ru: {
+greeting: "Приложение MVP LifeLine AI",
+tagline: "Зарабатывай. Исцеляйся. Расти.",
+selectLanguage: "Выбрать язык",
+micLabel: "Голосовой ввод",
+darkMode: "Темный режим",
+},
+bn: {
+greeting: "এমভিপি লাইফলাইন এআই অ্যাপ",
+tagline: "আয় করুন। সুস্থ হন। বেড়ে উঠুন।",
+selectLanguage: "ভাষা নির্বাচন করুন",
+micLabel: "ভয়েস ইনপুট",
+darkMode: "ডার্ক মোড",
+},
+pg: {
+greeting: "MVP LifeLine AI App",
+tagline: "Make money. Get better. Grow up.",
+selectLanguage: "Pick ya language",
+micLabel: "Talk put",
+darkMode: "Dark mode",
+}
+};
+
