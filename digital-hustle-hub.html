@@ -2,52 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💼 Digital Hustle Hub – MVP LifeLine AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💔 Emotional Zone – MVP LifeLine AI App</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #fff;
+      background: #fdf9fa;
       color: #111;
       padding: 20px;
-      position: relative;
-      min-height: 100vh;
+      max-width: 800px;
+      margin: auto;
     }
-
-    h1 {
-      color: #d60000;
-      font-size: 2em;
-      margin-bottom: 20px;
+    h1, h2 {
+      color: #c00;
     }
-
-    .tool {
-      border: 2px solid #d60000;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 10px;
-      background: #fff;
-      color: #111;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    textarea, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
-
-    .tool:hover {
-      background-color: #d60000;
+    button {
+      background-color: #c00;
       color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a00;
+    }
+    .log, .chat-log {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .blur {
+      filter: blur(4px);
+    }
+    .delete-btn {
+      float: right;
+      color: #c00;
+      cursor: pointer;
+    }
+    .section {
+      margin-top: 30px;
     }
 
-    .desc {
-      display: none;
-      margin-top: 10px;
-      color: #333;
-      font-size: 0.95em;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
     }
 
-    .tool.expanded .desc {
+    .card {
+      background: #fff;
+      border-left: 5px solid #c1121f;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      background-color: #fafafa;
+    }
+
+    .card.open .content {
       display: block;
     }
 
-    .bottom-message {
+    .content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .story-log {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .chat-log div {
+      margin-bottom: 8px;
+      }
+    footer {
       margin-top: 30px;
       padding: 15px;
       text-align: center;
@@ -56,70 +102,196 @@
       border-radius: 12px;
       font-size: 0.95em;
     }
+    
   </style>
-  <script>
-    function toggleTool(el) {
-      el.classList.toggle('expanded');
-    }
-  </script>
 </head>
 <body>
+  <h1>💔 Emotional Zone</h1>
+  <p>Mental & Emotional Wellness:</p>
+  <!-- START PRIVACY WRAPPER -->
+  <div id="privacyContent">
 
-  <h1>💼 Digital Hustle Hub</h1>
+    <!-- 1. Daily Journal -->
+    <div class="section">
+      <h2>1. Daily Journal 📝</h2>
+      <textarea id="journalEntry" rows="5" placeholder="Write your thoughts..." aria-label="Journal Entry"></textarea>
+      <button onclick="saveJournal()">Save Entry</button>
+      <button onclick="clearJournal()">Clear All Entries</button>
+      <div id="journalLog" class="log" aria-live="polite"></div>
+    </div>
 
-  <div class="tool" onclick="toggleTool(this)">
-    1. 🚀 Freelance Toolkit
-    <div class="desc">Proposal templates, digital contracts, invoice formats, and pricing sheets.</div>
-  </div>
+    <!-- 2. Mood Tracker -->
+    <div class="section">
+      <h2>2. Mood Tracker 🌦️</h2>
+      <select id="moodSelect" aria-label="Mood Selection">
+        <option value="">-- Select Mood --</option>
+        <option value="😊 Happy">😊 Happy</option>
+        <option value="😭 Sad">😭 Sad</option>
+        <option value="😠 Angry">😠 Angry</option>
+        <option value="😰 Anxious">😰 Anxious</option>
+        <option value="😓 Tired">😓 Tired</option>
+        <option value="❤️ Grateful">❤️ Grateful</option>
+      </select>
+      <button onclick="logMood()">Log Mood</button>
+      <button onclick="clearMood()">Clear Mood Log</button>
+      <div id="moodLog" class="log" aria-live="polite"></div>
+    </div>
 
-  <div class="tool" onclick="toggleTool(this)">
-    2. 🎯 Smart Gig Discovery
-    <div class="desc">AI-powered gig finder for remote and local freelance work opportunities.</div>
-  </div>
+    <!-- 3. AI Emotional Support -->
+    <div class="section">
+      <h2>3. AI Emotional Support 🤖</h2>
+      <textarea id="aiMessage" rows="3" placeholder="Tell me how you feel..." aria-label="Message to AI"></textarea>
+      <button onclick="sendMessage()">Send to AI</button>
+      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+    </div>
 
-  <div class="tool" onclick="toggleTool(this)">
-    3. 💸 Passive Income Toolkit
-    <div class="desc">Resources to create and sell e-books, mini-courses, and join affiliate platforms.</div>
-  </div>
+    <!-- 4. Privacy Mode -->
+    <div class="section">
+      <h2>4. Privacy Mode 🔒</h2>
+      <button onclick="togglePrivacy()">Toggle Privacy Blur</button>
+    </div>
 
-  <div class="tool" onclick="toggleTool(this)">
-    4. 🧠 AI Portfolio Builder
-    <div class="desc">Auto-generate a clean portfolio for writers, designers, or developers with samples.</div>
-  </div>
+    <!-- 5. Emotional Manipulation Awareness -->
+    <div class="section">
+      <h2>5. Understanding Emotional Manipulation 🧠</h2>
+      <div id="manipulationGrid" class="grid"></div>
+    </div>
 
-  <div class="tool" onclick="toggleTool(this)">
-    5. 📦 Digital Product Lab
-    <div class="desc">Launch and sell your digital products like guides, printables, art, and more.</div>
-  </div>
+  </div> <!-- END PRIVACY WRAPPER -->
 
-  <div class="tool" onclick="toggleTool(this)">
-    6. 📊 Earnings & Invoice Tracker
-    <div class="desc">Track payments, pending invoices, and financial growth from freelancing.</div>
-  </div>
+  <script>
+    const storageKey = {
+      journal: 'emotionalZone_journal',
+      mood: 'emotionalZone_moods',
+      stories: 'emotionalZone_stories'
+    };
 
-  <div class="tool" onclick="toggleTool(this)">
-    7. 🔁 Job Referral Exchange
-    <div class="desc">Peer-to-peer job referral system to help each other get gigs and contracts.</div>
-  </div>
+    function saveJournal() {
+      const entry = document.getElementById('journalEntry').value.trim();
+      if (entry) {
+        const log = document.getElementById('journalLog');
+        const div = document.createElement('div');
+        div.innerHTML = `${entry} <span class="delete-btn" onclick="this.parentNode.remove()">✖</span>`;
+        log.appendChild(div);
+        document.getElementById('journalEntry').value = '';
+        localStorage.setItem(storageKey.journal, log.innerHTML);
+      }
+    }
 
-  <div class="tool" onclick="toggleTool(this)">
-    8. 📝 Resume + Cover Letter Generator
-    <div class="desc">Use AI to auto-create job-winning resumes and professional cover letters.</div>
-  </div>
+    function clearJournal() {
+      if (confirm('Are you sure you want to clear all journal entries?')) {
+        document.getElementById('journalLog').innerHTML = '';
+        localStorage.removeItem(storageKey.journal);
+      }
+    }
 
-  <div class="tool" onclick="toggleTool(this)">
-    9. 🕵🏾 Side Hustle Finder
-    <div class="desc">Smart tool that suggests hustles based on your interests and skill set.</div>
-  </div>
+    function logMood() {
+      const mood = document.getElementById('moodSelect').value;
+      if (mood) {
+        const log = document.getElementById('moodLog');
+        const div = document.createElement('div');
+        div.innerHTML = `${mood} <span class="delete-btn" onclick="this.parentNode.remove()">✖</span>`;
+        log.appendChild(div);
+        localStorage.setItem(storageKey.mood, log.innerHTML);
+      }
+    }
 
-  <div class="tool" onclick="toggleTool(this)">
-    10. 📱 Microtasks + Instant Payout Checker
-    <div class="desc">Find small online tasks and see which platforms pay instantly or daily.</div>
-  </div>
+    function clearMood() {
+      if (confirm('Are you sure you want to clear the mood log?')) {
+        document.getElementById('moodLog').innerHTML = '';
+        localStorage.removeItem(storageKey.mood);
+      }
+    }
 
-  <div class="bottom-message">
-    🔗 Powered by MVP LifeLine AI – Empowering Africa to <strong>Earn. Heal. Grow.</strong>
-  </div>
+    function sendMessage() {
+      const message = document.getElementById('aiMessage').value.trim();
+      const chatLog = document.getElementById('chatLog');
+      if (message) {
+        const userDiv = document.createElement('div');
+        userDiv.innerHTML = `<strong>You:</strong> ${message}`;
+        chatLog.appendChild(userDiv);
 
+        const aiDiv = document.createElement('div');
+        aiDiv.innerHTML = `<strong>MVP AI:</strong> I hear you. Your feelings are valid. You're not alone.`;
+        chatLog.appendChild(aiDiv);
+
+        document.getElementById('aiMessage').value = '';
+      }
+    }
+
+    function togglePrivacy() {
+      const container = document.getElementById('privacyContent');
+      if (container) {
+        container.classList.toggle('blur');
+      }
+    }
+
+    const manipulationData = [
+      { title: "Guilt-tripping", quote: "“After all I’ve done for you, this is how you treat me?”", desc: "They use shame or guilt to make you do what they want, even when it’s unfair to you." },
+      { title: "Gaslighting", quote: "“You’re too sensitive — that never happened.”", desc: "Makes you doubt your own memory or sanity so you begin to trust their version of reality." },
+      { title: "Silent Treatment", quote: "Complete emotional shutdown.", desc: "They stop communicating to punish or control you, not to solve the problem." },
+      { title: "Blame-shifting", quote: "“This happened because of you.”", desc: "They avoid accountability by making you feel responsible for everything." },
+      { title: "Love Bombing", quote: "“You’re the best thing that ever happened to me.”", desc: "Intense affection early on that turns manipulative once they gain your trust." },
+      { title: "Withholding Affection", quote: "Emotional coldness as punishment.", desc: "They pull away emotionally to control or discipline you when you don’t comply." },
+      { title: "Passive Aggression", quote: "Backhanded compliments or sarcastic digs.", desc: "They express anger indirectly, making you feel attacked without a clear reason." },
+      { title: "Threats", quote: "“If you leave, I’ll ruin you.”", desc: "They use fear to manipulate your choices — emotionally, financially, or socially." },
+      { title: "Playing the Victim", quote: "“You’re always hurting me.”", desc: "They twist the situation to gain sympathy and avoid taking blame." },
+      { title: "Triangulation", quote: "“Even your friend agrees with me.”", desc: "They bring in outsiders to isolate or discredit you in conflicts." }
+    ];
+
+    function renderManipulations() {
+      const container = document.getElementById("manipulationGrid");
+      manipulationData.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.onclick = function () {
+          this.classList.toggle("open");
+        };
+        div.innerHTML = `
+          <strong>${index + 1}. ${item.title}</strong>
+          <div class="content">
+            <p><em>${item.quote}</em></p>
+            <p>${item.desc}</p>
+            <textarea id="story-${index}" rows="2" placeholder="Share your experience..."></textarea>
+            <button onclick="event.stopPropagation(); saveStory(${index})">Submit</button>
+            <div id="stories-${index}" class="story-log"></div>
+          </div>
+        `;
+        container.appendChild(div);
+
+        const saved = JSON.parse(localStorage.getItem(`${storageKey.stories}_${index}`) || '[]');
+        saved.forEach(story => appendStory(index, story));
+      });
+    }
+
+    function saveStory(index) {
+      const textarea = document.getElementById(`story-${index}`);
+      const story = textarea.value.trim();
+      if (story) {
+        appendStory(index, story);
+        textarea.value = '';
+
+        const current = JSON.parse(localStorage.getItem(`${storageKey.stories}_${index}`) || '[]');
+        current.push(story);
+        localStorage.setItem(`${storageKey.stories}_${index}`, JSON.stringify(current));
+      }
+    }
+
+    function appendStory(index, story) {
+      const list = document.getElementById(`stories-${index}`);
+      const p = document.createElement("p");
+      p.innerHTML = `"${story}" <span class='delete-btn' onclick='this.parentNode.remove()'>✖</span>`;
+      list.appendChild(p);
+    }
+
+    window.onload = function () {
+      document.getElementById('journalLog').innerHTML = localStorage.getItem(storageKey.journal) || '';
+      document.getElementById('moodLog').innerHTML = localStorage.getItem(storageKey.mood) || '';
+      renderManipulations();
+    };
+  </script>
+  <footer>
+    &copy; 2025 MVP LifeLine AI. "Your emotional wellbeing is key to your success. We're here for the journey.".
+  </footer>
 </body>
 </html>
