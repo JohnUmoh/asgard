@@ -2,136 +2,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🧠 Wellness Zone – MVP LifeLine AI</title>
+  <title>🧠 Insight Zone – MVP LifeLine AI</title>
   <style>
-    :root {
-      --red: #e60000;
-      --black: #000000;
-      --white: #ffffff;
-    }body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--white);
-  color: var(--black);
-}
-
-header {
-  background-color: var(--red);
-  color: var(--white);
-  padding: 1.2rem;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.container {
-  padding: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.tool-card {
-  background-color: var(--white);
-  border: 2px solid var(--red);
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.tool-card:hover {
-  transform: scale(1.02);
-  cursor: pointer;
-}
-
-.tool-card h3 {
-  color: var(--red);
-}
-
-button {
-  background-color: var(--black);
-  color: var(--white);
-  padding: 0.7rem 1.2rem;
-  margin-top: 0.8rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background-color: var(--red);
-}
-
-footer {
-  margin-top: 30px;
-  padding: 15px;
-  text-align: center;
-  background-color: #111;
-  color: #fff;
-  border-radius: 12px;
-  font-size: 0.95em;
-}
-
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #111;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #e60000;
+      text-align: center;
+    }
+    .tool-box {
+      background-color: #f9f9f9;
+      border: 2px solid #000;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .tool-box:hover {
+      background-color: #ffeaea;
+    }
+    .tool-title {
+      font-weight: bold;
+      color: #e60000;
+    }
+    .tool-description {
+      display: none;
+      margin-top: 8px;
+      color: #333;
+    }
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      text-align: center;
+      background-color: #111;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.95em;
+    }
   </style>
 </head>
-<body>  <header>🧠 Wellness Zone – MVP LifeLine AI App</header>  <div class="container"><div class="tool-card">
-  <h3>🎙️ Emotion-Aware Voice Journal</h3>
-  <p>Talk to the app. It senses your tone and recommends healing actions.</p>
-  <button onclick="alert('🎧 Analyzing voice... Suggested: Deep Calm Session.')">Start Voice Journal</button>
-</div>
-
-<div class="tool-card">
-  <h3>🌍 Cultural Healing Circles</h3>
-  <p>Join safe, tribe-based emotional support spaces (e.g., Spanish, French, Arabic).</p>
-  <button onclick="alert('Joining Global Healing Circle...')">Join Circle</button>
-</div>
-
-<div class="tool-card">
-  <h3>💬 Pidgin Chat Therapist</h3>
-  <p>Talk with an AI that speaks fluent Naija Pidgin and get raw, real help.</p>
-  <button onclick="alert('Pidgin Therapist: Wetin dey sup? Talk to me.')">Chat Now</button>
-</div>
-
-<div class="tool-card">
-  <h3>🔊 Local Sound Healing Submissions</h3>
-  <p>Upload calming audio from your environment. Share peace, earn rewards.</p>
-  <button onclick="alert('🎧 Upload feature coming soon.')">Submit Sound</button>
-</div>
-
-<div class="tool-card">
-  <h3>📞 Offline Panic SOS</h3>
-  <p>Instant calming support via SMS/USSD. Works with no data.</p>
-  <button onclick="alert('📩 Text SOS1 to 32052. We got you.')">Activate SOS</button>
-</div>
-
-<div class="tool-card">
-  <h3>🖐️ Digital Palm Reader</h3>
-  <p>AI scans your phone sensors to detect stress & suggest next steps.</p>
-  <button onclick="alert('🧠 Stress level high. Play “Rain + Flute” now.')">Scan Now</button>
-</div>
-
-<div class="tool-card">
-  <h3>🎯 Mind Reset Wheel</h3>
-  <p>Spin for an instant emotional reset – prayer, music, dance or quotes.</p>
-  <button onclick="alert('🌀 You landed on: “Laugh it Off”')">Spin the Wheel</button>
-</div>
-
-<div class="tool-card">
-  <h3>📲 SMS Mood Logger</h3>
-  <p>Text your mood emoji and get healing affirmations via SMS.</p>
-  <button onclick="alert('📲 Text MOOD 🙂 to 32052. Watch your inbox.')">Log Mood</button>
-</div>
-
-<div class="tool-card">
-  <h3>🧑🏿‍🎤 Therapy Talk by Celebrities</h3>
-  <p>Listen to raw, real voice messages from public figures who’ve been there too.</p>
-  <button onclick="alert('🎧 Now playing: Story from Artist X.')">Listen Now</button>
-</div>
-
+<body>
+  <h1>🧠 Insight Zone Innovations</h1>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">1. Thought Decoder AI</div>
+    <div class="tool-description">Speak or type a thought → AI reveals hidden fear, need, or belief. Builds emotional intelligence by decoding the unsaid.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">2. Life Pattern Visualizer</div>
+    <div class="tool-description">Track your habits, moods, and triggers through charts and trend lines. See your emotional map over time.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">3. Self-Sabotage Scanner</div>
+    <div class="tool-description">5-question quiz to detect if you’re avoiding progress and why. Get AI-powered healing nudges.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">4. Thought Reframe Engine</div>
+    <div class="tool-description">Type a limiting belief → Receive an empowering version using proverbs or local affirmations.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">5. Mirror Reflections Tool</div>
+    <div class="tool-description">Answer deep daily questions to increase self-awareness. All answers saved in your reflection log.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">6. Decision Clarity Compass</div>
+    <div class="tool-description">Use this AI assistant to weigh options, assess risks, and hear from your future self.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">7. Ikigai Discovery Quiz</div>
+    <div class="tool-description">Uncover your life’s calling by matching your strengths, passions, and the needs of your African community.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">8. Thought Detox Log</div>
+    <div class="tool-description">Release one toxic thought daily → Get a fresh affirmation to realign and refocus.</div>
+  </div>  <div class="tool-box" onclick="toggle(this)">
+    <div class="tool-title">9. Growth Streak Tracker</div>
+    <div class="tool-description">Gamify your inner healing journey. Earn badges for self-awareness wins and reflection streaks.</div>
   </div>  <footer>
-    ❤️ Powered by MVP LifeLine AI App – Earn. Heal. Grow. | Empowering Global's Youth Through Wellness.
-  </footer></body>
+    &copy; 2025 MVP LifeLine AI App. Fueling mental clarity and self-awareness across Global.
+  </footer>  <script>
+    function toggle(el) {
+      const desc = el.querySelector('.tool-description');
+      desc.style.display = desc.style.display === 'block' ? 'none' : 'block';
+    }
+  </script></body>
 </html>
