@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,96 +9,140 @@
       --red: #e60000;
       --black: #000000;
       --white: #ffffff;
-    }body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: var(--white);
-  color: var(--black);
-  padding: 20px;
-}
+    }
 
-header {
-  background-color: var(--red);
-  color: var(--white);
-  padding: 20px;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  border-radius: 10px;
-}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--white);
+      color: var(--black);
+      padding: 0;
+    }
 
-section {
-  margin-top: 20px;
-}
+    a {
+      color: var(--red);
+      text-decoration: none;
+    }
 
-.tool {
-  background-color: #f5f5f5;
-  padding: 15px;
-  border-left: 6px solid var(--red);
-  margin-bottom: 15px;
-  border-radius: 6px;
-}
+    a:hover {
+      text-decoration: underline;
+    }
 
-.bottom-message {
-  background-color: var(--black);
-  color: var(--white);
-  text-align: center;
-  padding: 20px;
-  font-weight: bold;
-  border-radius: 10px;
-  margin-top: 30px;
-}
+    header {
+      background-color: var(--red);
+      color: var(--white);
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 0 0 10px 10px;
+      cursor: pointer;
+    }
 
-select {
-  padding: 10px;
-  border: 2px solid var(--black);
-  border-radius: 5px;
-  margin-top: 10px;
-}
+    main {
+      padding: 20px;
+    }
 
+    section {
+      margin-top: 20px;
+    }
+
+    .tool {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-left: 6px solid var(--red);
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+
+    select {
+      padding: 10px;
+      border: 2px solid var(--black);
+      border-radius: 5px;
+      margin-top: 10px;
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    .bottom-message {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 20px;
+      font-weight: bold;
+      border-radius: 10px 10px 0 0;
+      margin-top: 40px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <header>🔄 Sync Zone – Manage Your Offline & Online Data</header>  <section class="tool">
-    <strong>1. Offline-First Technology</strong>
-    <p>Use core features even without internet. All updates sync automatically when back online.</p>
-  </section>  <section class="tool">
-    <strong>2. Smart Auto Sync</strong>
-    <p>Automatically detects and merges the latest offline and online logs.</p>
-  </section>  <section class="tool">
-    <strong>3. Manual Backup & Export</strong>
-    <p>Download data as PDF, Excel, or ZIP. Tap to <a href="#">export manually</a>.</p>
-  </section>  <section class="tool">
-    <strong>4. Multilingual Sync</strong>
-    <p>Available in 8 languages. Select your preferred language:</p>
-    <select>
-      <option>English</option>
-      <option>Hausa</option>
-      <option>Igbo</option>
-      <option>Yoruba</option>
-      <option>Pidgin</option>
-      <option>Swahili</option>
-      <option>French</option>
-      <option>Arabic</option>
-      <option>Zulu</option>
-    </select>
-  </section>  <section class="tool">
-    <strong>5. Smart Notifications</strong>
-    <p>Reminders like "Offline logs ready to sync" keep you in the loop.</p>
-  </section>  <section class="tool">
-    <strong>6. Activity Logs & Sync History</strong>
-    <p>Track sync dates, frequency, and conflicts easily.</p>
-  </section>  <section class="tool">
-    <strong>7. Data Restore & Recovery</strong>
-    <p>Undo deletions and revert to earlier versions for up to 7 days.</p>
-  </section>  <section class="tool">
-    <strong>8. Privacy & Security Sync</strong>
-    <p>All data is encrypted. Wipe logs or disable sync anytime.</p>
-  </section>  <section class="tool">
-    <strong>9. Device Sync Mode</strong>
-    <p>Use sync codes to switch between devices and continue where you stopped.</p>
-  </section>  <div class="bottom-message">
+
+  <header onclick="location.href='https://mvplifeline.ai/synczone';">
+    🔄 Sync Zone – Manage Your Offline & Online Data
+  </header>
+
+  <main>
+    <section class="tool">
+      <strong>1. <a href="#">Offline-First Technology</a></strong>
+      <p>Use core features even without internet. All updates sync automatically when back online.</p>
+    </section>
+
+    <section class="tool">
+      <strong>2. <a href="#">Smart Auto Sync</a></strong>
+      <p>Automatically detects and merges the latest offline and online logs.</p>
+    </section>
+
+    <section class="tool">
+      <strong>3. <a href="#">Manual Backup & Export</a></strong>
+      <p>Download data as PDF, Excel, or ZIP. Tap to export manually.</p>
+    </section>
+
+    <section class="tool">
+      <strong>4. <a href="#">Multilingual Sync</a></strong>
+      <p>Available in 8 languages. Select your preferred language:</p>
+      <select>
+        <option>English</option>
+        <option>French</option>
+        <option>Spanish</option>
+        <option>Arabic</option>
+        <option>Hindi</option>
+        <option>Mandarin</option>
+        <option>Portuguese</option>
+        <option>Russian </option>
+        <option>Bengali</option>
+      <option>Pidgin English </option></select>
+    </section>
+
+    <section class="tool">
+      <strong>5. <a href="#">Smart Notifications</a></strong>
+      <p>Reminders like "Offline logs ready to sync" keep you in the loop.</p>
+    </section>
+
+    <section class="tool">
+      <strong>6. <a href="#">Activity Logs & Sync History</a></strong>
+      <p>Track sync dates, frequency, and conflicts easily.</p>
+    </section>
+
+    <section class="tool">
+      <strong>7. <a href="#">Data Restore & Recovery</a></strong>
+      <p>Undo deletions and revert to earlier versions for up to 7 days.</p>
+    </section>
+
+    <section class="tool">
+      <strong>8. <a href="#">Privacy & Security Sync</a></strong>
+      <p>All data is encrypted. Wipe logs or disable sync anytime.</p>
+    </section>
+
+    <section class="tool">
+      <strong>9. <a href="#">Device Sync Mode</a></strong>
+      <p>Use sync codes to switch between devices and continue where you stopped.</p>
+    </section>
+  </main>
+
+  <div class="bottom-message" onclick="location.href='https://mvplifeline.ai/synczone';">
     🔄 Sync Zone ensures your hustle never stops — online or offline, your growth is always in motion.
   </div>
+
 </body>
 </html>
