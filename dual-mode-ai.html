@@ -45,6 +45,15 @@
       color: #ffffff;
     }
 
+    .toggle-buttons button.active {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      opacity: 1;
+    }
+
+    .toggle-buttons button:not(.active) {
+      opacity: 0.6;
+    }
+
     .earn-mode-btn {
       background-color: #c62828;
     }
@@ -70,7 +79,9 @@
     .mode-box ul {
       list-style-type: none;
       padding: 0;
-      margin-bottom: 0;
+      margin: 0;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     .mode-box ul li {
@@ -81,6 +92,8 @@
       cursor: pointer;
       transition: background-color 0.3s, transform 0.2s;
       border: 1px solid #ccc;
+      min-height: 48px;
+      line-height: 1.4;
     }
 
     .mode-box ul li:hover {
@@ -102,6 +115,16 @@
       min-height: 80px;
       text-align: left;
       font-size: 16px;
+      transition: all 0.3s ease-in-out;
+    }
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      text-align: center;
+      background-color: #111;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.95em;
     }
   </style>
 </head>
@@ -111,29 +134,30 @@
     <h1>🔁 Dual Mode AI</h1>
 
     <div class="toggle-buttons">
-      <button class="earn-mode-btn" onclick="switchMode('earn')">Earn Mode</button>
+      <button class="earn-mode-btn active" onclick="switchMode('earn')">Earn Mode</button>
       <button class="heal-mode-btn" onclick="switchMode('heal')">Heal Mode</button>
     </div>
 
     <div id="modeContent" class="mode-box">
-      <!-- Default: Earn Mode -->
       <h2>💼 Career Zone – Earn Mode</h2>
       <ul>
-        <li onclick="itemClicked(this)">📄 AI-Powered Personalized Career Path Mapping</li>
-        <li onclick="itemClicked(this)">🔍 Smart Gig & Freelance Matching with Regional Focus</li>
-        <li onclick="itemClicked(this)">🎙️ Automated Interview Simulator with AI Feedback</li>
-        <li onclick="itemClicked(this)">📈 Localized Salary Benchmarking & Negotiation Coach</li>
-        <li onclick="itemClicked(this)">📚 Offline CV & Portfolio Builder with Export Options</li>
-        <li onclick="itemClicked(this)">🧠 Skill Gap Analysis & Microlearning Recommendations</li>
-        <li onclick="itemClicked(this)">✍️ AI-Powered Proposal & Contract Drafting Assistant</li>
-        <li onclick="itemClicked(this)">📲 Multi-language Job & Gig Alerts via SMS & App</li>
-        <li onclick="itemClicked(this)">🤝 Career Networking & Mentorship Matchmaking Platform</li>
-        <li onclick="itemClicked(this)">💼 Soft Skills Development with Interactive AI Coaching</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">📄 AI-Powered Personalized Career Path Mapping</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">🔍 Smart Gig & Freelance Matching with Regional Focus</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">🎙️ Automated Interview Simulator with AI Feedback</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">📈 Localized Salary Benchmarking & Negotiation Coach</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">📚 Offline CV & Portfolio Builder with Export Options</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">🧠 Skill Gap Analysis & Microlearning Recommendations</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">✍️ AI-Powered Proposal & Contract Drafting Assistant</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">📲 Multi-language Job & Gig Alerts via SMS & App</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">🤝 Career Networking & Mentorship Matchmaking Platform</li>
+        <li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">💼 Soft Skills Development with Interactive AI Coaching</li>
       </ul>
     </div>
 
     <div id="descriptionBox">Select a tool above to see its description here.</div>
   </div>
+
+  <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
 
   <script>
     const descriptions = {
@@ -166,44 +190,46 @@
     function switchMode(mode) {
       const content = document.getElementById('modeContent');
       const descBox = document.getElementById('descriptionBox');
+
+      // Reset active button
+      document.querySelectorAll('.toggle-buttons button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.${mode}-mode-btn`).classList.add('active');
+
       descBox.textContent = "Select a tool above to see its description here.";
       let html = '';
-      if (mode === 'earn') {
-        html = `
-          <h2>💼 Career Zone – Earn Mode</h2>
-          <ul>
-            ${Object.keys(descriptions.earn).map(tool => `<li onclick="itemClicked(this)">${tool}</li>`).join('')}
-          </ul>`;
-      } else {
-        html = `
-          <h2>💖 Emotional Zone – Heal Mode</h2>
-          <ul>
-            ${Object.keys(descriptions.heal).map(tool => `<li onclick="itemClicked(this)">${tool}</li>`).join('')}
-          </ul>`;
-      }
+
+      const modeItems = Object.keys(descriptions[mode])
+        .map(tool => `<li tabindex="0" role="button" onclick="itemClicked(this)" onkeypress="if(event.key==='Enter'){itemClicked(this);}">${tool}</li>`)
+        .join('');
+
+      html = `
+        <h2>${mode === 'earn' ? '💼 Career Zone – Earn Mode' : '💖 Emotional Zone – Heal Mode'}</h2>
+        <ul>${modeItems}</ul>`;
+
       content.innerHTML = html;
     }
 
     function itemClicked(element) {
+      document.getElementById('clickSound').play();
+
       const descBox = document.getElementById('descriptionBox');
-      // Remove 'clicked' class from all siblings
       const siblings = element.parentElement.children;
+
       for (let i = 0; i < siblings.length; i++) {
         siblings[i].classList.remove('clicked');
       }
 
-      // Add 'clicked' class to clicked item
       element.classList.add('clicked');
 
-      // Determine current mode by heading
       const modeHeading = document.querySelector('#modeContent h2').textContent;
       const mode = modeHeading.includes('Career') ? 'earn' : 'heal';
-
-      // Show description for clicked tool
       const desc = descriptions[mode][element.textContent] || "Description not found.";
       descBox.textContent = desc;
     }
   </script>
 
 </body>
-  </html>
+<footer>
+    &copy; 2025 MVP LifeLine AI App. Empowering your growth with dual-intelligence: career & emotional support..
+  </footer>
+</html>
