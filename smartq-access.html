@@ -220,31 +220,67 @@
     </div>
   </div>
 
-  <!-- TOOL 6 -->
-  <div class="card">
-    <div class="title" onclick="toggleExpand(6)">6. 🎯 Smart Gig Match</div>
-    <div class="desc">Find gigs by location, skill, and availability.</div>
-    <div class="expand" id="expand-6">
-      <ul>
-        <li>📍 Gigs near your location</li>
-        <li>🛠️ Matched by skill</li>
-        <li>⏰ Flexible by your schedule</li>
-        <li>⚡ One-tap apply</li>
-        <li>📊 Track and manage gigs</li>
-      </ul>
-    </div>
+<!-- TOOL 6 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(6)">6. 🎯 Smart Gig Match</div>
+  <div class="desc">Find gigs by location, skill, and availability.</div>
+  <div class="expand" id="expand-6" style="display: none;">
+    <ul>
+      <li onclick="navigateTo('nearbyGigs')">📍 Gigs near your location</li>
+      <li onclick="navigateTo('skillMatch')">🛠️ Matched by skill</li>
+      <li onclick="navigateTo('scheduleFlex')">⏰ Flexible by your schedule</li>
+      <li onclick="navigateTo('oneTapApply')">⚡ One-tap apply</li>
+      <li onclick="navigateTo('gigTracker')">📊 Track and manage gigs</li>
+    </ul>
   </div>
+</div>
 
-  <!-- TOOL 7 -->
-  <div class="card">
-    <div class="title" onclick="toggleExpand(7)">7. 🆘 E-FAP (Emotional First Aid)</div>
-    <div class="desc">Mental health check + peer group referral.</div>
-    <div class="expand" id="expand-7">
-      <a href="https://wa.me/09078189381" target="_blank">💗 Connect Now</a>
-      <p>Take emotional check-ins, find support, feel better.</p>
-    </div>
+<script>
+  function toggleExpand(id) {
+    const section = document.getElementById(`expand-${id}`);
+    if (section) {
+      section.style.display = section.style.display === "block" ? "none" : "block";
+    }
+  }
+
+  function navigateTo(feature) {
+    alert("Navigating to: " + feature);
+    // Example: you can replace the alert with actual navigation
+    // window.location.href = `/features/${feature}.html`;
+  }
+</script>
+
+<style>
+  .expand ul li {
+    cursor: pointer;
+    padding: 10px 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+    background: #f5f5f5;
+    transition: background 0.2s ease;
+  }
+
+  .expand ul li:hover {
+    background: #e6f4ff;
+  }
+</style>
+
+<!-- TOOL 7 -->
+<div class="card">
+  <div class="title" onclick="toggleExpand(7)">7. 🆘 E-FAP (Emotional First Aid)</div>
+  <div class="desc">Mental health check + peer group referral.</div>
+  <div class="expand" id="expand-7" style="display: none;">
+    <ul>
+      <li onclick="navigateTo('checkIn')">🧠 Emotional Self-Check</li>
+      <li onclick="navigateTo('peerSupport')">👥 Join Peer Support Circle</li>
+      <li onclick="navigateTo('journal')">📓 Guided Journal (Write & Reflect)</li>
+      <li onclick="navigateTo('resources')">📚 Mental Health Resources</li>
+      <li onclick="navigateTo('therapist')">🧑‍⚕️ Talk to a Trained Listener</li>
+      <li><a href="https://wa.me/09078189381" class="whatsapp-btn" target="_blank">💗 Connect Now via WhatsApp</a></li>
+    </ul>
+    <p>Take emotional check-ins, find support, feel better.</p>
   </div>
-
+</div>
   <!-- TOOL 8 -->
   <div class="card">
     <div class="title" onclick="toggleExpand(8)">8. 🌍 Multilingual + Smart Answer Matching</div>
@@ -307,4 +343,4 @@
     }
   </script>
 </body>
-</html>
+  </html>
