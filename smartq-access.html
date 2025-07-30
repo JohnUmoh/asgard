@@ -22,7 +22,17 @@
     h1 {
       color: var(--red);
       font-size: 28px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 15px 0 25px;
     }
 
     .card {
@@ -31,11 +41,12 @@
       border-radius: 12px;
       padding: 16px;
       margin-bottom: 15px;
-      transition: 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
     }
 
     .card:hover {
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
 
     .title {
@@ -48,28 +59,18 @@
     .desc {
       font-size: 16px;
       margin-top: 4px;
+      color: #444;
     }
 
     .expand {
       display: none;
       margin-top: 10px;
       font-size: 15px;
-      color: #444;
     }
 
     .highlight {
       font-weight: bold;
       color: var(--red);
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: var(--red);
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-bottom: 20px;
     }
 
     input, select {
@@ -90,498 +91,220 @@
       margin-top: 10px;
     }
 
-    .sticky-chat {
-      position: fixed;
-      bottom: 15px;
-      right: 20px;
-      background-color: var(--red);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 50px;
-      font-size: 16px;
+    .languages a {
+      margin-right: 6px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 999;
+      color: #555;
+    }
+
+    .languages a:hover {
+      color: var(--red);
     }
 
     ul {
       padding-left: 20px;
     }
-    
+
     footer {
       margin-top: 30px;
       padding: 15px;
       text-align: center;
-      background-color: #111; /* black background */
-      color: #fff;            /* white text */
+      background-color: #111;
+      color: #fff;
       border-radius: 12px;
       font-size: 0.95em;
     }
-  </style>
-</head>
-<body>
 
-  <!-- Your content here -->
-
-  <footer>
-    This is the footer. The background is black, and the text is white.
-  </footer>
-
-</body>
-</html>
-}
-  </style>
-</head>
-<body>
-
-<h1>🚶‍➡️👯SmartQ Access – MVP LifeLine AI App</h1>
-   <p>SmartQ Access – Instant Answers, Smarter Living</p>
-<a href="https://chat.whatsapp.com/FicWd0fOVgtDV7ePS3ZzDd?mode=ac_t" class="cta-button" target="_blank">💬 Chat With SmartQ Now</a>
-
-<!-- TOOL 1 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(1)">1. ⏳ SmartQ Virtual Queue System</div>
-  <div class="desc">Join or monitor queues at NIN, NYSC, banks, and hospitals.</div>
-  <div class="expand" id="expand-1">
-    <ul>
-      <li>📍 Join virtual queues near you</li>
-      <li>📱 Get SMS alerts when it's your turn</li>
-      <li>📊 View real-time wait times</li>
-      <li>👥 Select queue type (NIN, DMV, NYSC, USCIS, Bank, Hospital, etc.)</li>
-    </ul>
-    <form onsubmit="joinQueue (event)">
-<label>Choose Service:</label>
-<select id="serviceType" name="serviceType" required>
-  <option value="">-- Select a Service --</option>
-  <option value="nin">NIN
-  Registration</option>
-  <option value="nysc">NYSC Clearance</option>
-  <option value="hospital">Hospital Outpatient</option>
-  <option value="bank">Bank Customer Service</option>
-  <option value="dmv">DMV (Driver’s License / State ID)</option>
-  <option value="uscis">USCIS (Immigration Services)</option>
-</select>
-
-<label>Location:</label>
-<input type="text" id="location" name="location" placeholder="e.g. Los Angeles, California" required />
-
-<label>Full Name:</label>
-<input type="text" id="name" name="fullName" placeholder="Your Name" required />
-      <label>Phone Number:</label>
-      <input type="tel" id="phone" placeholder="431xxxxxxx" required />
-      <button class="btn" type="submit">👫 Join Queue</button>
-    </form>
-  </div>
-</div>
-
-<!-- TOOL 2 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(2)">2. 🌐 USSD + SMS Smart AI (Offline Mode)</div>
-  <div class="desc">Use <span class="highlight">*911#</span> for SmartQ via SMS.</div>
-  <div class="expand" id="expand-2">
-    Ask SmartQ anything via USSD. Replies come by SMS.<br><br>
-    <a href="tel:*911#">📞 Dial Now</a>
-  </div>
-</div>
-
-<!-- TOOL 3 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(3)">3. 🧑🏽‍🤝‍🧑🏿 Peer Q&A + Mentorship</div>
-  <div class="desc">Find support or mentor others in your language.</div>
-  <div class="expand" id="expand-3">
-    Engage with community-based knowledge in USA, Canada , Nigeria, and more.
-    <div class="buttons">
-  <button class="ask" onclick="askQuestion()">📝 Ask a Question</button>
-  <button class="find" onclick="findMentor()">🔍 Find a Mentor</button>
-  <button class="offer" onclick="offerMentorship()">🌱 Offer Mentorship</button>
-  <button class="browse" onclick="browseTopics()">📚 Browse Peer Topics</button>
-</div>
-
-<div class="languages">
-  <strong>🌍 Speak your language:</strong><br>
-  <a href="#" onclick="setLanguage('en')">🇬🇧 English</a> |
-  <a href="#" onclick="setLanguage('fr')">🇫🇷 French</a> |
-  <a href="#" onclick="setLanguage('es')">🇪🇸 Spanish</a> |
-  <a href="#" onclick="setLanguage('ar')">🇸🇦 Arabic</a> |
-  <a href="#" onclick="setLanguage('hi')">🇮🇳 Hindi</a> |
-  <a href="#" onclick="setLanguage('zh')">🇨🇳 Mandarin</a> |
-  <a href="#" onclick="setLanguage('pt')">🇵🇹 Portuguese</a> |
-  <a href="#" onclick="setLanguage('ru')">🇷🇺 Russian</a> |
-  <a href="#" onclick="setLanguage('bn')">🇧🇩 Bengali</a> |
-  <a href="#" onclick="setLanguage('pidgin')">🇳🇬 Pidgin English</a> |
-  
-</div>
-
-<div>
-  <strong>💬 Why use this?</strong>
-  <ul>
-    <li>✅ Ask real-life questions</li>
-    <li>✅ Get peer support fast</li>
-    <li>✅ Connect with mentors who understand your journey</li>
-  </ul>
-</div>
-
-<script>
-  function setLanguage(langCode) {
-    alert("Language set to: " + langCode);
-    // You can add actual content switching logic here
-  }
-
-  function askQuestion() {
-    alert("Redirect to Ask a Question");
-  }
-
-  function findMentor() {
-    alert("Redirect to Find a Mentor");
-  }
-
-  function offerMentorship() {
-    alert("Redirect to Offer Mentorship");
-  }
-
-  function browseTopics() {
-    alert("Redirect to Browse Topics");
-  }
-</script>
-  </div>
-</div>
-
-<!-- TOOL 4 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(4)">4. 🧠 Culture-Smart NLP</div>
-  <div class="desc">Understands Global slang and phrases.</div>
-  <div class="expand" id="expand-4" style="display: none;">
-    <p>Designed to understand culture, tone, and real-life context.</p>
-    
-    <section class="culture-smart-nlp" style="font-family: 'Segoe UI', sans-serif; padding: 20px;">
-      <div class="slang-options" style="display: flex; flex-direction: column; gap: 12px;">
-        <button onclick="alert('We understand your vibe!')" style="padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); cursor: pointer; font-size: 16px;">
-          💬 Talk how you talk — we understand your vibe.
-        </button>
-
-        <button onclick="alert('We understand Wahala to No cap!')" style="padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); cursor: pointer; font-size: 16px;">
-          🧩 From ‘Wahala’ to ‘No cap’ — we get it.
-        </button>
-
-        <button onclick="alert('Speak your slang, we understand.')" style="padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); cursor: pointer; font-size: 16px;">
-          🎙️ No need to switch it up — we speak your slang.
-        </button>
-
-        <button onclick="alert('We get you—street talk or sweet talk.')" style="padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); cursor: pointer; font-size: 16px;">
-          🌍 Understands you — whether it's street talk or sweet talk.
-        </button>
-
-        <button onclick="alert('Real talk. Local slang. Global meaning.')" style="padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); cursor: pointer; font-size: 16px;">
-          🔥 Real talk. Local slang. Global meaning.
-        </button>
-
-        <button onclick="alert('Your words. Your way. We get you.')" style="padding: 14px 20px; background-color: #ffffff; border: 1px solid #ddd; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); cursor: pointer; font-size: 16px;">
-          💯 Your words, your way — and we still get you.
-        </button>
-      </div>
-    </section>
-  </div>
-</div>
-</section>
-<!-- TOOL 5 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(5)">5. 🔊 Voice Replies in Local Languages</div>
-  <div class="desc">Audio answers in USA, Jamaica , Nigeria, and more.</div>
-  <div class="expand" id="expand-5">
-    <p>🎧 Choose Language:</p>
-    <ul>
-      <li>🇱🇷 USA – <audio controls><source src="Kendrick Lamar .mp3" type="audio/mpeg"></audio></li>
-      <li>🇯🇲 Jamaica – <audio controls><source src="Bob Marley .mp3" type="audio/mpeg"></audio></li>
-      <li>🇳🇬 Nigeria – <audio controls><source src=" Wizkid .mp3" type="audio/mpeg"></audio></li>
-    </ul>
-  </div>
-</div>
-
-<!-- TOOL 6 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(6)">6. 🎯 Smart Gig Match</div>
-  <div class="desc">Find gigs by location, skill, and availability.</div>
-  <div class="expand" id="expand-6" style="display: none;">
-    <section class="smart-gig-match" style="font-family: 'Segoe UI', sans-serif; padding: 20px;">
-      <div class="gig-options" style="display: flex; flex-direction: column; gap: 12px;">
-        <button onclick="alert('Browse gigs near you')" style="padding: 14px 20px; background-color: #fff5f5; border: 1px solid #fcdcdc; border-radius: 12px; box-shadow: 0 2px 6px rgba(255, 0, 0, 0.05); cursor: pointer; font-size: 16px;">
-          📍 Gigs tailored to your location
-        </button>
-
-        <button onclick="alert('Find gigs that fit your skills')" style="padding: 14px 20px; background-color: #fff5f5; border: 1px solid #fcdcdc; border-radius: 12px; box-shadow: 0 2px 6px rgba(255, 0, 0, 0.05); cursor: pointer; font-size: 16px;">
-          🛠️ Find gigs that match your skills
-        </button>
-
-        <button onclick="alert('Choose gigs that match your schedule')" style="padding: 14px 20px; background-color: #fff5f5; border: 1px solid #fcdcdc; border-radius: 12px; box-shadow: 0 2px 6px rgba(255, 0, 0, 0.05); cursor: pointer; font-size: 16px;">
-          ⏰ Flexible gigs that suit your schedule
-        </button>
-
-        <button onclick="alert('We recommend gigs just for you')" style="padding: 14px 20px; background-color: #fff5f5; border: 1px solid #fcdcdc; border-radius: 12px; box-shadow: 0 2px 6px rgba(255, 0, 0, 0.05); cursor: pointer; font-size: 16px;">
-          🎯 Smart recommendations, just for you
-        </button>
-
-        <button onclick="alert('Apply fast with one tap')" style="padding: 14px 20px; background-color: #fff5f5; border: 1px solid #fcdcdc; border-radius: 12px; box-shadow: 0 2px 6px rgba(255, 0, 0, 0.05); cursor: pointer; font-size: 16px;">
-          ⚡ One-tap apply for instant gig access
-        </button>
-
-        <button onclick="alert('Track your gigs with ease')" style="padding: 14px 20px; background-color: #fff5f5; border: 1px solid #fcdcdc; border-radius: 12px; box-shadow: 0 2px 6px rgba(255, 0, 0, 0.05); cursor: pointer; font-size: 16px;">
-          📊 Track, manage, and succeed with ease
-        </button>
-      </div>
-    </section>
-  </div>
-</div>
-
-<script>
-  function toggleExpand(id) {
-    const element = document.getElementById(`expand-${id}`);
-    element.style.display = element.style.display === "none" ? "block" : "none";
-  }
-</script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-    }
-
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      background-color: #ffffff;
-      border-bottom: 2px solid #ddd;
-    }
-
-    .card {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 12px;
-      background: #fff;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: 0.3s ease;
-      margin: 1rem;
-    }
-
-    .card:hover {
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      transform: scale(1.02);
-    }
-
-    .title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .desc {
-      margin-top: 0.5rem;
-      color: #555;
-    }
-
-    .expand {
-      margin-top: 1rem;
-    }
-
-    select {
-      margin-top: 1rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #f9f9f9;
-      font-size: 0.9rem;
-      color: #444;
-      border-top: 1px solid #ddd;
-      margin-top: 2rem;
-    }
-
-    footer nav a {
-      margin: 0 5px;
-      text-decoration: none;
-      color: #555;
-    }
-
-    footer nav a:hover {
-      color: red;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  
-  <!-- TOOL 7 -->
-<div class="card">
-  <div class="title" onclick="toggleExpand(8)" style="cursor: pointer;">7. 🆘 E-FAP (Emotional First Aid)</div>
-  <div class="desc">Mental health check + peer group referral.</div>
-  <div class="expand" id="expand-8" style="display: none;">
-    <a href="https://wa.me/09078189381" target="_blank">💗 Connect Now</a>
 
-    <section class="e-fap-section" style="font-family: 'Segoe UI', sans-serif; padding: 20px;">
-      <div class="e-fap-options" style="display: flex; flex-direction: column; gap: 10px;">
-        <button onclick="alert('Start your quick emotional check-in')" style="padding: 10px; background-color: #e0f7fa; border: none; border-radius: 8px; cursor: pointer;">
-          Take a quick emotional check-in.
-        </button>
+  <h1>🚶‍➡️👯 SmartQ Access – MVP LifeLine AI App</h1>
+  <p>SmartQ Access – Instant Answers, Smarter Living</p>
+  <a href="https://chat.whatsapp.com/FicWd0fOVgtDV7ePS3ZzDd?mode=ac_t" class="cta-button" target="_blank">💬 Chat With SmartQ Now</a>
 
-        <button onclick="alert('Find safe spaces to talk')" style="padding: 10px; background-color: #e0f7fa; border: none; border-radius: 8px; cursor: pointer;">
-          Find a safe space to talk it out.
-        </button>
-
-        <button onclick="alert('We’ll connect you to supportive peers')" style="padding: 10px; background-color: #e0f7fa; border: none; border-radius: 8px; cursor: pointer;">
-          Get matched with a supportive peer group.
-        </button>
-
-        <button onclick="alert('No judgment. Just support.')" style="padding: 10px; background-color: #e0f7fa; border: none; border-radius: 8px; cursor: pointer;">
-          No judgment. Just support.
-        </button>
-
-        <button onclick="alert('Find relief when life feels heavy')" style="padding: 10px; background-color: #e0f7fa; border: none; border-radius: 8px; cursor: pointer;">
-          When life feels heavy, we’re here.
-        </button>
-
-        <button onclick="alert('Feel seen. Feel heard. Feel better.')" style="padding: 10px; background-color: #e0f7fa; border: none; border-radius: 8px; cursor: pointer;">
-          Feel seen. Feel heard. Feel better.
-        </button>
-      </div>
-    </section>
-  </div>
-</div>
-
-<script>
-  function toggleExpand(id) {
-    const element = document.getElementById('expand-' + id);
-    if (element.style.display === 'none' || element.style.display === '') {
-      element.style.display = 'block';
-    } else {
-      element.style.display = 'none';
-    }
-  }
-</script>
-  
-
-  <!-- TOOL 8: Multilingual Module -->
+  <!-- TOOL 1 -->
   <div class="card">
-    <div class="title" onclick="toggleExpand(9)">8. 🌍 Multilingual + Smart Answer Matching</div>
-    <div class="desc">Supports 9+ languages with AI-based auto-matching.</div>
-    <div class="expand" id="expand-9">
-      <a href="/languages.html">🌐 Select Language</a>
-
-      <div>
-        <label for="language-select"></label>
-        <select id="language-select">
-          <option value="en">English 🇬🇧</option>
-          <option value="fr">French 🇫🇷</option>
-          <option value="es">Spanish 🇪🇸</option>
-          <option value="ar">Arabic 🇸🇦</option>
-          <option value="hi">Hindi 🇮🇳</option>
-          <option value="zh">Mandarin 🇨🇳</option>
-          <option value="pt">Portuguese 🇵🇹</option>
-          <option value="ru">Russian 🇷🇺</option>
-          <option value="bn">Bengali 🇧🇩</option>
-          <option value="pg">Pidgin English 🌍</option>
+    <div class="title" onclick="toggleExpand(1)">1. ⏳ SmartQ Virtual Queue System</div>
+    <div class="desc">Join or monitor queues at NIN, NYSC, banks, and hospitals.</div>
+    <div class="expand" id="expand-1">
+      <ul>
+        <li>📍 Join virtual queues near you</li>
+        <li>📱 Get SMS alerts when it's your turn</li>
+        <li>📊 View real-time wait times</li>
+        <li>👥 Select queue type (NIN, DMV, NYSC, USCIS, Bank, Hospital, etc.)</li>
+      </ul>
+      <form onsubmit="joinQueue(event)">
+        <label>Choose Service:</label>
+        <select required>
+          <option value="">-- Select a Service --</option>
+          <option>NIN Registration</option>
+          <option>NYSC Clearance</option>
+          <option>Hospital Outpatient</option>
+          <option>Bank Customer Service</option>
+          <option>DMV</option>
+          <option>USCIS</option>
         </select>
+        <label>Location:</label>
+        <input type="text" placeholder="e.g. Los Angeles, California" required />
+        <label>Full Name:</label>
+        <input type="text" placeholder="Your Name" required />
+        <label>Phone Number:</label>
+        <input type="tel" placeholder="431xxxxxxx" required />
+        <button class="btn" type="submit">👫 Join Queue</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOOL 2 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(2)">2. 🌐 USSD + SMS Smart AI (Offline Mode)</div>
+    <div class="desc">Use <span class="highlight">*911#</span> for SmartQ via SMS.</div>
+    <div class="expand" id="expand-2">
+      Ask SmartQ anything via USSD. Replies come by SMS.<br><br>
+      <a href="tel:*911#">📞 Dial Now</a>
+    </div>
+  </div>
+
+  <!-- TOOL 3 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(3)">3. 🧑🏽‍🤝‍🧑🏿 Peer Q&A + Mentorship</div>
+    <div class="desc">Find support or mentor others in your language.</div>
+    <div class="expand" id="expand-3">
+      <p>Engage with community-based knowledge in USA, Canada, Nigeria, and more.</p>
+      <div>
+        <button onclick="alert('Redirect to Ask a Question')">📝 Ask a Question</button>
+        <button onclick="alert('Redirect to Find a Mentor')">🔍 Find a Mentor</button>
+        <button onclick="alert('Redirect to Offer Mentorship')">🌱 Offer Mentorship</button>
+        <button onclick="alert('Redirect to Browse Topics')">📚 Browse Peer Topics</button>
+      </div>
+      <div class="languages">
+        <strong>🌍 Speak your language:</strong><br>
+        <a href="#" onclick="setLanguage('en')">🇬🇧 English</a>
+        <a href="#" onclick="setLanguage('fr')">🇫🇷 French</a>
+        <a href="#" onclick="setLanguage('es')">🇪🇸 Spanish</a>
+        <a href="#" onclick="setLanguage('ar')">🇸🇦 Arabic</a>
+        <a href="#" onclick="setLanguage('hi')">🇮🇳 Hindi</a>
+        <a href="#" onclick="setLanguage('zh')">🇨🇳 Mandarin</a>
+        <a href="#" onclick="setLanguage('pt')">🇵🇹 Portuguese</a>
+        <a href="#" onclick="setLanguage('ru')">🇷🇺 Russian</a>
+        <a href="#" onclick="setLanguage('bn')">🇧🇩 Bengali</a>
+        <a href="#" onclick="setLanguage('pidgin')">🇳🇬 Pidgin</a>
       </div>
     </div>
   </div>
-  
-<!-- TOOL 9 -->
-<div class="card" style="font-family: 'Segoe UI', sans-serif; border: 1px solid #ddd; border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: box-shadow 0.3s ease;">
-  
-  <!-- Title in red -->
-  <div class="title" onclick="toggleExpand('lifeline-9')" style="font-size: 18px; font-weight: 600; color: red; cursor: pointer; margin-bottom: 4px;">
-    9. 🧬 Lifeline Profiles
+
+  <!-- TOOL 4 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(4)">4. 🧠 Culture-Smart NLP</div>
+    <div class="desc">Understands global slang and phrases.</div>
+    <div class="expand" id="expand-4">
+      <p>🌍 We understand your slang, tone, and culture. Try us!</p>
+    </div>
   </div>
 
-  <!-- Bold description -->
-  <div class="desc" style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 10px;">
-    Custom dashboard for Students, Hustlers, Builders & Creatives.
+  <!-- TOOL 5 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(5)">5. 🔊 Voice Replies in Local Languages</div>
+    <div class="desc">Audio answers in USA, Jamaica, Nigeria, and more.</div>
+    <div class="expand" id="expand-5">
+      <ul>
+        <li>🇺🇸 USA – <audio controls><source src="Kendrick_Lamar.mp3" type="audio/mpeg"></audio></li>
+        <li>🇯🇲 Jamaica – <audio controls><source src="Bob_Marley.mp3" type="audio/mpeg"></audio></li>
+        <li>🇳🇬 Nigeria – <audio controls><source src="Wizkid.mp3" type="audio/mpeg"></audio></li>
+      </ul>
+    </div>
   </div>
 
-  <!-- Expandable section -->
-  <div class="expand" id="lifeline-9" style="display: none; margin-top: 10px; animation: fadeIn 0.3s ease;">
+  <!-- TOOL 6 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(6)">6. 🎯 Smart Gig Match</div>
+    <div class="desc">Find gigs by location, skill, and availability.</div>
+    <div class="expand" id="expand-6">
+      <ul>
+        <li>📍 Gigs near your location</li>
+        <li>🛠️ Matched by skill</li>
+        <li>⏰ Flexible by your schedule</li>
+        <li>⚡ One-tap apply</li>
+        <li>📊 Track and manage gigs</li>
+      </ul>
+    </div>
+  </div>
 
-    <!-- Friendly intro -->
-    <p style="font-size: 14px; color: #555; margin-bottom: 12px;">
-      Welcome to your personalized Lifeline Dashboard. Select your vibe and unlock tailored support, tools, and opportunities made just for you.
-    </p>
+  <!-- TOOL 7 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(7)">7. 🆘 E-FAP (Emotional First Aid)</div>
+    <div class="desc">Mental health check + peer group referral.</div>
+    <div class="expand" id="expand-7">
+      <a href="https://wa.me/09078189381" target="_blank">💗 Connect Now</a>
+      <p>Take emotional check-ins, find support, feel better.</p>
+    </div>
+  </div>
 
-    <!-- User role selector -->
-    <div style="margin-bottom: 14px;">
-      <label for="userType" style="font-weight: bold; color: #333;">Choose your vibe:</label>
-      <select id="userType" name="userType" style="margin-left: 8px; padding: 6px 12px; border-radius: 8px; border: 1px solid #ccc;">
+  <!-- TOOL 8 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(8)">8. 🌍 Multilingual + Smart Answer Matching</div>
+    <div class="desc">Supports 9+ languages with AI-based auto-matching.</div>
+    <div class="expand" id="expand-8">
+      <select>
+        <option>English 🇬🇧</option>
+        <option>French 🇫🇷</option>
+        <option>Spanish 🇪🇸</option>
+        <option>Arabic 🇸🇦</option>
+        <option>Hindi 🇮🇳</option>
+        <option>Mandarin 🇨🇳</option>
+        <option>Portuguese 🇵🇹</option>
+        <option>Russian 🇷🇺</option>
+        <option>Bengali 🇧🇩</option>
+        <option>Pidgin 🌍</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- TOOL 9 -->
+  <div class="card">
+    <div class="title" onclick="toggleExpand(9)">9. 🧬 Lifeline Profiles</div>
+    <div class="desc"><strong>Custom dashboard for Students, Hustlers, Builders & Creatives.</strong></div>
+    <div class="expand" id="expand-9">
+      <label><strong>Choose your vibe:</strong></label>
+      <select>
         <option value="">-- Select --</option>
         <option value="student">🎓 Student</option>
         <option value="hustler">💼 Hustler</option>
         <option value="builder">🏗️ Builder</option>
         <option value="creative">🎨 Creative</option>
       </select>
+      <br><br>
+      <a href="/lifeline-profiles.html" class="cta-button">🔓 Open Your Lifeline Profile</a>
+      <p style="font-size: 12px; color: #888;">Tip: Unlock gig-matching, wellness tools, learning tracks, and more.</p>
     </div>
-
-    <!-- Main Action Button -->
-    <a href="/lifeline-profiles.html" style="
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: #e60000;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 14px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    " onmouseover="this.style.backgroundColor='#cc0000'; this.style.transform='scale(1.03)'" 
-       onmouseout="this.style.backgroundColor='#e60000'; this.style.transform='scale(1)'">
-      🔓 Open Your Lifeline Profile
-    </a>
-
-    <!-- Tip text -->
-    <p style="font-size: 12px; color: #888; margin-top: 10px;">
-      Tip: Your profile unlocks gig-matching, mental health tools, learning tracks, and more — based on your selected vibe.
-    </p>
-
   </div>
-</div>
-
-<!-- Toggle function -->
-<script>
-  function toggleExpand(id) {
-    const section = document.getElementById(id);
-    section.style.display = (section.style.display === "none" || section.style.display === "") ? "block" : "none";
-  }
-</script>
-
-<!-- Fade-in animation -->
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
 
   <footer>
-    
     &copy; 2025 MVP LifeLine AI App. No more waiting. Get real-time answers that move your dreams forward.<br>
-    Powered by AI. Inspired by you
+    Powered by AI. Inspired by you.
+  </footer>
 
-   
-    </body>
- 
+  <script>
+    function toggleExpand(id) {
+      const section = document.getElementById('expand-' + id);
+      if (section) {
+        section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
+      }
+    }
+
+    function setLanguage(lang) {
+      alert("Language set to: " + lang);
+    }
+
+    function joinQueue(event) {
+      event.preventDefault();
+      alert("Queue joined successfully!");
+    }
+  </script>
+</body>
 </html>
-  
