@@ -13,9 +13,11 @@
       max-width: 800px;
       margin: auto;
     }
+
     h1, h2 {
       color: #c00;
     }
+
     textarea, select, button {
       width: 100%;
       margin: 10px 0;
@@ -24,15 +26,18 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+
     button {
       background-color: #c00;
       color: white;
       border: none;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #a00;
     }
+
     .log, .chat-log {
       background: #fff;
       border: 1px solid #ccc;
@@ -42,14 +47,17 @@
       max-height: 300px;
       overflow-y: auto;
     }
+
     .blur {
       filter: blur(4px);
     }
+
     .delete-btn {
       float: right;
       color: #c00;
       cursor: pointer;
     }
+
     .section {
       margin-top: 30px;
     }
@@ -92,7 +100,8 @@
 
     .chat-log div {
       margin-bottom: 8px;
-      }
+    }
+
     footer {
       margin-top: 30px;
       padding: 15px;
@@ -101,36 +110,28 @@
       color: #fff;
       border-radius: 12px;
       font-size: 0.95em;
-      footer {
-      margin-top: 30px;
-      padding: 15px;
-      text-align: center;
-      background-color: #111;
-      color: #fff;
-      border-radius: 12px;
-      font-size: 0.95em;
-      }
+    }
   </style>
 </head>
 <body>
   <h1>💔 Emotional Zone</h1>
   <p>Mental & Emotional Wellness:</p>
-  <!-- START PRIVACY WRAPPER -->
+
   <div id="privacyContent">
 
     <!-- 1. Daily Journal -->
     <div class="section">
       <h2>1. Daily Journal 📝</h2>
-      <textarea id="journalEntry" rows="5" placeholder="Write your thoughts..." aria-label="Journal Entry"></textarea>
+      <textarea id="journalEntry" rows="5" placeholder="Write your thoughts..."></textarea>
       <button onclick="saveJournal()">Save Entry</button>
       <button onclick="clearJournal()">Clear All Entries</button>
-      <div id="journalLog" class="log" aria-live="polite"></div>
+      <div id="journalLog" class="log"></div>
     </div>
 
     <!-- 2. Mood Tracker -->
     <div class="section">
       <h2>2. Mood Tracker 🌦️</h2>
-      <select id="moodSelect" aria-label="Mood Selection">
+      <select id="moodSelect">
         <option value="">-- Select Mood --</option>
         <option value="😊 Happy">😊 Happy</option>
         <option value="😭 Sad">😭 Sad</option>
@@ -141,15 +142,15 @@
       </select>
       <button onclick="logMood()">Log Mood</button>
       <button onclick="clearMood()">Clear Mood Log</button>
-      <div id="moodLog" class="log" aria-live="polite"></div>
+      <div id="moodLog" class="log"></div>
     </div>
 
     <!-- 3. AI Emotional Support -->
     <div class="section">
       <h2>3. AI Emotional Support 🤖</h2>
-      <textarea id="aiMessage" rows="3" placeholder="Tell me how you feel..." aria-label="Message to AI"></textarea>
+      <textarea id="aiMessage" rows="3" placeholder="Tell me how you feel..."></textarea>
       <button onclick="sendMessage()">Send to AI</button>
-      <div id="chatLog" class="chat-log" aria-live="polite"></div>
+      <div id="chatLog" class="chat-log"></div>
     </div>
 
     <!-- 4. Privacy Mode -->
@@ -164,7 +165,11 @@
       <div id="manipulationGrid" class="grid"></div>
     </div>
 
-  </div> <!-- END PRIVACY WRAPPER -->
+  </div>
+
+  <footer>
+    &copy; 2025 MVP LifeLine AI App. "Your emotional well-being is key to your success. We're here for the journey."
+  </footer>
 
   <script>
     const storageKey = {
@@ -173,12 +178,24 @@
       stories: 'emotionalZone_stories'
     };
 
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function (m) {
+        return ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        })[m];
+      });
+    }
+
     function saveJournal() {
       const entry = document.getElementById('journalEntry').value.trim();
       if (entry) {
         const log = document.getElementById('journalLog');
         const div = document.createElement('div');
-        div.innerHTML = `${entry} <span class="delete-btn" onclick="this.parentNode.remove()">✖</span>`;
+        div.innerHTML = `${escapeHtml(entry)} <span class="delete-btn" onclick="this.parentNode.remove()">✖</span>`;
         log.appendChild(div);
         document.getElementById('journalEntry').value = '';
         localStorage.setItem(storageKey.journal, log.innerHTML);
@@ -197,7 +214,7 @@
       if (mood) {
         const log = document.getElementById('moodLog');
         const div = document.createElement('div');
-        div.innerHTML = `${mood} <span class="delete-btn" onclick="this.parentNode.remove()">✖</span>`;
+        div.innerHTML = `${escapeHtml(mood)} <span class="delete-btn" onclick="this.parentNode.remove()">✖</span>`;
         log.appendChild(div);
         localStorage.setItem(storageKey.mood, log.innerHTML);
       }
@@ -215,7 +232,7 @@
       const chatLog = document.getElementById('chatLog');
       if (message) {
         const userDiv = document.createElement('div');
-        userDiv.innerHTML = `<strong>You:</strong> ${message}`;
+        userDiv.innerHTML = `<strong>You:</strong> ${escapeHtml(message)}`;
         chatLog.appendChild(userDiv);
 
         const aiDiv = document.createElement('div');
@@ -228,9 +245,7 @@
 
     function togglePrivacy() {
       const container = document.getElementById('privacyContent');
-      if (container) {
-        container.classList.toggle('blur');
-      }
+      container.classList.toggle('blur');
     }
 
     const manipulationData = [
@@ -251,33 +266,49 @@
       manipulationData.forEach((item, index) => {
         const div = document.createElement("div");
         div.className = "card";
-        div.onclick = function () {
-          this.classList.toggle("open");
-        };
+
+        div.addEventListener("click", function (e) {
+          const isInteractive = ['TEXTAREA', 'BUTTON'].includes(e.target.tagName);
+          if (!isInteractive) {
+            this.classList.toggle("open");
+          }
+        });
+
         div.innerHTML = `
           <strong>${index + 1}. ${item.title}</strong>
           <div class="content">
             <p><em>${item.quote}</em></p>
             <p>${item.desc}</p>
-            <textarea id="story-${index}" rows="2" placeholder="Share your experience..."></textarea>
-            <button onclick="event.stopPropagation(); saveStory(${index})">Submit</button>
+            <textarea id="story-${index}" rows="2" placeholder="Share your experience... (Press Enter to submit)"></textarea>
+            <button onclick="saveStory(event, ${index})">Submit</button>
             <div id="stories-${index}" class="story-log"></div>
           </div>
         `;
         container.appendChild(div);
+
+        // Add Enter key submit support
+        setTimeout(() => {
+          const textarea = document.getElementById(`story-${index}`);
+          textarea.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              saveStory(e, index);
+            }
+          });
+        }, 0);
 
         const saved = JSON.parse(localStorage.getItem(`${storageKey.stories}_${index}`) || '[]');
         saved.forEach(story => appendStory(index, story));
       });
     }
 
-    function saveStory(index) {
+    function saveStory(event, index) {
+      event.stopPropagation();
       const textarea = document.getElementById(`story-${index}`);
       const story = textarea.value.trim();
       if (story) {
         appendStory(index, story);
         textarea.value = '';
-
         const current = JSON.parse(localStorage.getItem(`${storageKey.stories}_${index}`) || '[]');
         current.push(story);
         localStorage.setItem(`${storageKey.stories}_${index}`, JSON.stringify(current));
@@ -287,7 +318,7 @@
     function appendStory(index, story) {
       const list = document.getElementById(`stories-${index}`);
       const p = document.createElement("p");
-      p.innerHTML = `"${story}" <span class='delete-btn' onclick='this.parentNode.remove()'>✖</span>`;
+      p.innerHTML = `"${escapeHtml(story)}" <span class='delete-btn' onclick='this.parentNode.remove()'>✖</span>`;
       list.appendChild(p);
     }
 
@@ -297,8 +328,5 @@
       renderManipulations();
     };
   </script>
-  <footer>
-    &copy; 2025 MVP LifeLine AI App. "Your emotional well being is key to your success. We're here for the journey.".
-  </footer>
 </body>
-</html>
+  </html>
