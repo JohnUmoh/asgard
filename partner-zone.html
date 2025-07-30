@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Partner Zone – MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Important for mobile responsiveness -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -34,15 +34,17 @@
     .logo-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
       margin-top: 15px;
     }
     .logo-grid a {
-      flex: 1 1 150px;
+      flex: 1 1 100%;
+      min-width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 14px;
+      margin: 5px 0;
       border: 1px solid #ddd;
       border-radius: 10px;
       background: #fafafa;
@@ -54,6 +56,14 @@
     .logo-grid a:hover {
       background-color: #f2f2f2;
     }
+
+    @media (min-width: 600px) {
+      .logo-grid a {
+        flex: 1 1 calc(50% - 20px);
+        min-width: unset;
+      }
+    }
+
     form input, form textarea {
       width: 100%;
       padding: 8px;
@@ -69,6 +79,7 @@
       border-radius: 8px;
       cursor: pointer;
     }
+
     .footer {
       margin-top: 30px;
       padding: 15px;
@@ -77,7 +88,6 @@
       color: #fff;
       border-radius: 12px;
       font-size: 0.95em;
-    }
     }
   </style>
 </head>
@@ -98,17 +108,16 @@
     <h2>🌍 Top 10 Featured Partners</h2>
     <p>We collaborate with organizations committed to impact, reach, and youth transformation.</p>
     <div class="logo-grid">
-    <a href="https://openai.com/" target="_blank">1. OpenAI</a>
-<a href="https://startup.google.com/" target="_blank">2. Google for Startups</a>
-<a href="https://www.unicef.org/" target="_blank">3. UNICEF</a>
-<a href="https://www.mtn.ng/foundation/" target="_blank">4. MTN Foundation</a>
-<a href="https://www.microsoft.com/en-us/startups" target="_blank">5. Microsoft for Startups</a>
-<a href="https://www.undp.org/" target="_blank">6. UNDP (United Nations Development Programme)</a>
-<a href="https://andela.com/" target="_blank">7. Andela</a>
-<a href="https://www.ycombinator.com/" target="_blank">8. Y Combinator</a>
-<a href="https://digital-africa.co/en/" target="_blank">9. Digital Africa</a>
-<a href="https://www.globalyouthmobilization.org/" target="_blank">10. Global Youth Mobilization (GYM)</a>
-    
+      <a href="https://openai.com/" target="_blank">1. OpenAI</a>
+      <a href="https://startup.google.com/" target="_blank">2. Google for Startups</a>
+      <a href="https://www.unicef.org/" target="_blank">3. UNICEF</a>
+      <a href="https://www.mtn.ng/foundation/" target="_blank">4. MTN Foundation</a>
+      <a href="https://www.microsoft.com/en-us/startups" target="_blank">5. Microsoft for Startups</a>
+      <a href="https://www.undp.org/" target="_blank">6. UNDP (United Nations Development Programme)</a>
+      <a href="https://andela.com/" target="_blank">7. Andela</a>
+      <a href="https://www.ycombinator.com/" target="_blank">8. Y Combinator</a>
+      <a href="https://digital-africa.co/en/" target="_blank">9. Digital Africa</a>
+      <a href="https://www.globalyouthmobilization.org/" target="_blank">10. Global Youth Mobilization (GYM)</a>
     </div>
     <p>Want your organization listed here? <a class="btn" href="#">Apply as a Partner</a></p>
   </div>
@@ -117,7 +126,7 @@
   <div class="section">
     <h2>📬 Submit a Partnership Proposal</h2>
     <p>Got a partnership idea, outreach opportunity, or collaborative vision?</p>
-    <form>
+    <form action="#" method="POST">
       <label for="name">Your Name:</label>
       <input type="text" id="name" name="name" required>
 
@@ -135,7 +144,7 @@
   <p><a href="index.html" class="btn">⬅ Back to Home</a></p>
 
   <!-- Bottom Message -->
-  <div class="footer-msg">
+  <div class="footer">
     💡 Together, we can unlock a generation of empowered Global changemakers. Join the movement. 🌍
   </div>
 
