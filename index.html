@@ -157,6 +157,33 @@ font-size: 0.95rem;
 <a id="module10" href="insight-zone.html" class="card"></a>
 <a id="module11" href="sync-zone.html" class="card"></a>
   </div>   
+  <!-- 🔊 TEXT-TO-SPEECH SECTION -->
+<div class="section">
+  <h2>🔊 Text-to-Speech</h2>
+  <label for="language-tts">Choose Voice Language:</label>
+  <select id="language-tts">
+    <option value="en">English 🇬🇧</option>      
+    <option value="fr">French 🇫🇷</option>      
+    <option value="es">Spanish 🇪🇸</option>      
+    <option value="ar">Arabic 🕌</option>      
+    <option value="hi">Hindi 🇮🇳</option>      
+    <option value="zh">Chinese 🇨🇳</option>      
+    <option value="pt">Portuguese 🇵🇹</option>      
+    <option value="ru">Russian 🇷🇺</option>      
+    <option value="bn">Bengali 🇧🇩</option>      
+    <option value="pg">Pidgin 🇳🇬</option>      
+  </select>
+  <textarea id="text-input" rows="3" placeholder="Type something to speak..."></textarea>
+  <button onclick="speakFromInput()">🔊 Speak</button>
+</div>
+
+<!-- 🤖 AI CHAT SECTION -->
+<div class="section">
+  <h2>🤖 Chat with MVP AI</h2>
+  <textarea id="userInput" rows="3" placeholder="Type your message here..."></textarea>
+  <button onclick="sendMessage()">Send & Speak</button>
+  <div id="chatArea" style="margin-top: 20px;"></div>
+</div>
   <div id="speech-text" class="speech-box">🎤 Tap the mic to speak</div>
 </main>  <footer id="footer"></footer>      <button id="mic-button">🎤</button>  <script>        
   const translations = {        
