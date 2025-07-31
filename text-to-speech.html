@@ -68,7 +68,7 @@
     function speakText(text, lang = 'en-US') {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = lang;
-      window.speechSynthesis.cancel(); // Cancel any previous speech
+      window.speechSynthesis.cancel();
       window.speechSynthesis.speak(utterance);
     }
 
@@ -78,12 +78,12 @@
       }
     });
 
-    // Optional: Simulate AI Response
     function simulateAIResponse(message) {
       document.getElementById('textToSpeak').value = message;
       speakWithLang();
     }
 
+    // Optional demo message:
     // simulateAIResponse("Hello John, welcome to MVP LifeLine AI App!");
   </script>
 
