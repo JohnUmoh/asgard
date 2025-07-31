@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔊 MVP LifeLine AI – Text to Speech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fefefe;
+      padding: 30px;
+      color: #111;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    select, input, button {
+      font-size: 1em;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #e60000;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c40000;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔊 MVP LifeLine AI – Text to Speech</h2>
+
+  <label for="language">Choose Language:</label>
+  <select id="language">
+    <option value="en-US">English 🇬🇧</option>
+    <option value="fr-FR">Français 🇫🇷</option>
+    <option value="es-ES">Español 🇪🇸</option>
+    <option value="ar-SA">العربية 🇸🇦</option>
+    <option value="hi-IN">हिन्दी 🇮🇳</option>
+    <option value="zh-CN">中文 🇨🇳</option>
+    <option value="pt-PT">Português 🇵🇹</option>
+    <option value="ru-RU">Русский 🇷🇺</option>
+    <option value="bn-BD">বাংলা 🇧🇩</option>
+    <option value="en-NG">Pidgin 🇳🇬</option>
+  </select>
+
+  <label for="textToSpeak">Type a message to speak:</label>
+  <input type="text" id="textToSpeak" placeholder="Enter your message..." />
+
+  <button onclick="speakWithLang()">🔊 Speak</button>
+
+  <script>
+    function speakWithLang() {
+      const text = document.getElementById('textToSpeak').value;
+      const lang = document.getElementById('language').value;
+      speakText(text, lang);
+    }
+
+    function speakText(text, lang = 'en-US') {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      window.speechSynthesis.cancel(); // Cancel any previous speech
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.getElementById('textToSpeak').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        speakWithLang();
+      }
+    });
+
+    // Optional: Simulate AI Response
+    function simulateAIResponse(message) {
+      document.getElementById('textToSpeak').value = message;
+      speakWithLang();
+    }
+
+    // simulateAIResponse("Hello John, welcome to MVP LifeLine AI App!");
+  </script>
+
+</body>
+</html>
