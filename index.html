@@ -1,137 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MVP LifeLine AI App</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-    }
+<!DOCTYPE html>  <html lang="en">        <head>        <meta charset="UTF-8" />        
+<meta name="viewport" content="width=device-width, initial-scale=1" />        
+<title>MVP LifeLine AI App</title>        
+<link rel="stylesheet" href="style.css" />        
+<style>        
+  body {        
+    margin: 0;        
+    font-family: 'Segoe UI', sans-serif;        
+    background-color: #fff;        
+  }  .header {        
+display: flex;        
+flex-direction: column;        
+align-items: center;        
+text-align: center;        
+padding: 1.5rem 1rem;        
+background-color: #ffffff;        
+border-bottom: 2px solid #ddd;
 
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      background-color: #ffffff;
-      border-bottom: 2px solid #ddd;
-    }
+}      .logo-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
 
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.logo-img {
+height: 80px;
+width: auto;
+margin-bottom: 0.5rem;
+}
 
-    .logo-img {
-      height: 80px;
-      width: auto;
-      margin-bottom: 0.5rem;
-    }
+.tagline {
+font-size: 0.95rem;
+color: #333;
+margin: 1rem 0;
+}
 
-    .tagline {
-      font-size: 0.95rem;
-      color: #333;
-      margin: 1rem 0;
-    }
+.tag-punch {
+color: red;
+font-weight: bold;
+}
 
-    .tag-punch {
-      color: red;
-      font-weight: bold;
-    }
+#mic-button {
+color: white;
+background-color: red;
+font-size: 2rem;
+cursor: pointer;
+position: fixed;
+bottom: 100px;
+right: 20px;
+z-index: 1000;
+border-radius: 50%;
+padding: 10px 15px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease, transform 0.2s ease;
+}
 
-    #mic-button {
-      color: white;
-      background-color: red;
-      font-size: 2rem;
-      cursor: pointer;
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      z-index: 1000;
-      border-radius: 50%;
-      padding: 10px 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.2s ease;
-    }
+#mic-button:hover {
+background-color: darkred;
+transform: scale(1.1);
+}
 
-    #mic-button:hover {
-      background-color: darkred;
-      transform: scale(1.1);
-    }
+footer {
+text-align: center;
+padding: 1rem;
+background-color: #f9f9f9;
+font-size: 0.9rem;
+color: #444;
+border-top: 1px solid #ddd;
+}
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #f9f9f9;
-      font-size: 0.9rem;
-      color: #444;
-      border-top: 1px solid #ddd;
-    }
+footer nav a {
+margin: 0 5px;
+text-decoration: none;
+color: #555;
+}
 
-    footer nav a {
-      margin: 0 5px;
-      text-decoration: none;
-      color: #555;
-    }
+footer nav a:hover {
+color: red;
+}
 
-    footer nav a:hover {
-      color: red;
-    }
+.container {
+padding: 1rem;
+max-width: 960px;
+margin: auto;
+}
 
-    .container {
-      padding: 1rem;
-      max-width: 960px;
-      margin: auto;
-    }
+.modules-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+gap: 1rem;
+margin-top: 1rem;
+}
 
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+.card {
+border: 1px solid #ddd;
+padding: 1rem;
+border-radius: 12px;
+background: #fff;
+text-decoration: none;
+color: inherit;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+transition: 0.3s ease;
+}
 
-    .card {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 12px;
-      background: #fff;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: 0.3s ease;
-    }
+.card:hover {
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+transform: scale(1.02);
+}
 
-    .card:hover {
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      transform: scale(1.02);
-    }
+.speech-box {
+margin-top: 1rem;
+padding: 1rem;
+border: 1px dashed #aaa;
+border-radius: 8px;
+background-color: #f2f2f2;
+font-size: 0.95rem;
+}
+</style>
 
-    .speech-box {
-      margin-top: 1rem;
-      padding: 1rem;
-      border: 1px dashed #aaa;
-      border-radius: 8px;
-      background-color: #f2f2f2;
-      font-size: 0.95rem;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 🧠 Header -->
-  <header class="header">
-    <div class="header-controls">
-      <select id="language" aria-label="Select Language">
-         
+  </head>    <body>        
+    <header class="header">        
+      <div class="logo-container">        
+        <img src="assets/mvp-logo.png" alt="MVP LifeLine AI Logo" class="logo-img" />        
+        <div class="tagline">        
+          <strong>Your digital hub to Earn. Heal. Grow.</strong>        
+        </div>        
+      </div>  <div>        
+    <select id="language" aria-label="Select Language">        
       <option value="en">English 🇬🇧</option>        
       <option value="fr">French 🇫🇷</option>        
       <option value="es">Spanish 🇪🇸</option>        
@@ -141,118 +137,285 @@
       <option value="pt">Portuguese 🇵🇹</option>        
       <option value="ru">Russian 🇷🇺</option>        
       <option value="bn">Bengali 🇧🇩</option>        
-      <option value="pg">Pidgin English 🇳🇬</option>        
-      </select>
-      <button id="theme-toggle" aria-label="Cycle Theme Colors">🎨</button>
-    </div>
-    <div class="logo-container">
-      <img src="assets/mvp-logo.png" alt="MVP LifeLine AI Logo" class="logo-img" />
-    </div>
-    <div class="tagline">
-  <div><strong>Built for Global bold dreamers.</strong></div>
-  <div>This isn’t just an App — it’s your digital lifeline.</div>
-  <div class="tag-punch">Earn smarter. Heal deeper. Grow faster.</div>
-</div>   
-  </header>
+      <option value="pg">Pidgin English 🌍</option>        
+    </select>        
+    <button id="theme-toggle" aria-label="Cycle Theme Colors">🎨</button>        
+  </div>        
+</header>      <main class="container">      
+  <h2 id="greeting"></h2>      
+  <h3 id="tagline"></h3>      
+  <p id="description"></p>      <div class="modules-grid">    
+    <a id="module1" href="career-zone.html" class="card"></a>
+<a id="module2" href="emotional-zone.html" class="card"></a>
+<a id="module3" href="smartq-access.html" class="card"></a>
+<a id="module4" href="dual-mode-ai.html" class="card"></a>
+<a id="module5" href="digital-hustle-hub.html" class="card"></a>
+<a id="module6" href="partner-zone.html" class="card"></a>
+<a id="module7" href="productivity-zone.html" class="card"></a>
+<a id="module8" href="wellness-zone.html" class="card"></a>
+<a id="module9" href="finance-zone.html" class="card"></a>
+<a id="module10" href="insight-zone.html" class="card"></a>
+<a id="module11" href="sync-zone.html" class="card"></a>
+  </div>   
+  <div id="speech-text" class="speech-box">🎤 Tap the mic to speak</div>
+</main>  <footer id="footer"></footer>      <button id="mic-button">🎤</button>  <script>        
+  const translations = {        
+  en: {          
+    greeting: "Welcome to MVP LifeLine",          
+    tagline: "Your digital hub to Earn. Heal. Grow.",          
+    description: "MVP LifeLine is built for global bold dreamers. A powerful AI app to empower youth emotionally, financially, and professionally.",          
+    module1: "📁 Career Zone – Jobs, CVs, and Interview Prep.",          
+    module2: "💔 Emotional Zone – Track feelings and journaling.",          
+    module3: "🤖 SmartQ Access – Ask anything to your AI guide.",          
+    module4: "🧠 Dual Mode AI – Switch between career/emotional help.",          
+    module5: "💼 Digital Hustle Hub – Freelance and gig economy tools.",          
+    module6: "🤝 Partner Zone – NGO, mentors and impact partners.",          
+    module7: "✅ Productivity Zone – AI-powered Kanban and planner.",          
+    module8: "🧘 Wellness Zone – Mental health & calming audio.",          
+    module9: "💰 Finance Zone – Budgeting and savings advice.",          
+    module10: "📊 Insight Zone – Track usage & analytics insights.",          
+    module11: "🔄 Sync Zone – Manage your offline & online data.",          
+    module12: "",          
+    footer: `© 2025 MVP LifeLine AI App. Built by John Umoh. 
+| <a href="privacy-zone.html">Privacy</a> 
+| <a href="help-zone.html">Help</a> 
+| <a href="security-zone.html">Security</a> 
+| <a href="language-zone.html">Language</a> 
+| <a href="monetization-zone.html">Monetization</a> 
+| <a href="onboarding-zone.html">Onboarding</a>`
+  },          
+  fr: {          
+    greeting: "Bienvenue sur MVP LifeLine",          
+    tagline: "Votre hub numérique pour Gagner. Guérir. Grandir.",          
+    description: "MVP LifeLine est conçu pour les rêveurs audacieux du monde entier...",          
+    module1: "📁 Zone Carrière – Emplois, CV et préparation aux entretiens.",          
+    module2: "💔 Zone Émotionnelle – Suivi des émotions et journalisation.",          
+    module3: "🤖 Accès SmartQ – Posez vos questions à votre guide IA.",          
+    module4: "🧠 Mode Dual AI – Carrière ou soutien émotionnel.",          
+    module5: "💼 Centre de Gigs – Outils pour freelances.",          
+    module6: "🤝 Zone Partenaire – ONG, mentors et partenaires.",          
+    module7: "✅ Zone Productivité – Kanban et planificateur IA.",          
+    module8: "🧘 Zone Bien-être – Santé mentale et audio apaisant.",          
+    module9: "💰 Zone Finances – Conseils budget et épargne.",          
+    module10: "📊 Zone Insights – Suivi & données d'utilisation.",          
+    module11: "🔄 Zone Sync – Gérer données en ligne et hors ligne.",          
+    module12: "",          
+    footer: `© 2025 MVP LifeLine AI App. Créé par John Umoh. 
+| <a href="privacy.html">Confidentialité</a> 
+| <a href="help.html">Aide</a> 
+| <a href="security.html">Sécurité</a> 
+| <a href="language.html">Langue</a> 
+| <a href="monetization.html">Monétisation</a> 
+| <a href="onboarding.html">Onboarding</a>`
+  },          
+  es: {          
+    greeting: "Bienvenido a MVP LifeLine",          
+    tagline: "Tu centro digital para Ganar. Sanar. Crecer.",          
+    description: "MVP LifeLine está diseñado para soñadores audaces de todo el mundo...",          
+    module1: "📁 Zona de Carrera – Empleos, CVs y preparación de entrevistas.",          
+    module2: "💔 Zona Emocional – Seguimiento de sentimientos y diario personal.",          
+    module3: "🤖 Acceso SmartQ – Pregunta lo que quieras a tu guía IA.",          
+    module4: "🧠 Modo Dual AI – Cambia entre ayuda emocional y de carrera.",          
+    module5: "💼 Centro Freelance – Herramientas para trabajos temporales.",          
+    module6: "🤝 Zona de Socios – ONGs, mentores y aliados.",          
+    module7: "✅ Zona Productiva – Kanban y planificador impulsado por IA.",          
+    module8: "🧘 Zona de Bienestar – Salud mental y audios relajantes.",          
+    module9: "💰 Zona Financiera – Consejos para presupuestar y ahorrar.",          
+    module10: "📊 Zona de Datos – Analítica y uso.",          
+    module11: "🔄 Zona Sync – Gestiona tus datos offline y online.",          
+    module12: "",          
+    footer: `© 2025 MVP LifeLine AI App. Desarrollado por John Umoh. 
+| <a href="privacy.html">Privacidad</a> 
+| <a href="help.html">Ayuda</a> 
+| <a href="security.html">Seguridad</a> 
+| <a href="language.html">Idioma</a> 
+| <a href="monetization.html">Monetización</a> 
+| <a href="onboarding.html">Onboarding</a>`
+  },          
+  ar: {      
+      
+greeting: "مرحبًا بك في MVP LifeLine",      
+tagline: "مركزك الرقمي لتكسب. تلتئم. تنمو.",      
+description: "تم تصميم MVP LifeLine للحالمين الشجعان حول العالم. تطبيق ذكاء اصطناعي قوي لتمكين الشباب عاطفيًا وماليًا ومهنيًا.",      
+module1: "📁 منطقة الوظائف – الوظائف والسير الذاتية والإعداد للمقابلات.",      
+module2: "💔 المنطقة العاطفية – تتبع المشاعر والكتابة اليومية.",      
+module3: "🤖 وصول SmartQ – اسأل دليلك بالذكاء الاصطناعي.",      
+module4: "🧠 الوضع المزدوج – المساعدة المهنية أو العاطفية.",      
+module5: "💼 مركز الدخل الرقمي – أدوات العمل الحر.",      
+module6: "🤝 منطقة الشركاء – المنظمات والمعلمون والشركاء.",      
+module7: "✅ منطقة الإنتاجية – كانبان وخطط مدعومة بالذكاء الاصطناعي.",      
+module8: "🧘 منطقة العافية – الصحة النفسية والصوتيات المهدئة.",      
+module9: "💰 منطقة التمويل – الميزانية والنصائح المالية.",      
+module10: "📊 منطقة الرؤى – تتبع الاستخدام والتحليلات.",      
+module11: "🔄 منطقة المزامنة – إدارة البيانات غير المتصلة والمتصلة.",      
+module12: "",      
+footer: `© 2025 تطبيق MVP LifeLine. تم الإنشاء بواسطة John Umoh. 
+| <a href="privacy.html">الخصوصية</a> 
+| <a href="help.html">المساعدة</a> 
+| <a href="security.html">الأمان</a> 
+| <a href="language.html">اللغة</a> 
+| <a href="monetization.html">تحقيق الدخل</a> 
+| <a href="onboarding.html">التعريف</a>`
+},  hi: {      
+greeting: "MVP LifeLine में आपका स्वागत है",      
+tagline: "कमाएं। ठीक हों। बढ़ें।",      
+description: "MVP LifeLine वैश्विक साहसी सपने देखने वालों के लिए बनाया गया है। एक शक्तिशाली एआई ऐप जो युवाओं को भावनात्मक, वित्तीय और पेशेवर रूप से सशक्त बनाता है।",      
+module1: "📁 करियर ज़ोन – नौकरियां, CV और साक्षात्कार तैयारी।",      
+module2: "💔 इमोशनल ज़ोन – भावनाओं का ट्रैक और जर्नलिंग।",      
+module3: "🤖 SmartQ एक्सेस – अपने AI गाइड से पूछें।",      
+module4: "🧠 ड्यूल मोड AI – करियर या इमोशनल हेल्प।",      
+module5: "💼 डिजिटल हसल हब – फ्रीलांसिंग टूल्स।",      
+module6: "🤝 पार्टनर ज़ोन – एनजीओ, मेंटर्स, साझेदार।",      
+module7: "✅ उत्पादकता ज़ोन – AI-पावर्ड योजनाकार।",      
+module8: "🧘 वेलनेस ज़ोन – मानसिक स्वास्थ्य और ऑडियो।",      
+module9: "💰 वित्त ज़ोन – बजट और बचत सलाह।",      
+module10: "📊 इनसाइट ज़ोन – उपयोग और डेटा ट्रैकिंग।",      
+module11: "🔄 सिंक ज़ोन – ऑफ़लाइन और ऑनलाइन डेटा।",      
+module12: "",      
+footer: `© 2025 MVP LifeLine ऐप। John Umoh द्वारा बनाया गया। 
+| <a href="privacy.html">गोपनीयता</a> 
+| <a href="help.html">सहायता</a> 
+| <a href="security.html">सुरक्षा</a> 
+| <a href="language.html">भाषा</a> 
+| <a href="monetization.html">कमाई</a> 
+| <a href="onboarding.html">ऑनबोर्डिंग</a>`
+},      
+      
+zh: {      
+greeting: "欢迎使用 MVP LifeLine",      
+tagline: "您的数字中心：赚钱、疗愈、成长。",      
+description: "MVP LifeLine 是为全球勇敢的梦想家打造的强大 AI 应用程序，帮助青年在情感、财务和职业上获得成长。",      
+module1: "📁 职业区 – 求职、简历和面试准备。",      
+module2: "💔 情感区 – 情绪追踪与日记记录。",      
+module3: "🤖 SmartQ 访问 – 向 AI 指导提问。",      
+module4: "🧠 双模式 AI – 职业或情感支持。",      
+module5: "💼 数字赚钱中心 – 自由职业与零工工具。",      
+module6: "🤝 合作区 – NGO、导师与合作伙伴。",      
+module7: "✅ 生产力区 – AI 看板与计划器。",      
+module8: "🧘 健康区 – 心理健康和舒缓音频。",      
+module9: "💰 财务区 – 预算和储蓄建议。",      
+module10: "📊 洞察区 – 使用情况与数据分析。",      
+module11: "🔄 同步区 – 管理离线与在线数据。",      
+module12: "",      
+footer: `© 2025 MVP LifeLine 应用。由 John Umoh 构建。 
+| <a href="privacy.html">隐私</a> 
+| <a href="help.html">帮助</a> 
+| <a href="security.html">安全</a> 
+| <a href="language.html">语言</a> 
+| <a href="monetization.html">盈利</a> 
+| <a href="onboarding.html">入门</a>`     
+},      
+      
+pt: {      
+greeting: "Bem-vindo ao MVP LifeLine",      
+tagline: "Seu hub digital para Ganhar. Curar. Crescer.",      
+description: "MVP LifeLine foi criado para sonhadores ousados do mundo todo. Um app de IA poderoso para empoderar jovens emocional, financeira e profissionalmente.",      
+module1: "📁 Zona de Carreira – Empregos, currículos e preparação para entrevistas.",      
+module2: "💔 Zona Emocional – Rastreio de sentimentos e diário.",      
+module3: "🤖 Acesso SmartQ – Pergunte ao seu guia de IA.",      
+module4: "🧠 Modo Duplo de IA – Ajuda profissional ou emocional.",      
+module5: "💼 Hub Digital – Ferramentas para freelancers.",      
+module6: "🤝 Zona de Parceiros – ONGs, mentores e aliados.",      
+module7: "✅ Zona de Produtividade – Planejador com IA.",      
+module8: "🧘 Zona de Bem-estar – Saúde mental e áudios.",      
+module9: "💰 Zona Financeira – Orçamento e economia.",      
+module10: "📊 Zona de Insights – Dados e análises.",      
+module11: "🔄 Zona de Sincronização – Dados offline e online.",      
+module12: "",      
+footer: `© 2025 MVP LifeLine App. Criado por John Umoh. 
+| <a href="privacy.html">Privacidade</a> 
+| <a href="help.html">Ajuda</a> 
+| <a href="security.html">Segurança</a> 
+| <a href="language.html">Idioma</a> 
+| <a href="monetization.html">Monetização</a> 
+| <a href="onboarding.html">Onboarding</a>` 
+},      
+      
+ru: {      
+greeting: "Добро пожаловать в MVP LifeLine",      
+tagline: "Ваш цифровой центр: Зарабатывай. Исцеляйся. Расти.",      
+description: "MVP LifeLine создан для смелых мечтателей по всему миру. Мощное AI-приложение для поддержки молодежи эмоционально, финансово и профессионально.",      
+module1: "📁 Карьерная зона – Работа, резюме и собеседования.",      
+module2: "💔 Эмоциональная зона – Отслеживание чувств и дневник.",      
+module3: "🤖 SmartQ Доступ – Задайте вопрос AI-гиду.",      
+module4: "🧠 Двойной режим AI – Поддержка карьеры или эмоций.",      
+module5: "💼 Цифровой центр – Инструменты фриланса.",      
+module6: "🤝 Зона партнеров – НКО, наставники, партнеры.",      
+module7: "✅ Зона продуктивности – Канбан и планировщик.",      
+module8: "🧘 Зона здоровья – Ментальное здоровье и аудио.",      
+module9: "💰 Финансовая зона – Бюджет и советы.",      
+module10: "📊 Зона аналитики – Использование и данные.",      
+module11: "🔄 Зона синхронизации – Онлайн и оффлайн данные.",      
+module12: "",      
+footer: `© 2025 Приложение MVP LifeLine. Создано Джоном Умо. 
+| <a href="privacy.html">Конфиденциальность</a> 
+| <a href="help.html">Помощь</a> 
+| <a href="security.html">Безопасность</a> 
+| <a href="language.html">Язык</a> 
+| <a href="monetization.html">Монетизация</a> 
+| <a href="onboarding.html">Обучение</a>`
+},      
+      
+bn: {      
+greeting: "MVP LifeLine-এ স্বাগতম",      
+tagline: "আপনার ডিজিটাল হাব: উপার্জন করুন। সুস্থ হন। বেড়ে উঠুন।",      
+description: "বিশ্বজুড়ে সাহসী স্বপ্নদর্শীদের জন্য তৈরি একটি শক্তিশালী AI অ্যাপ, যা তরুণদের মানসিক, আর্থিক ও পেশাগতভাবে এগিয়ে নিতে সাহায্য করে।",      
+module1: "📁 ক্যারিয়ার জোন – চাকরি, CV ও সাক্ষাৎকার প্রস্তুতি।",      
+module2: "💔 আবেগ জোন – অনুভূতির ট্র্যাকিং ও ডায়েরি।",      
+module3: "🤖 SmartQ অ্যাক্সেস – AI গাইডকে প্রশ্ন করুন।",      
+module4: "🧠 ডুয়াল মোড AI – ক্যারিয়ার বা আবেগ সহায়তা।",      
+module5: "💼 ডিজিটাল হাব – ফ্রিল্যান্স টুলস।",      
+module6: "🤝 পার্টনার জোন – NGO, মেন্টর ও পার্টনার।",      
+module7: "✅ প্রোডাক্টিভিটি জোন – AI-চালিত প্ল্যানার।",      
+module8: "🧘 ওয়েলনেস জোন – মানসিক স্বাস্থ্য ও অডিও।",      
+module9: "💰 ফাইনান্স জোন – বাজেট ও সঞ্চয়ের পরামর্শ।",      
+module10: "📊 ইনসাইট জোন – ডেটা ও ব্যবহারের পরিসংখ্যান।",      
+module11: "🔄 সিঙ্ক জোন – অনলাইন ও অফলাইন ডেটা।",      
+module12: "",      
+footer: `© 2025 MVP LifeLine অ্যাপ। নির্মাতা: John Umoh 
+| <a href="privacy.html">গোপনীয়তা</a> 
+| <a href="help.html">সাহায্য</a> 
+| <a href="security.html">নিরাপত্তা</a> 
+| <a href="language.html">ভাষা</a> 
+| <a href="monetization.html">আয়</a> 
+| <a href="onboarding.html">অনবোর্ডিং</a>`
+},      
+      
+pg: {      
+greeting: "Welcome to MVP LifeLine",      
+tagline: "Your digital HQ to Make Money. Heal Up. Level Up.",      
+description: "MVP LifeLine na beta app wey dey help bold youth wey wan grow emotionally, make money and build career.",      
+module1: "📁 Career Zone – Jobs, CV and Interview runs.",      
+module2: "💔 Emotional Zone – How you feel and diary talk.",      
+module3: "🤖 SmartQ – Ask wetin dey worry you to AI.",      
+module4: "🧠 Dual Mode AI – Career or Emotional gist mode.",      
+module5: "💼 Hustle Hub – Side gig tools and freelance tips.",      
+module6: "🤝 Partner Zone – NGO, mentor and partner help.",      
+module7: "✅ Doings Zone – AI todo and planner.",      
+module8: "🧘 Cool Zone – Mental reset and calm audio.",      
+module9: "💰 Money Zone – Budget and saving levels.",      
+module10: "📊 Stats Zone – Know how you dey use the app.",      
+module11: "🔄 Connect Zone – Manage online/offline gist.",      
+module12: "",      
+footer: `© 2025 MVP LifeLine App. Na John Umoh build am. 
+| <a href="privacy.html">Privacy</a> 
+| <a href="help.html">Help</a> 
+| <a href="security.html">Security</a> 
+| <a href="language.html">Language</a> 
+| <a href="monetization.html">Money Ways</a> 
+| <a href="onboarding.html">Start Journey</a>`   
+}      
+};      
+      
+  const languageSelector = document.getElementById("language");
+  const greetingEl = document.getElementById("greeting") || document.querySelector(".greeting h2");
+  const taglineEl = document.getElementById("tagline");
+  const descriptionEl = document.getElementById("description");
+  const footerEl = document.getElementById("footer");
+  const micButton = document.getElementById('mic-button');
+  const speechText = document.getElementById('speech-text');
 
-  <!-- 🚀 Main Content -->
-  <main class="container">
-    <section class="greeting" aria-label="App Greeting">
-      <h2>Welcome, Hope,<br><span>Let’s grow today.</span></h2>
-    </section>
-
-    <div id="speech-output" class="speech-box" aria-label="Speech Result">
-      <p><strong>Voice Input:</strong> <span id="speech-text">[Waiting for input...]</span></p>
-    </div>
-
-    <div class="modules-grid" aria-label="Modules Section">
-      <a href="career-zone.html" class="card"><h3>📁 Career Zone</h3><p>Jobs, CVs, and Interview Prep.</p></a>
-      <a href="emotional-zone.html" class="card"><h3>💔 Emotional Zone</h3><p>Track feelings and journaling.</p></a>
-      <a href="smartq-access.html" class="card"><h3>🤖 SmartQ Access</h3><p>Ask anything to your AI guide.</p></a>
-      <a href="dual-mode-ai.html" class="card"><h3>🧠 Dual Mode AI</h3><p>Switch between career/emotional help.</p></a>
-      <a href="digital-hustle-hub.html" class="card"><h3>💼 Digital Hustle Hub</h3><p>Freelance and gig economy tools.</p></a>
-      <a href="partner-zone.html" class="card"><h3>🤝 Partner Zone</h3><p>NGO, mentors and impact partners.</p></a>
-      <a href="productivity-zone.html" class="card"><h3>✅ Productivity Zone</h3><p>AI-powered Kanban and planner.</p></a>
-      <a href="wellness-zone.html" class="card"><h3>🧘 Wellness Zone</h3><p>Mental health & calming audio.</p></a>
-      <a href="finance-zone.html" class="card"><h3>💰 Finance Zone</h3><p>Budgeting and savings advice.</p></a>
-      <a href="insight-zone.html" class="card"><h3>📊 Insight Zone</h3><p>Track usage & analytics insights.</p></a>
-      <a href="sync-zone.html" class="card"><h3>🔄 Sync Zone</h3><p>Manage your offline & online data.</p></a>
-    </div>
-
-    <section id="gpt-reply-box" class="card" style="display:none; margin-top:2rem;">
-      <h3>🤖 SmartQ says:</h3>
-      <p id="gpt-reply-text">...</p>
-    </section>
-  </main>
-
-  <!-- 🎤 Floating Mic Button -->
-  <div id="mic-button" aria-label="Voice Assistant">🎤</div>
-
-  <!-- 📘 Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 MVP LifeLine AI App. Built by John Umoh.</p>
-    <nav aria-label="Footer navigation">
-      <a href="privacy-zone.html">Privacy</a> |
-      <a href="help-zone.html">Help</a> |
-      <a href="security-zone.html">Security</a> |
-      <a href="language-zone.html">Language</a> |
-      <a href="monetization-zone.html">Monetization</a> |
-      <a href="onboarding-zone.html">Onboarding</a>
-    </nav>
-  </footer>
-  <!-- 🧠 Language Script -->
-<script>
-  const translations = {
-    en: { greeting: "Welcome, Hope,\nLet’s grow today." },
-    fr: { greeting: "Bienvenue, Hope,\nGrandissons aujourd’hui." },
-    es: { greeting: "Bienvenido, Hope,\nVamos a crecer hoy." },
-    ar: { greeting: "مرحباً، Hope،\nلننمو اليوم." },
-    hi: { greeting: "स्वागत है, Hope,\nआइए आज बढ़ें।" },
-    zh: { greeting: "欢迎, Hope，\n今天我们一起成长。" },
-    pt: { greeting: "Bem-vindo, Hope,\nVamos crescer hoje." },
-    ru: { greeting: "Добро пожаловать, Hope,\nДавайте расти сегодня." },
-    bn: { greeting: "স্বাগতম, Hope,\nচলো আজ এগিয়ে যাই।" },
-    pg: { greeting: "Wetin dey, Hope,\nMake we grow today." }
-  };
-
-
-    const languageSelector = document.getElementById("language");
-    const greetingEl = document.querySelector(".greeting h2");
-
-    function updateTexts(lang) {
-      const t = translations[lang] || translations.en;
-      greetingEl.innerText = t.greeting;
-    }
-
-    updateTexts(languageSelector.value);
-    languageSelector.addEventListener("change", () => updateTexts(languageSelector.value));
-  </script>
-
-  <!-- 🎨 Theme Toggle Script -->
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themes = ['red', 'blue', 'white', 'yellow'];
-    let currentThemeIndex = 0;
-
-    function applyTheme(theme) {
-      document.body.className = '';
-      document.body.classList.add(`theme-${theme}`);
-    }
-
-    themeToggle.addEventListener('click', () => {
-      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-      applyTheme(themes[currentThemeIndex]);
-    });
-
-    applyTheme(themes[0]);
-  </script>
-
-  <!-- 🎤 Voice Recognition Script -->
-  <script>
-    const micButton = document.getElementById('mic-button');
-    const speechText = document.getElementById('speech-text');
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const languageMap = {
+  const languageMap = {
     en: 'en-US',
     fr: 'fr-FR',
     es: 'es-ES',
@@ -265,61 +428,110 @@
     pg: 'en-NG'
   };
 
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-      recognition.interimResults = false;
+  function setLanguage(lang) {
+    const t = translations[lang] || translations["en"];
+    if (greetingEl) greetingEl.innerText = t.greeting;
+    if (taglineEl) taglineEl.innerText = t.tagline;
+    if (descriptionEl) descriptionEl.innerText = t.description;
+    if (footerEl) footerEl.innerHTML = t.footer;
 
-      micButton.addEventListener('click', () => {
-        recognition.lang = languageMap[languageSelector.value] || 'en-US';
-        speechText.textContent = '🎙️ Listening...';
-        recognition.start();
-      });
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        speechText.textContent = transcript;
-      };
-
-      recognition.onerror = (event) => {
-        speechText.textContent = '❌ Error: ' + event.error;
-      };
-    } else {
-      micButton.addEventListener('click', () => {
-        speechText.textContent = '❌ Speech recognition not supported on this device.';
-      });
+    for (let i = 1; i <= 12; i++) {
+      const el = document.getElementById("module" + i);
+      if (el && t["module" + i]) el.innerText = t["module" + i];
+      else if (el) el.innerText = "";
     }
-  </script>
+  }
 
-  <!-- 📌 Mic Scroll Visibility Script -->
-  <script>
-    const footer = document.querySelector('footer');
+  const savedLang = localStorage.getItem("selectedLanguage");
+  if (savedLang && languageSelector) {
+    languageSelector.value = savedLang;
+    setLanguage(savedLang);
+  } else {
+    setLanguage(languageSelector?.value || "en");
+  }
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const micHeight = micButton.offsetHeight;
-      const footerTop = footer.offsetTop;
+  languageSelector?.addEventListener("change", () => {
+    const newLang = languageSelector.value;
+    localStorage.setItem("selectedLanguage", newLang);
+    setLanguage(newLang);
+  });
 
-      if (scrollY > 150) {
-        micButton.style.opacity = "1";
-        micButton.style.pointerEvents = "auto";
-      } else {
-        micButton.style.opacity = "0";
-        micButton.style.pointerEvents = "none";
-      }
+  // 🎨 Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themes = ['red', 'blue', 'white', 'yellow'];
+  let currentThemeIndex = 0;
 
-      const windowBottom = scrollY + window.innerHeight;
-      if (windowBottom > footerTop) {
-        micButton.style.position = 'absolute';
-        micButton.style.top = `${footerTop - micHeight - 20}px`;
-        micButton.style.bottom = 'auto';
-      } else {
-        micButton.style.position = 'fixed';
-        micButton.style.bottom = '100px';
-        micButton.style.top = '';
-      }
+  function applyTheme(theme) {
+    document.body.className = '';
+    document.body.classList.add(`theme-${theme}`);
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    applyTheme(themes[currentThemeIndex]);
+    localStorage.setItem("selectedTheme", themes[currentThemeIndex]);
+  });
+
+  const savedTheme = localStorage.getItem("selectedTheme");
+  if (savedTheme) {
+    applyTheme(savedTheme);
+    currentThemeIndex = themes.indexOf(savedTheme);
+  } else {
+    applyTheme(themes[0]);
+  }
+
+  // 🎤 Voice Recognition
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = false;
+
+    micButton?.addEventListener('click', () => {
+      const currentLang = languageSelector.value;
+      recognition.lang = languageMap[currentLang] || 'en-US';
+      speechText.textContent = '🎙️ Listening...';
+      recognition.start();
     });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      speechText.textContent = transcript;
+    };
+
+    recognition.onerror = (event) => {
+      speechText.textContent = '❌ Error: ' + event.error;
+    };
+  } else {
+    micButton?.addEventListener('click', () => {
+      speechText.textContent = '❌ Speech recognition not supported on this device.';
+    });
+  }
+
+  // ⬇️ Mic Scroll Visibility
+  const footer = document.querySelector('footer');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const micHeight = micButton?.offsetHeight || 0;
+    const footerTop = footer?.offsetTop || 0;
+
+    if (scrollY > 150) {
+      micButton.style.opacity = "1";
+      micButton.style.pointerEvents = "auto";
+    } else {
+      micButton.style.opacity = "0";
+      micButton.style.pointerEvents = "none";
+    }
+
+    const windowBottom = scrollY + window.innerHeight;
+    if (windowBottom > footerTop) {
+      micButton.style.position = 'absolute';
+      micButton.style.top = `${footerTop - micHeight - 20}px`;
+      micButton.style.bottom = 'auto';
+    } else {
+      micButton.style.position = 'fixed';
+      micButton.style.bottom = '100px';
+      micButton.style.top = '';
+    }
+  });
   </script>
-
-</body>
-</html>
-
