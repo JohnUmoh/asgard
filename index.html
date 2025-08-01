@@ -408,139 +408,130 @@ footer: `© 2025 MVP LifeLine App. Na John Umoh build am.
 };      
       
   const languageSelector = document.getElementById("language");
-const greetingEl = document.getElementById("greeting") || document.querySelector(".greeting h2");
-const taglineEl = document.getElementById("tagline");
-const descriptionEl = document.getElementById("description");
-const footerEl = document.getElementById("footer");
-const micButton = document.getElementById('mic-button');
-const speechText = document.getElementById('speech-text');
+  const greetingEl = document.getElementById("greeting") || document.querySelector(".greeting h2");
+  const taglineEl = document.getElementById("tagline");
+  const descriptionEl = document.getElementById("description");
+  const footerEl = document.getElementById("footer");
+  const micButton = document.getElementById('mic-button');
+  const speechText = document.getElementById('speech-text');
 
-const languageMap = {
-  en: 'en-US',
-  fr: 'fr-FR',
-  es: 'es-ES',
-  ar: 'ar-SA',
-  hi: 'hi-IN',
-  zh: 'zh-CN',
-  pt: 'pt-PT',
-  ru: 'ru-RU',
-  bn: 'bn-BD',
-  pg: 'en-NG'
-};
-
-function setLanguage(lang) {
-  const t = translations[lang] || translations["en"];
-  if (greetingEl) greetingEl.innerText = t.greeting;
-  if (taglineEl) taglineEl.innerText = t.tagline;
-  if (descriptionEl) descriptionEl.innerText = t.description;
-  if (footerEl) footerEl.innerHTML = t.footer;
-
-  for (let i = 1; i <= 12; i++) {
-    const el = document.getElementById("module" + i);
-    if (el && t["module" + i]) el.innerText = t["module" + i];
-    else if (el) el.innerText = "";
-  }
-}
-
-const savedLang = localStorage.getItem("selectedLanguage");
-if (savedLang && languageSelector) {
-  languageSelector.value = savedLang;
-  setLanguage(savedLang);
-} else {
-  setLanguage(languageSelector?.value || "en");
-}
-
-languageSelector?.addEventListener("change", () => {
-  const newLang = languageSelector.value;
-  localStorage.setItem("selectedLanguage", newLang);
-  setLanguage(newLang);
-});
-
-// 🎨 Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-const themes = ['red', 'blue', 'white', 'yellow'];
-let currentThemeIndex = 0;
-
-function applyTheme(theme) {
-  document.body.className = '';
-  document.body.classList.add(`theme-${theme}`);
-}
-
-themeToggle?.addEventListener('click', () => {
-  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-  applyTheme(themes[currentThemeIndex]);
-  localStorage.setItem("selectedTheme", themes[currentThemeIndex]);
-});
-
-const savedTheme = localStorage.getItem("selectedTheme");
-if (savedTheme) {
-  applyTheme(savedTheme);
-  currentThemeIndex = themes.indexOf(savedTheme);
-} else {
-  applyTheme(themes[0]);
-}
-
-// 💬 Dummy AI responses (already defined — ensure it’s before recognition logic)
-
-// 🎤 Voice Recognition + AI Reply
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-if (SpeechRecognition) {
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = false;
-
-  micButton?.addEventListener('click', () => {
-    const currentLang = languageSelector.value;
-    recognition.lang = languageMap[currentLang] || 'en-US';
-    speechText.textContent = '🎙️ Listening...';
-    recognition.start();
-  });
-
-  recognition.onresult = (event) => {
-    const transcript = event.results[0][0].transcript;
-    const selectedLang = languageSelector.value || "en";
-    const responses = aiResponses[selectedLang] || aiResponses["en"];
-    const aiReply = responses[Math.floor(Math.random() * responses.length)];
-
-    speechText.textContent = `🗣️ You said: "${transcript}"`;
-
-    setTimeout(() => {
-      speechText.textContent += `\n🤖 ${aiReply}`;
-    }, 700);
+  const languageMap = {
+    en: 'en-US',
+    fr: 'fr-FR',
+    es: 'es-ES',
+    ar: 'ar-SA',
+    hi: 'hi-IN',
+    zh: 'zh-CN',
+    pt: 'pt-PT',
+    ru: 'ru-RU',
+    bn: 'bn-BD',
+    pg: 'en-NG'
   };
 
-  recognition.onerror = (event) => {
-    speechText.textContent = '❌ Error: ' + event.error;
-  };
-} else {
-  micButton?.addEventListener('click', () => {
-    speechText.textContent = '❌ Speech recognition not supported on this device.';
+  function setLanguage(lang) {
+    const t = translations[lang] || translations["en"];
+    if (greetingEl) greetingEl.innerText = t.greeting;
+    if (taglineEl) taglineEl.innerText = t.tagline;
+    if (descriptionEl) descriptionEl.innerText = t.description;
+    if (footerEl) footerEl.innerHTML = t.footer;
+
+    for (let i = 1; i <= 12; i++) {
+      const el = document.getElementById("module" + i);
+      if (el && t["module" + i]) el.innerText = t["module" + i];
+      else if (el) el.innerText = "";
+    }
+  }
+
+  const savedLang = localStorage.getItem("selectedLanguage");
+  if (savedLang && languageSelector) {
+    languageSelector.value = savedLang;
+    setLanguage(savedLang);
+  } else {
+    setLanguage(languageSelector?.value || "en");
+  }
+
+  languageSelector?.addEventListener("change", () => {
+    const newLang = languageSelector.value;
+    localStorage.setItem("selectedLanguage", newLang);
+    setLanguage(newLang);
   });
-}
 
-// ⬇️ Mic Scroll Visibility
-const footer = document.querySelector('footer');
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const micHeight = micButton?.offsetHeight || 0;
-  const footerTop = footer?.offsetTop || 0;
+  // 🎨 Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themes = ['red', 'blue', 'white', 'yellow'];
+  let currentThemeIndex = 0;
 
-  if (scrollY > 150) {
-    micButton.style.opacity = "1";
-    micButton.style.pointerEvents = "auto";
-  } else {
-    micButton.style.opacity = "0";
-    micButton.style.pointerEvents = "none";
+  function applyTheme(theme) {
+    document.body.className = '';
+    document.body.classList.add(`theme-${theme}`);
   }
 
-  const windowBottom = scrollY + window.innerHeight;
-  if (windowBottom > footerTop) {
-    micButton.style.position = 'absolute';
-    micButton.style.top = `${footerTop - micHeight - 20}px`;
-    micButton.style.bottom = 'auto';
+  themeToggle?.addEventListener('click', () => {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    applyTheme(themes[currentThemeIndex]);
+    localStorage.setItem("selectedTheme", themes[currentThemeIndex]);
+  });
+
+  const savedTheme = localStorage.getItem("selectedTheme");
+  if (savedTheme) {
+    applyTheme(savedTheme);
+    currentThemeIndex = themes.indexOf(savedTheme);
   } else {
-    micButton.style.position = 'fixed';
-    micButton.style.bottom = '100px';
-    micButton.style.top = '';
+    applyTheme(themes[0]);
   }
-});
+
+  // 🎤 Voice Recognition
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = false;
+
+    micButton?.addEventListener('click', () => {
+      const currentLang = languageSelector.value;
+      recognition.lang = languageMap[currentLang] || 'en-US';
+      speechText.textContent = '🎙️ Listening...';
+      recognition.start();
+    });
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      speechText.textContent = transcript;
+    };
+
+    recognition.onerror = (event) => {
+      speechText.textContent = '❌ Error: ' + event.error;
+    };
+  } else {
+    micButton?.addEventListener('click', () => {
+      speechText.textContent = '❌ Speech recognition not supported on this device.';
+    });
+  }
+
+  // ⬇️ Mic Scroll Visibility
+  const footer = document.querySelector('footer');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const micHeight = micButton?.offsetHeight || 0;
+    const footerTop = footer?.offsetTop || 0;
+
+    if (scrollY > 150) {
+      micButton.style.opacity = "1";
+      micButton.style.pointerEvents = "auto";
+    } else {
+      micButton.style.opacity = "0";
+      micButton.style.pointerEvents = "none";
+    }
+
+    const windowBottom = scrollY + window.innerHeight;
+    if (windowBottom > footerTop) {
+      micButton.style.position = 'absolute';
+      micButton.style.top = `${footerTop - micHeight - 20}px`;
+      micButton.style.bottom = 'auto';
+    } else {
+      micButton.style.position = 'fixed';
+      micButton.style.bottom = '100px';
+      micButton.style.top = '';
+    }
+  });
+  </script>
